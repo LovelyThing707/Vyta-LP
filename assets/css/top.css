@@ -626,107 +626,191 @@
 }
 
 /* ----- VALUE ------ */
+
 .value {
-}
-.value .content {
+  width: 100%;
+  height: 100vh;
   background: url("../img/gra-bg.png") no-repeat center / cover;
-  position: relative;
-  padding-bottom: 48px;
-}
-.value .tip {
-  position: absolute;
-  top: -25px;
-  left: -90px;
-}
-.value .tip p {
-  font-size: 300px;
-  font-weight: bold;
-  color: #ffffff;
-  font-family: "Outfit";
-  line-height: 1.1;
-  writing-mode: sideways-lr;
-}
-.value-title {
-  font-size: 30px;
-  font-weight: 500;
-  text-align: center;
-  padding-block: 50px;
-}
-.value .content-main {
   display: flex;
   flex-direction: column;
-  align-items: end;
-  padding-right: 102px;
+  justify-content: center;
+  position: relative;
+  padding-right: 250px;
 }
-.value .content-main .item-content {
+
+.value-title {
+  font-size: 30px;
+  font-weight: bold;
+  font-family: "Zen Kaku Gothic New";
+  letter-spacing: 20px;
+  color: #4E4E4E;
+  line-height: 1;
+  white-space: nowrap;
+  display: inline-block;
+  position: absolute;
+  top: 20px;
+  left: 250px;
+}
+
+.value-en-title {
+  font-size: 300px;
+  font-weight: bold;
+  font-family: "Outfit";
+  color: #FFFFFF;
+  line-height: 1;
+  white-space: nowrap;
+  display: inline-block;
+  position: absolute;
+  top: 300px;
+  left: -300px;
+  rotate: -90deg;
+}
+
+.value-content {
   width: 100%;
-  max-width: 917px;
-}
-.value .content-main .item {
-  width: 100%;
-  max-width: 1100px;
   display: flex;
-  align-items: start;
-  justify-content: space-between;
-  gap: 10px;
-}
-.value .content-main .item .num {
-  width: 110px;
-  aspect-ratio: 1/1;
-  border-radius: 50%;
-  border: 2px solid #ffffff;
-  background-color: rgba(230, 230, 230, 0.3);
-  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
+  min-height: 100vh;
+}
+
+.value-item {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  z-index: 2;
+  gap: 50px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.value-item.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.value-item-number {
+  text-align: center;
   font-size: 50px;
   font-weight: bold;
   font-family: "Outfit";
-  color: #ffffff;
+  color: #FFFFFF;
+  line-height: 1;
+  border-radius: 50%;
+  background-color: #F7EDEC;
+  border: 2px solid #FFFFFF;
+  white-space: nowrap;
+  width: 110px;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.value .content-main .item-t {
+
+.value-item-content {
+  width: 100%;
+  max-width: 1120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  gap: 40px;
+}
+
+.value-item-content-title {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: relative;
-  margin-bottom: 50px;
+  z-index: 2;
 }
-.value .content-main .item-t .item-t-b {
-  position: absolute;
-  top: -20px;
-  left: 0;
-  z-index: 1;
-  font-size: 130px;
-  color: #ffffff;
-  font-weight: 500;
+
+.value-item-content-title p {
+  font-size: 60px;
+  font-weight: medium;
+  font-family: "Zen Kaku Gothic New";
+  color: #4E4E4E;
   line-height: 1;
   white-space: nowrap;
-  font-family: "Outfit";
+  display: inline-block;
 }
-.value .content-main .item-t p {
-  font-size: 60px;
-  font-weight: 600;
-  position: relative;
-  z-index: 2;
-  line-height: 1.2;
-}
-.value .content-main .item-t .ico {
+
+.value-item-content-title-icon {
   width: 205px;
-  position: relative;
-  z-index: 2;
+  height: 205px;
+  background-color: #56ABBA;
+  border-radius: 50%;
 }
-.value .content-main .item-txt {
+
+.value-item-content-title-icon img {
+  width: 100%;
+  height: 100%;
+}
+
+.value-item-content-title-text {
+  font-size: 130px;
+  font-weight: bold;
+  font-family: "Outfit";
+  color: #ffffff;
+  line-height: 1;
+  white-space: nowrap;
+  display: inline-block;
+  position: absolute;
+}
+
+.value-item-content-description {
+  width: 100%;
   font-size: 14px;
-  color: #000000;
+  font-family: "Zen Kaku Gothic New";
+  color: #4E4E4E;
   line-height: 28px;
+  position: relative;
 }
 
-.value .content-main .item-txt span {
-  background-color: #b6e7ef;
+.value-item-content-description-highlight {
+  font-weight: bold;
+  font-size: 18px;
+  color: #56ABBA;
 }
 
-/* ------ SOLUTION -------- */
-.solution .title-box {
-    
+.tri-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tri-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.tri-icon.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Ensure value section can be pinned */
+.value {
+  overflow: hidden;
 }
