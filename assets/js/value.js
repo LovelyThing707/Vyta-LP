@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // =============================
   // CONFIG — TUNE SPEED HERE
   // =============================
-  const SCROLL_PER_ITEM = 250; // vh per item (200–300 = smooth & premium)
+  const SCROLL_PER_ITEM = 1000; // vh per item (200–300 = smooth & premium)
   const SCRUB_SMOOTHNESS = 2; // higher = more inertia
 
   // =============================
@@ -30,18 +30,18 @@ document.addEventListener("DOMContentLoaded", () => {
     gsap.set(number, {
       scale: 0.3,
       y: 200,
-      opacity: 0,
+      opacity: 1,
     });
 
     gsap.set(content, {
-      opacity: 0,
+      opacity: 1,
       y: 30,
     });
   });
 
   triIcons.forEach((icon) => {
     gsap.set(icon, {
-      opacity: 0,
+      opacity: 1,
       scale: 0.5,
     });
   });
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
       end: `+=${scrollDistance}vh`,
       scrub: SCRUB_SMOOTHNESS,
       pin: true,
-      anticipatePin: 100,
+      anticipatePin: 1,
       invalidateOnRefresh: true,
     },
   });
