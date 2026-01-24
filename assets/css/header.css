@@ -1,0 +1,126 @@
+header {
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  background-color: transparent;
+  transform: translateY(-100%);
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+header.header-visible {
+  transform: translateY(0);
+}
+.header-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 81px;
+}
+.header-container .logo {
+  width: 70px;
+  display: inline-block;
+}
+.header-btn-group {
+  display: flex;
+  align-items: center;
+  gap: 100px;
+}
+.header-btn-group .h-nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+
+  display: none;
+}
+.header-btn-group .h-nav a {
+  font-size: 16px;
+  font-weight: bold;
+}
+.header-btn-group .h-btns {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.header-btn-group .h-btns a {
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffffff;
+  padding: 5px 10px;
+  border-radius: 100px;
+  background-color: #969696;
+  line-height: 1.2;
+}
+.ham-btn {
+  display: none;
+  width: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 101;
+  position: relative;
+}
+.ham-list {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 280px;
+  height: 100vh;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 20px;
+  padding: 80px 30px 30px;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 100;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+.ham-list.active {
+  transform: translateX(0);
+}
+.ham-list a {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000000;
+  text-decoration: none;
+  width: 100%;
+  padding: 10px 0;
+  transition: color 0.3s ease;
+}
+.ham-list a:hover {
+  color: #969696;
+}
+.ham-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 90;
+}
+.ham-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    padding: 15px;
+  }
+  .header-container .logo {
+    width: 50px;
+  }
+  .header-btn-group {
+    display: none;
+  }
+  .ham-btn {
+    display: flex;
+  }
+}
