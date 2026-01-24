@@ -51,7 +51,7 @@
 
 .gradient-bg {
   width: 100vw;
-  height: 733px;
+  height: 100vh;
   position: absolute;
   overflow: hidden;
   background: url("../img/fv/vyta_kv-1.png") no-repeat center / cover;

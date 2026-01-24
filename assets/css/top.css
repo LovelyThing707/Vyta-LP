@@ -1,6 +1,7 @@
 .fv {
   width: 100%;
-  max-height: 733px;
+  max-height: 100vh;
+  height: 100vh;
   padding-block: 106px 153px;
   position: relative;
   background: url("../img/fv/mesh.png") no-repeat center / cover;
@@ -37,7 +38,7 @@
 }
 .fv .mesh {
   width: 100%;
-  height: 733px;
+  height: 100vh;
   background: url("../img/fv/mesh.png") no-repeat center / cover;
   position: absolute;
   top: 0;
@@ -312,7 +313,7 @@
     right: 260px;
   }
   .gradient-bg {
-    height: 630px;
+    height: 100vh;
   }
   .fv .mesh {
     height: 630px;
@@ -332,7 +333,7 @@
   }
   .fv .mesh,
   .gradient-bg {
-    height: 715px;
+    height: 100vh;
   }
   .fv .fv-txt {
     bottom: 35px;
@@ -435,7 +436,7 @@
 /* ------------ */
 .title-box {
   width: 100%;
-  height: 797px;
+  height: 100vh;
   background: url("../img/gra-bg.png") no-repeat center / cover;
   display: flex;
   align-items: center;
@@ -713,6 +714,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .value-item-content {
@@ -813,4 +815,37 @@
 /* Ensure value section can be pinned */
 .value {
   overflow: hidden;
+}
+
+.solution {
+  width: 100%;
+  height: 100vh;
+  background: url("../img/gra-bg.png") no-repeat center / cover;
+}
+
+.solution .content {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background: url("../img/gra-bg.png") no-repeat center / cover;
+  z-index: -1;
+}
+.solution .content .tip {
+  position: absolute;
+  top: -85px;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+.solution .content .tip p {
+  font-size: 500px;
+  font-weight: bold;
+  font-family: "Outfit";
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1;
+  white-space: nowrap;
+  display: inline-block;
+  animation: slideTextLeft 80s linear infinite;
+  will-change: transform;
 }
