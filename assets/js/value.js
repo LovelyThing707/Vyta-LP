@@ -264,7 +264,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     gsap.set(number, {
       scale: 0.5,
-      y: 0,
+      y: 200,
       opacity: 1,
       position: "fixed",
       left: LEFT_OFFSET,
@@ -360,7 +360,7 @@ document.addEventListener("DOMContentLoaded", () => {
       number,
       {
         scale: 1,
-        y: yDistance + 300,
+        y: yDistance + 500,
         duration: animationDuration * 0.5,
         ease: "power2.out",
       },
@@ -398,7 +398,7 @@ document.addEventListener("DOMContentLoaded", () => {
       content,
       {
         opacity: 1,
-        y: yDistance + 300,
+        y: yDistance + 500,
         duration: animationDuration * 0.5,
         ease: "power2.out",
       },
