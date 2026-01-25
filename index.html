@@ -1,46 +1,33 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Top Page</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Zen+Kaku+Gothic+New&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./assets/css/base.css" />
-    <link rel="stylesheet" href="./assets/css/header.css" />
-    <link rel="stylesheet" href="./assets/css/footer.css" />
-    <link rel="stylesheet" href="./assets/css/fv.css" />
-    <link rel="stylesheet" href="./assets/css/top.css" />
-    <link rel="stylesheet" href="./assets/styles/contact.css" />
-  </head>
-  <body>
-    <header>
-      <div class="header-container">
-        <a href="#" class="logo">
-          <img src="./assets/img/logo.png" alt="" />
-        </a>
-        <div class="header-btn-group">
-          <div class="h-nav">
-            <a href="#concept">CONCEPT</a>
-            <a href="#value">VALUE</a>
-            <a href="#solution">SOLUTION</a>
-            <a href="#case">CASE STUDY</a>
-            <a href="#flow">FLOW</a>
-            <a href="#about">ABOUT US</a>
-          </div>
-          <div class="h-btns">
-            <a href="#">DOWNLOAD</a>
-            <a href="#">CONTACT</a>
-          </div>
-        </div>
-        <button type="button" class="ham-btn">
-          <img src="./assets/img/ham.png" alt="" />
-        </button>
-        <div class="ham-list">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Top Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Zen+Kaku+Gothic+New&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="./assets/css/base.css" />
+  <link rel="stylesheet" href="./assets/css/header.css" />
+  <link rel="stylesheet" href="./assets/css/footer.css" />
+  <link rel="stylesheet" href="./assets/css/fv.css" />
+  <link rel="stylesheet" href="./assets/css/top.css" />
+  <link rel="stylesheet" href="./assets/css/gear.css" />
+  <link rel="stylesheet" href="./assets/styles/contact.css" />
+  <link rel="stylesheet" href="./assets/css/study.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+
+<body>
+  <header>
+    <div class="header-container">
+      <a href="#" class="logo">
+        <img src="./assets/img/logo.png" alt="" />
+      </a>
+      <div class="header-btn-group">
+        <div class="h-nav">
           <a href="#concept">CONCEPT</a>
           <a href="#value">VALUE</a>
           <a href="#solution">SOLUTION</a>
@@ -48,530 +35,629 @@
           <a href="#flow">FLOW</a>
           <a href="#about">ABOUT US</a>
         </div>
+        <div class="h-btns">
+          <a href="#">DOWNLOAD</a>
+          <a href="#">CONTACT</a>
+        </div>
       </div>
-    </header>
-    <main>
-      <div class="fv">
-        <div class="gradient-bg">
-          <svg
-            viewBox="0 0 100vw 100vw"
-            xmlns="http://www.w3.org/2000/svg"
-            class="noiseBg"
-          >
-            <filter id="noiseFilterBg">
-              <feTurbulence
-                type="fractalNoise"
-                baseFrequency="0.6"
-                stitchTiles="stitch"
-              />
+      <button type="button" class="ham-btn">
+        <img src="./assets/img/ham.png" alt="" />
+      </button>
+      <div class="ham-list">
+        <a href="#concept">CONCEPT</a>
+        <a href="#value">VALUE</a>
+        <a href="#solution">SOLUTION</a>
+        <a href="#case">CASE STUDY</a>
+        <a href="#flow">FLOW</a>
+        <a href="#about">ABOUT US</a>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="fv">
+      <div class="gradient-bg">
+        <svg viewBox="0 0 100vw 100vw" xmlns="http://www.w3.org/2000/svg" class="noiseBg">
+          <filter id="noiseFilterBg">
+            <feTurbulence type="fractalNoise" baseFrequency="0.6" stitchTiles="stitch" />
+          </filter>
+
+          <rect width="100%" height="100%" preserveAspectRatio="xMidYMid meet" filter="url(#noiseFilterBg)" />
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="svgBlur">
+          <defs>
+            <filter id="goo">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+              <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8"
+                result="goo" />
+              <feBlend in="SourceGraphic" in2="goo" />
             </filter>
+          </defs>
+        </svg>
+        <div class="gradients-container">
+          <div class="g1"></div>
+          <div class="g2"></div>
+          <div class="g3"></div>
+          <div class="g4"></div>
+          <div class="g5"></div>
+          <div class="interactive"></div>
+        </div>
+      </div>
+      <div class="mesh"></div>
+      <div class="fv-img-box">
+        <img src="./assets/img/fv/tree-1.png" class="treeOne" alt="" />
+        <img src="./assets/img/fv/tree-2.png" class="treeTwo" alt="" />
+        <img src="./assets/img/fv/home-1.png" class="homeOne" alt="" />
+        <img src="./assets/img/fv/home-1.png" class="homeOne" alt="" />
+        <img src="./assets/img/fv/big-home.png" class="bigHome" alt="" />
+        <img src="./assets/img/fv/home-2.png" class="homeTwo" alt="" />
+        <img src="./assets/img/fv/home-3.png" class="homeThree" alt="" />
+        <img src="./assets/img/fv/home-4.png" class="homeFour" alt="" />
+        <img src="./assets/img/fv/truck-1.png" class="truckOne" alt="" />
+        <img src="./assets/img/fv/truck-2.png" class="truckTwo" alt="" />
+        <img src="./assets/img/fv/man-1.png" class="manOne" alt="" />
+        <img src="./assets/img/fv/man-2.png" class="manTwo" alt="" />
+        <img src="./assets/img/fv/man-3.png" class="manThree" alt="" />
+        <img src="./assets/img/fv/man-4.png" class="manFour" alt="" />
+        <img src="./assets/img/fv/man-5.png" class="manFive" alt="" />
+        <img src="./assets/img/fv/light.png" class="light" alt="" />
+        <img src="./assets/img/fv/light.png" class="light" alt="" />
+      </div>
+      <div class="fv-txt">
+        <p class="is-md-hide">豊かさを街へ届ける、</p>
+        <p class="is-md-hide">未来型ウェルネス拠点を。</p>
+        <p class="is-md-show">豊かさを</p>
+        <p class="is-md-show">街へ届ける、</p>
+        <p class="is-md-show">未来型</p>
+        <p class="is-md-show">ウェルネス拠点を。</p>
+      </div>
+      <div class="fv-scroll">
+        <img src="./assets/img/fv/scroll.png" class="s-down" alt="" />
+      </div>
+    </div>
 
-            <rect
-              width="100%"
-              height="100%"
-              preserveAspectRatio="xMidYMid meet"
-              filter="url(#noiseFilterBg)"
-            />
-          </svg>
-          <svg xmlns="http://www.w3.org/2000/svg" class="svgBlur">
-            <defs>
-              <filter id="goo">
-                <feGaussianBlur
-                  in="SourceGraphic"
-                  stdDeviation="10"
-                  result="blur"
-                />
-                <feColorMatrix
-                  in="blur"
-                  mode="matrix"
-                  values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8"
-                  result="goo"
-                />
-                <feBlend in="SourceGraphic" in2="goo" />
-              </filter>
-            </defs>
-          </svg>
-          <div class="gradients-container">
-            <div class="g1"></div>
-            <div class="g2"></div>
-            <div class="g3"></div>
-            <div class="g4"></div>
-            <div class="g5"></div>
-            <div class="interactive"></div>
+    <section class="concept" id="concept">
+      <div class="title-box">
+        <h1></h1>
+      </div>
+      <div class="content">
+        <div class="tip">
+          <p>CONCEPT</p>
+        </div>
+        <div class="concept-slider">
+          <div class="concept-slider-wrap">
+            <div class="concept-slide">
+              <img src="./assets/img/concept/s-1.png" alt="" />
+            </div>
+            <div class="concept-slide">
+              <img src="./assets/img/concept/s-2.png" alt="" />
+            </div>
+            <div class="concept-slide">
+              <img src="./assets/img/concept/s-3.png" alt="" />
+            </div>
+            <div class="concept-slide">
+              <img src="./assets/img/concept/s-4.png" alt="" />
+            </div>
+            <div class="concept-slide">
+              <img src="./assets/img/concept/s-5.png" alt="" />
+            </div>
+            <div class="concept-slide">
+              <img src="./assets/img/concept/s-6.png" alt="" />
+            </div>
+            <div class="concept-slide">
+              <img src="./assets/img/concept/s-7.png" alt="" />
+            </div>
+            <div class="concept-slide">
+              <img src="./assets/img/concept/s-8.png" alt="" />
+            </div>
           </div>
         </div>
-        <div class="mesh"></div>
-        <div class="fv-img-box">
-          <img src="./assets/img/fv/tree-1.png" class="treeOne" alt="" />
-          <img src="./assets/img/fv/tree-2.png" class="treeTwo" alt="" />
-          <img src="./assets/img/fv/home-1.png" class="homeOne" alt="" />
-          <img src="./assets/img/fv/home-1.png" class="homeOne" alt="" />
-          <img src="./assets/img/fv/big-home.png" class="bigHome" alt="" />
-          <img src="./assets/img/fv/home-2.png" class="homeTwo" alt="" />
-          <img src="./assets/img/fv/home-3.png" class="homeThree" alt="" />
-          <img src="./assets/img/fv/home-4.png" class="homeFour" alt="" />
-          <img src="./assets/img/fv/truck-1.png" class="truckOne" alt="" />
-          <img src="./assets/img/fv/truck-2.png" class="truckTwo" alt="" />
-          <img src="./assets/img/fv/man-1.png" class="manOne" alt="" />
-          <img src="./assets/img/fv/man-2.png" class="manTwo" alt="" />
-          <img src="./assets/img/fv/man-3.png" class="manThree" alt="" />
-          <img src="./assets/img/fv/man-4.png" class="manFour" alt="" />
-          <img src="./assets/img/fv/man-5.png" class="manFive" alt="" />
-          <img src="./assets/img/fv/light.png" class="light" alt="" />
-          <img src="./assets/img/fv/light.png" class="light" alt="" />
+        <div class="concept-main">
+          <div class="txt">
+            <div class="txt-t">
+              <p><span>医療×ウェルネスがつくる</span></p>
+              <p><span>持続的集客型モール</span></p>
+            </div>
+            <div class="txt-c">
+              <p>
+                昨今の商業施設を取り巻く環境の変化により、<br />
+                面積の充足を優先する従来のモデルは限界を迎えています。<br />
+                背景には、EC普及による物販需要の減退や人口減少、<br />
+                さらには、投資回収を困難にする建設コストの上昇やエンタメ型投資の肥大化といった課題があります。<br /><br />
+                こうした中、生活導線において安定した需要を持つ<br />
+                医療・ウェルネス分野が注目されており、<br />
+                通院という目的を持った来館が周辺購買を促す強力な集客フックとして、<br />
+                新たな施設運営の鍵を握っています。<br /><br />
+                居抜きや専門店に頼らない再現性のある構成が、トレンドに左右されない安定した経営基盤を構築します。
+              </p>
+            </div>
+          </div>
+          <div class="img">
+            <img src="./assets/img/concept/l-1.png" class="layerOne" alt="" />
+            <img src="./assets/img/concept/l-2.png" class="layerTwo" alt="" />
+            <img src="./assets/img/concept/l-3.png" class="layerThree" alt="" />
+            <img src="./assets/img/concept/l-4.png" class="layerFour" alt="" />
+            <img src="./assets/img/concept/l-5.png" class="layerFive" alt="" />
+          </div>
         </div>
-        <div class="fv-txt">
-          <p class="is-md-hide">豊かさを街へ届ける、</p>
-          <p class="is-md-hide">未来型ウェルネス拠点を。</p>
-          <p class="is-md-show">豊かさを</p>
-          <p class="is-md-show">街へ届ける、</p>
-          <p class="is-md-show">未来型</p>
-          <p class="is-md-show">ウェルネス拠点を。</p>
+      </div>
+    </section>
+
+    <section class="value" id="value">
+      <title class="value-title">ディベロッパーが得られる3つの価値</title>
+      <title class="value-en-title">VALUE</title>
+      <div class="value-content">
+        <div class="value-item one">
+          <div class="value-item-number">
+            1
+          </div>
+          <div class="value-item-content">
+            <div class="value-item-content-title">
+              <p>収益の予見性と持続力</p>
+              <div class="value-item-content-title-icon">
+                <img src="./assets/img/value/icon.png" alt="">
+              </div>
+              <span class="value-item-content-title-text">
+                Predictability<br>& Sustainability
+              </span>
+            </div>
+            <div class="value-item-content-description">
+              <p>ウェルネスプラットフォームの中核をなすクリニックセグメントでは、 <span
+                  class="value-item-content-description-highlight">マスターリース契約</span>を基軸に据えています。これにより竣工初年度から賃料収入を固定化し、精緻なキャッシュフロー管理を実現。空室期間を織り込んだ保守的な収支調整の必要性を排除しました。また、
+                <span
+                  class="value-item-content-description-highlight">景気耐性の高い医療機関</span>がアンカーテナントとなることで、事業の継続性を担保。投資フェーズを「<span
+                  class="value-item-content-description-highlight"></span>リーシングリスクの解消</span>」から「<span
+                  class="value-item-content-description-highlight">資産価値の最大化</span>」へと早期にシフトさせます。
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="fv-scroll">
-          <img src="./assets/img/fv/scroll.png" class="s-down" alt="" />
+        <div class="tri-icon">
+          <img src="./assets/img/tri-icon.png" alt="triangle-icon">
+        </div>
+        <div class="value-item three">
+          <div class="value-item-number">
+            2
+          </div>
+          <div class="value-item-content">
+            <div class="value-item-content-title">
+              <p>収益の予見性と持続力</p>
+              <div class="value-item-content-title-icon">
+                <img src="./assets/img/value/icon.png" alt="">
+              </div>
+              <span class="value-item-content-title-text">
+                Predictability<br>& Sustainability
+              </span>
+            </div>
+            <div class="value-item-content-description">
+              <p>
+                ウェルネスプラットフォームの中核をなすクリニックセグメントでは、マスターリース契約を基軸に据えています。これにより竣工初年度から賃料収入を固定化し、精緻なキャッシュフロー管理を実現。空室期間を織り込んだ保守的な収支調整の必要性を排除しました。また、景気耐性の高い医療機関がアンカーテナントとなることで、事業の継続性を担保。投資フェーズを「リーシングリスクの解消」から「資産価値の最大化」へと早期にシフトさせます。
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="value-item three">
+          <div class="value-item-number">
+            3
+          </div>
+          <div class="value-item-content">
+            <div class="value-item-content-title">
+              <p>収益の予見性と持続力</p>
+              <div class="value-item-content-title-icon">
+                <img src="./assets/img/value/icon.png" alt="">
+              </div>
+              <span class="value-item-content-title-text">
+                Predictability<br>& Sustainability
+              </span>
+            </div>
+            <div class="value-item-content-description">
+              <p>
+                ウェルネスプラットフォームの中核をなすクリニックセグメントでは、マスターリース契約を基軸に据えています。これにより竣工初年度から賃料収入を固定化し、精緻なキャッシュフロー管理を実現。空室期間を織り込んだ保守的な収支調整の必要性を排除しました。また、景気耐性の高い医療機関がアンカーテナントとなることで、事業の継続性を担保。投資フェーズを「リーシングリスクの解消」から「資産価値の最大化」へと早期にシフトさせます。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="solution">
+      <div class="title-box">
+        <h1>SOLUTION</h1>
+      </div>
+      <div class="content">
+        <div class="tip">
+          <p>SOLUTION</p>
+        </div>
+        <title class="solution-title">
+          なぜ私たちが成功できるのか
+        </title>
+        <div class="solution-list">
+          <div class="solution-item" id="solution-item-3">
+            <title class="solution-item-label">
+              SOLUTION &nbsp;&nbsp;&nbsp;&nbsp;3
+            </title>
+            <div class="solution-item-container">
+              <div class="solution-item-container-img">
+                <img src="./assets/img/solution/solution03.png" alt="">
+              </div>
+              <div class="solution-item-content">
+                <p class="solution-item-content-title" id="solution-item-content-title-3">Enveloping<br>
+                  Hospitality</p>
+                <p class="solution-item-content-subtitle">
+                  つつみこむホスピタリティ
+                </p>
+                <p class="solution-item-content-text">
+                  利用者の気持ちに寄り添い、清潔でオーセンティックな空間を提供。<br>
+                  精神的なウェルビーイングにもつなげています。
+                </p>
+                <div class="solution-item-number">
+                  3
+                </div>
+              </div>
+              <div class="solution-item-content-label" id="solution-item-content-label-3">
+                Enveloping Hospitality
+              </div>
+            </div>
+          </div>
+          <div class="solution-item" id="solution-item-2">
+            <title class="solution-item-label">
+              SOLUTION &nbsp;&nbsp;&nbsp;&nbsp;2
+            </title>
+            <div class="solution-item-container">
+              <div class="solution-item-container-img">
+                <img src="./assets/img/solution/solution02.png" alt="">
+              </div>
+              <div class="solution-item-content">
+                <p class="solution-item-content-title" id="solution-item-content-title-2">Accessibility</p>
+                <p class="solution-item-content-subtitle">
+                  アクセシビリティ
+                </p>
+                <p class="solution-item-content-text">
+                  地域のニーズに基づき、将来を見据えた診察料を選定し、<br>
+                  利用者に必要な医療サービスを提供。
+                </p>
+                <div class="solution-item-number">
+                  2
+                </div>
+              </div>
+              <div class="solution-item-content-label" id="solution-item-content-label-2">
+                Accessibility
+              </div>
+            </div>
+          </div>
+          <div class="solution-item fixed" id="solution-item-1">
+            <title class="solution-item-label">
+              SOLUTION &nbsp;&nbsp;&nbsp;&nbsp;1
+            </title>
+            <div class="solution-item-container">
+              <div class="solution-item-container-img">
+                <img src="./assets/img/solution/solution02.png" alt="">
+              </div>
+              <div class="solution-item-content">
+                <p class="solution-item-content-title" id="solution-item-content-title-1">Medical <br>
+                  Environment<br>
+                  Specification</p>
+                <p class="solution-item-content-subtitle">
+                  医療環境スペック
+                </p>
+                <p class="solution-item-content-text">
+                  調査に基づく収益性の高い立地を選定。徹底した調査と蓄積されたマーケティング力、<br>
+                  来客導線の設計により、高い収益性を提供します。
+                </p>
+                <div class="solution-item-number">
+                  1
+                </div>
+              </div>
+              <div class="solution-item-content-label" id="solution-item-content-label-1">
+                Medical Environment Specification
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="study">
+      <div class="title-box">
+        <h1>CASE STUDY</h1>
+      </div>
+      <div class="swiper mySwiper" id="swiper">
+        <div class="swiper-wrapper badges">
+          <div class="swiper-slide">
+            <div class="slide-item">
+              <div class="slide-item-img">
+                <img src="./assets/img/study/study-house.png" alt="">
+              </div>
+              <div class="slide-item-content">
+                <p class="slide-item-content-title">都市型医療モール</p>
+                <p class="slide-item-content-text">あべのウェルビーイングテラス</p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="slide-item">
+              <div class="slide-item-img">
+                <img src="./assets/img/study/study-house.png" alt="">
+              </div>
+              <div class="slide-item-content">
+                <p class="slide-item-content-title">都市型医療モール</p>
+                <p class="slide-item-content-text">あべのウェルビーイングテラス</p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="slide-item">
+              <div class="slide-item-img">
+                <img src="./assets/img/study/study-house.png" alt="">
+              </div>
+              <div class="slide-item-content">
+                <p class="slide-item-content-title">都市型医療モール</p>
+                <p class="slide-item-content-text">あべのウェルビーイングテラス</p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="slide-item">
+              <div class="slide-item-img">
+                <img src="./assets/img/study/study-house.png" alt="">
+              </div>
+              <div class="slide-item-content">
+                <p class="slide-item-content-title">都市型医療モール</p>
+                <p class="slide-item-content-text">あべのウェルビーイングテラス</p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="slide-item">
+              <div class="slide-item-img">
+                <img src="./assets/img/study/study-house.png" alt="">
+              </div>
+              <div class="slide-item-content">
+                <p class="slide-item-content-title">都市型医療モール</p>
+                <p class="slide-item-content-text">あべのウェルビーイングテラス</p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="slide-item">
+              <div class="slide-item-img">
+                <img src="./assets/img/study/study-house.png" alt="">
+              </div>
+              <div class="slide-item-content">
+                <p class="slide-item-content-title">都市型医療モール</p>
+                <p class="slide-item-content-text">あべのウェルビーイングテラス</p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="slide-item">
+              <div class="slide-item-img">
+                <img src="./assets/img/study/study-house.png" alt="">
+              </div>
+              <div class="slide-item-content">
+                <p class="slide-item-content-title">都市型医療モール</p>
+                <p class="slide-item-content-text">あべのウェルビーイングテラス</p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="slide-item">
+              <div class="slide-item-img">
+                <img src="./assets/img/study/study-house.png" alt="">
+              </div>
+              <div class="slide-item-content">
+                <p class="slide-item-content-title">都市型医療モール</p>
+                <p class="slide-item-content-text">あべのウェルビーイングテラス</p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="slide-item">
+              <div class="slide-item-img">
+                <img src="./assets/img/study/study-house.png" alt="">
+              </div>
+              <div class="slide-item-content">
+                <p class="slide-item-content-title">都市型医療モール</p>
+                <p class="slide-item-content-text">あべのウェルビーイングテラス</p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="slide-item">
+              <div class="slide-item-img">
+                <img src="./assets/img/study/study-house.png" alt="">
+              </div>
+              <div class="slide-item-content">
+                <p class="slide-item-content-title">都市型医療モール</p>
+                <p class="slide-item-content-text">あべのウェルビーイングテラス</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-scrollbar"></div>
+      </div> <!-- Swiperバナー終了 --> <!-- ポイントグループ開始 -->
+      <div class="study-title-container">
+        <p class="study-title">実績・計画中案件の紹介</p>
+        <p class="en-study-title">CASE STUDY</p>
+      </div>
+    </section>
+    <section class="flow">
+      <div class="title-box">
+        <h1>FLOW</h1>
+      </div>
+    </section>
+    <div class="page-wrapper">
+      <div class="bg-flow-text">FLOW</div>
+      <div class="left-panel">
+        <div class="rotating-circle-container">
+
+          <!-- ギア (8本歯) - 線を薄く、シャドウなし -->
+          <div class="gear-container opening-animation" id="centerGear">
+            <svg viewBox="0 0 100 100">
+              <path class="gear-path" d="
+                          M 97.5 43.3 L 97.5 56.7 L 83.0 58.2 L 79.1 67.5
+                          L 88.5 78.8 L 78.8 88.5 L 67.5 79.1 L 58.2 83.0
+                          L 56.7 97.5 L 43.3 97.5 L 41.8 83.0 L 32.5 79.1
+                          L 21.2 88.5 L 11.5 78.8 L 20.9 67.5 L 17.0 58.2
+                          L 2.5 56.7 L 2.5 43.3 L 17.0 41.8 L 20.9 32.5
+                          L 11.5 21.2 L 21.2 11.5 L 32.5 20.9 L 41.8 17.0
+                          L 43.3 2.5 L 56.7 2.5 L 58.2 17.0 L 67.5 20.9
+                          L 78.8 11.5 L 88.5 21.2 L 79.1 32.5 L 83.0 41.8 Z" />
+            </svg>
+          </div>
+
+
+          <!-- 外円 (数字とダイヤ) - シャドウなし -->
+          <div class="rotating-circle opening-animation" id="rotatingCircle">
+            <div class="step-marker marker-1">
+              <div class="marker-content">
+                <div class="diamond-shape"></div><span class="number">1</span>
+              </div>
+            </div>
+            <div class="step-marker marker-2">
+              <div class="marker-content">
+                <div class="diamond-shape"></div><span class="number">2</span>
+              </div>
+            </div>
+            <div class="step-marker marker-3">
+              <div class="marker-content">
+                <div class="diamond-shape"></div><span class="number">3</span>
+              </div>
+            </div>
+            <div class="step-marker marker-4">
+              <div class="marker-content">
+                <div class="diamond-shape"></div><span class="number">4</span>
+              </div>
+            </div>
+            <div class="step-marker marker-5">
+              <div class="marker-content">
+                <div class="diamond-shape"></div><span class="number">5</span>
+              </div>
+            </div>
+            <div class="step-marker marker-6">
+              <div class="marker-content">
+                <div class="diamond-shape"></div><span class="number">6</span>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
-      <section class="concept" id="concept">
-        <div class="title-box">
-          <h1></h1>
-        </div>
-        <div class="content">
-          <div class="tip">
-            <p>CONCEPT</p>
-          </div>
-          <div class="concept-slider">
-            <div class="concept-slider-wrap">
-              <div class="concept-slide">
-                <img src="./assets/img/concept/s-1.png" alt="" />
-              </div>
-              <div class="concept-slide">
-                <img src="./assets/img/concept/s-2.png" alt="" />
-              </div>
-              <div class="concept-slide">
-                <img src="./assets/img/concept/s-3.png" alt="" />
-              </div>
-              <div class="concept-slide">
-                <img src="./assets/img/concept/s-4.png" alt="" />
-              </div>
-              <div class="concept-slide">
-                <img src="./assets/img/concept/s-5.png" alt="" />
-              </div>
-              <div class="concept-slide">
-                <img src="./assets/img/concept/s-6.png" alt="" />
-              </div>
-              <div class="concept-slide">
-                <img src="./assets/img/concept/s-7.png" alt="" />
-              </div>
-              <div class="concept-slide">
-                <img src="./assets/img/concept/s-8.png" alt="" />
-              </div>
-            </div>
-          </div>
-          <div class="concept-main">
-            <div class="txt">
-              <div class="txt-t">
-                <p><span>医療×ウェルネスがつくる</span></p>
-                <p><span>持続的集客型モール</span></p>
-              </div>
-              <div class="txt-c">
-                <p>
-                  昨今の商業施設を取り巻く環境の変化により、<br />
-                  面積の充足を優先する従来のモデルは限界を迎えています。<br />
-                  背景には、EC普及による物販需要の減退や人口減少、<br />
-                  さらには、投資回収を困難にする建設コストの上昇やエンタメ型投資の肥大化といった課題があります。<br /><br />
-                  こうした中、生活導線において安定した需要を持つ<br />
-                  医療・ウェルネス分野が注目されており、<br />
-                  通院という目的を持った来館が周辺購買を促す強力な集客フックとして、<br />
-                  新たな施設運営の鍵を握っています。<br /><br />
-                  居抜きや専門店に頼らない再現性のある構成が、トレンドに左右されない安定した経営基盤を構築します。
-                </p>
-              </div>
-            </div>
-            <div class="img">
-              <img src="./assets/img/concept/l-1.png" class="layerOne" alt="" />
-              <img src="./assets/img/concept/l-2.png" class="layerTwo" alt="" />
-              <img
-                src="./assets/img/concept/l-3.png"
-                class="layerThree"
-                alt=""
-              />
-              <img
-                src="./assets/img/concept/l-4.png"
-                class="layerFour"
-                alt=""
-              />
-              <img
-                src="./assets/img/concept/l-5.png"
-                class="layerFive"
-                alt=""
-              />
-            </div>
-          </div>
-        </div>
-      </section>
 
-      <section class="value" id="value">
-        <title class="value-title">ディベロッパーが得られる3つの価値</title>
-        <title class="value-en-title">VALUE</title>
-        <div class="value-content">
-            <div class="value-item one">
-                <div class="value-item-number">
-                    1
-                </div>
-                <div class="value-item-content">
-                    <div class="value-item-content-title">
-                        <p>収益の予見性と持続力</p>
-                        <div class="value-item-content-title-icon">
-                            <img src="./assets/img/value/icon.png" alt="">
-                        </div>
-                        <span class="value-item-content-title-text">
-                            Predictability<br>& Sustainability
-                        </span>
-                    </div>
-                    <div class="value-item-content-description">
-                        <p>ウェルネスプラットフォームの中核をなすクリニックセグメントでは、 <span class="value-item-content-description-highlight">マスターリース契約</span>を基軸に据えています。これにより竣工初年度から賃料収入を固定化し、精緻なキャッシュフロー管理を実現。空室期間を織り込んだ保守的な収支調整の必要性を排除しました。また、 <span class="value-item-content-description-highlight">景気耐性の高い医療機関</span>がアンカーテナントとなることで、事業の継続性を担保。投資フェーズを「<span class="value-item-content-description-highlight"></span>リーシングリスクの解消</span>」から「<span class="value-item-content-description-highlight">資産価値の最大化</span>」へと早期にシフトさせます。</p>
-                    </div>
-                </div>
-            </div>
-            <div class="tri-icon">
-                <img src="./assets/img/tri-icon.png" alt="triangle-icon">
-            </div>
-            <div class="value-item three">
-                <div class="value-item-number">
-                    2
-                </div>
-                <div class="value-item-content">
-                    <div class="value-item-content-title">
-                        <p>収益の予見性と持続力</p>
-                        <div class="value-item-content-title-icon">
-                            <img src="./assets/img/value/icon.png" alt="">
-                        </div>
-                        <span class="value-item-content-title-text">
-                            Predictability<br>& Sustainability
-                        </span>
-                    </div>
-                    <div class="value-item-content-description">
-                        <p>ウェルネスプラットフォームの中核をなすクリニックセグメントでは、マスターリース契約を基軸に据えています。これにより竣工初年度から賃料収入を固定化し、精緻なキャッシュフロー管理を実現。空室期間を織り込んだ保守的な収支調整の必要性を排除しました。また、景気耐性の高い医療機関がアンカーテナントとなることで、事業の継続性を担保。投資フェーズを「リーシングリスクの解消」から「資産価値の最大化」へと早期にシフトさせます。</p>
-                    </div>
-                </div>
-            </div>
-            <div class="value-item three">
-                <div class="value-item-number">
-                    3
-                </div>
-                <div class="value-item-content">
-                    <div class="value-item-content-title">
-                        <p>収益の予見性と持続力</p>
-                        <div class="value-item-content-title-icon">
-                            <img src="./assets/img/value/icon.png" alt="">
-                        </div>
-                        <span class="value-item-content-title-text">
-                            Predictability<br>& Sustainability
-                        </span>
-                    </div>
-                    <div class="value-item-content-description">
-                        <p>ウェルネスプラットフォームの中核をなすクリニックセグメントでは、マスターリース契約を基軸に据えています。これにより竣工初年度から賃料収入を固定化し、精緻なキャッシュフロー管理を実現。空室期間を織り込んだ保守的な収支調整の必要性を排除しました。また、景気耐性の高い医療機関がアンカーテナントとなることで、事業の継続性を担保。投資フェーズを「リーシングリスクの解消」から「資産価値の最大化」へと早期にシフトさせます。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-      </section>
-      <section class="solution">
-        <div class="title-box">
-          <h1>SOLUTION</h1>
-        </div>
-        <div class="content">
-          <div class="tip">
-            <p>SOLUTION</p>
-          </div>
-          <title class="solution-title">
-            なぜ私たちが成功できるのか
-          </title>
-          <div class="solution-list">
-            <div class="solution-item" id="solution-item-3">
-                <title class="solution-item-label">
-                  SOLUTION &nbsp;&nbsp;&nbsp;&nbsp;3
-                </title>
-                <div class="solution-item-container">
-                    <div class="solution-item-container-img">
-                        <img src="./assets/img/solution/solution03.png" alt="">
-                    </div>
-                    <div class="solution-item-content">
-                      <p class="solution-item-content-title" id="solution-item-content-title-3">Enveloping<br>
-                        Hospitality</p>
-                      <p class="solution-item-content-subtitle">
-                        つつみこむホスピタリティ
-                      </p>
-                      <p class="solution-item-content-text">
-                        利用者の気持ちに寄り添い、清潔でオーセンティックな空間を提供。<br>
-                        精神的なウェルビーイングにもつなげています。
-                      </p>
-                      <div class="solution-item-number">
-                        3
-                      </div>
-                    </div>
-                    <div class="solution-item-content-label" id="solution-item-content-label-3">
-                      Enveloping Hospitality
-                    </div>
-                </div>
-            </div>
-            <div class="solution-item" id="solution-item-2">
-              <title class="solution-item-label">
-                SOLUTION &nbsp;&nbsp;&nbsp;&nbsp;2
-              </title>
-              <div class="solution-item-container">
-                  <div class="solution-item-container-img">
-                      <img src="./assets/img/solution/solution02.png" alt="">
-                  </div>
-                  <div class="solution-item-content">
-                    <p class="solution-item-content-title" id="solution-item-content-title-2">Accessibility</p>
-                    <p class="solution-item-content-subtitle">
-                      アクセシビリティ
-                    </p>
-                    <p class="solution-item-content-text">
-                      地域のニーズに基づき、将来を見据えた診察料を選定し、<br>
-                      利用者に必要な医療サービスを提供。
-                    </p>
-                    <div class="solution-item-number">
-                      2
-                    </div>
-                  </div>
-                  <div class="solution-item-content-label" id="solution-item-content-label-2">
-                    Accessibility
-                  </div>
-              </div>
-            </div>
-            <div class="solution-item fixed" id="solution-item-1">
-              <title class="solution-item-label">
-                SOLUTION &nbsp;&nbsp;&nbsp;&nbsp;1
-              </title>
-              <div class="solution-item-container">
-                  <div class="solution-item-container-img">
-                      <img src="./assets/img/solution/solution02.png" alt="">
-                  </div>
-                  <div class="solution-item-content">
-                    <p class="solution-item-content-title" id="solution-item-content-title-1">Medical <br>
-                      Environment<br>
-                      Specification</p>
-                    <p class="solution-item-content-subtitle">
-                      医療環境スペック
-                    </p>
-                    <p class="solution-item-content-text">
-                      調査に基づく収益性の高い立地を選定。徹底した調査と蓄積されたマーケティング力、<br>
-                      来客導線の設計により、高い収益性を提供します。
-                    </p>
-                    <div class="solution-item-number">
-                      1
-                    </div>
-                  </div>
-                  <div class="solution-item-content-label" id="solution-item-content-label-1">
-                    Medical Environment Specification
-                  </div>
-              </div>
-            </div>
-        </div>
-        </div>
-      </section>
-      <section class="study">
-        <div class="title-box">
-          <h1>CASE STUDY</h1>
-        </div>
-        <div class="slide-container">
-          <div class="slide-item">
-            <div class="slide-item-img">
-              <img src="./assets/img/study/study-house.png" alt="">
-            </div>
-            <div class="slide-item-content">
-              <p class="slide-item-content-title">都市型医療モール</p>
-              <p class="slide-item-content-text">あべのウェルビーイングテラス</p>
-            </div>
-          </div>
-          <div class="slide-item">
-            <div class="slide-item-img">
-              <img src="./assets/img/study/study-house.png" alt="">
-            </div>
-            <div class="slide-item-content">
-              <p class="slide-item-content-title">都市型医療モール</p>
-              <p class="slide-item-content-text">あべのウェルビーイングテラス</p>
-            </div>
-          </div>
-          <div class="slide-item">
-            <div class="slide-item-img">
-              <img src="./assets/img/study/study-house.png" alt="">
-            </div>
-            <div class="slide-item-content">
-              <p class="slide-item-content-title">都市型医療モール</p>
-              <p class="slide-item-content-text">あべのウェルビーイングテラス</p>
-            </div>
-          </div>
-          <div class="slide-item">
-            <div class="slide-item-img">
-              <img src="./assets/img/study/study-house.png" alt="">
-            </div>
-            <div class="slide-item-content">
-              <p class="slide-item-content-title">都市型医療モール</p>
-              <p class="slide-item-content-text">あべのウェルビーイングテラス</p>
-            </div>
-          </div>
-        </div>
-        <div class="study-title-container">
-          <p class="study-title">実績・計画中案件の紹介</p>
-          <p class="en-study-title">CASE STUDY</p>
-        </div>
-      </section>
-      <section class="flow">
-        <div class="title-box">
-          <h1>FLOW</h1>
-        </div>
-        <div class="flow-container">
-          <div class="flow-demo-title">
-              <h2>開発の流れ</h2>
-          </div>
-          <div class="flow-title">
-              FLOW
-          </div>
-          <div class="flow-animation">
-              <div class="animation-img">
-                  <img class="img-t" data-base-rotate="0" src="./flow-img.png" alt="animation-img">
-                  <div class="flow-item item1" data-base-rotate="0">
-                      <div class="flow-item-title">
-                          <p>1</p>
-                      </div>
-                      <div class="flow-content">
-                          <div class="flow-content-title">
-                              <h3>初回相談（無料）</h3>
-                          </div>
-                          <div class="flow-text">
-                              <p>構想段階から無料で相談可能。<br>
-                                  用地条件や方針を整理し、開発可否と次の検討軸を明確にします。</p>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="flow-item item2" data-base-rotate="30">
-                      <div class="flow-item-title">
-                          <p>2</p>
-                      </div>
-                      <div class="flow-content">
-                          <div class="flow-content-title">
-                              <h3>初回相談（無料）</h3>
-                          </div>
-                          <div class="flow-text">
-                              <p>構想段階から無料で相談可能。<br>
-                                  用地条件や方針を整理し、開発可否と次の検討軸を明確にします。</p>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="flow-item item3" data-base-rotate="60">
-                      <div class="flow-item-title">
-                          <p>3</p>
-                      </div>
-                      <div class="flow-content">
-                          <div class="flow-content-title">
-                              <h3>初回相談（無料）</h3>
-                          </div>
-                          <div class="flow-text">
-                              <p>構想段階から無料で相談可能。<br>
-                                  用地条件や方針を整理し、開発可否と次の検討軸を明確にします。</p>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="flow-item item4" data-base-rotate="90">
-                      <div class="flow-item-title">
-                          <p>4</p>
-                      </div>
-                      <div class="flow-content">
-                          <div class="flow-content-title">
-                              <h3>初回相談（無料）</h3>
-                          </div>
-                          <div class="flow-text">
-                              <p>構想段階から無料で相談可能。<br>
-                                  用地条件や方針を整理し、開発可否と次の検討軸を明確にします。</p>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="flow-item item5" data-base-rotate="120">
-                      <div class="flow-item-title">
-                          <p>5</p>
-                      </div>
-                      <div class="flow-content">
-                          <div class="flow-content-title">
-                              <h3>初回相談（無料）</h3>
-                          </div>
-                          <div class="flow-text">
-                              <p>構想段階から無料で相談可能。<br>
-                                  用地条件や方針を整理し、開発可否と次の検討軸を明確にします。</p>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="flow-item item6" data-base-rotate="155">
-                      <div class="flow-item-title">
-                          <p>6</p>
-                      </div>
-                      <div class="flow-content">
-                          <div class="flow-content-title">
-                              <h3>初回相談（無料）</h3>
-                          </div>
-                          <div class="flow-text">
-                              <p>構想段階から無料で相談可能。<br>
-                                  用地条件や方針を整理し、開発可否と次の検討軸を明確にします。</p>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>  
-      </section>
-      <section class="about">
-        <div class="title-box">
-          <h1>ABOUT US</h1>
-        </div>
-        <div class="content">
-          <div class="about-content">
-            <div class="about-content-img">
-              <img src="./assets/img/about/about-img.png" alt="">
-            </div>
-          </div>
-      </section>
-      <section class="contact_download container">
-        <div class="cd_wrapper boxed-width flx-row">
-            <button>
-                <a href="./contact.html"class="flx-col">
-                <span>CONTACT</span>
-                <span>お問い合わせ</span>
-            </a></button>
+      <div class="right-panel">
+        <h2 class="section-title"
+          style="text-align: right; margin: 50px 50px 0 0; position: absolute; right: 0; width: 100%;">開発の流れ</h2>
 
-            <button>
-                <a href="./download.html" class="flx-col">
-                <span>DOWNLOAD</span>
-                <span>資料ダウンロード</span>
-            </a></button>
+        <!-- STEP 1 -->
+        <div class="content-section" id="section-1" data-title="初回相談">
+          <div class="text-content">
+            <div class="step-title-container">
+              <h3 class="step-title">初回相談<span class="step-sub">無料</span></h3>
+            </div>
+            <p class="step-description">構想段階から無料で相談可能。<br>用地条件や方針を整理し、開発可否と次の検討軸を明確にします。</p>
+          </div>
+        </div>
+
+
+        <!-- STEP 2 -->
+        <div class="content-section" id="section-2" data-title="エリア診断・診療圏調査">
+          <div class="text-content">
+            <div class="step-title-container">
+              <h3 class="step-title">エリア診断・診療圏調査</h3>
+            </div>
+            <p class="step-description">商圏人口や競合状況を分析し、<br>エリアで求められる診療科と成立性をデータで可視化します。</p>
+          </div>
+        </div>
+
+
+        <!-- STEP 3 -->
+        <div class="content-section" id="section-3" data-title="基本構想策定">
+          <div class="text-content">
+            <div class="step-title-container">
+              <h3 class="step-title">基本構想策定（動線・ゾーニング）</h3>
+            </div>
+            <p class="step-description">医療を核に、人の流れを設計。<br>回遊性と収益性を両立するゾーニングを構築します。</p>
+          </div>
+        </div>
+
+
+        <!-- STEP 4 -->
+        <div class="content-section" id="section-4" data-title="事業収支策定">
+          <div class="text-content">
+            <div class="step-title-container">
+              <h3 class="step-title">事業収支策定</h3>
+            </div>
+            <p class="step-description">賃料・コスト・運用条件を踏まえ、<br>投資判断に耐える現実的な収支モデルを策定します。</p>
+          </div>
+        </div>
+
+
+        <!-- STEP 5 -->
+        <div class="content-section" id="section-5" data-title="諸条件・スケジュール調整">
+          <div class="text-content">
+            <div class="step-title-container">
+              <h3 class="step-title">諸条件・スケジュール調整</h3>
+            </div>
+            <p class="step-description">双方での合意のため、契約条件やスケジュールの擦り合わせを行います。</p>
+          </div>
+        </div>
+
+
+        <!-- STEP 6 -->
+        <div class="content-section" id="section-6" data-title="合意">
+          <div class="text-content">
+            <div class="step-title-container">
+              <h3 class="step-title">合意</h3>
+            </div>
+            <p class="step-description">合意後、建設開始に向けて設計作業を着手いたします。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="about">
+      <div class="title-box">
+        <h1>ABOUT US</h1>
+      </div>
+      <div class="content">
+        <div class="about-content">
+          <div class="about-content-img">
+            <img src="./assets/img/about/about-img.png" alt="">
+          </div>
         </div>
     </section>
-    </main>
-    <!-- <footer>
-      <div class="footer-container">
-        <div class="f-top">
-          <a href="#" class="f-logo">
-            <img src="./assets/img/logo.png" alt="" />
-          </a>
-          <a href="#" class="f-hp">H P</a>
-        </div>
-        <div class="copyright">2026 © VYTA Inc.</div>
+    <section class="contact_download container">
+      <div class="cd_wrapper boxed-width flx-row">
+        <button>
+          <a href="./contact.html" class="flx-col">
+            <span>CONTACT</span>
+            <span>お問い合わせ</span>
+          </a></button>
+
+        <button>
+          <a href="./download.html" class="flx-col">
+            <span>DOWNLOAD</span>
+            <span>資料ダウンロード</span>
+          </a></button>
       </div>
-    </footer> -->
-    <!-- GSAP Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    
-    <script src="./assets/js/header.js"></script>
-    <script src="./assets/js/top.js"></script>
-    <script src="./assets/js/fv.js"></script>
-    <script src="./assets/js/value.js"></script>
-    <script src="./assets/js/swipe.js"></script>
-    <script src="./assets/js/flow.js"></script>
-    <script src="./assets/js/concept.js"></script>
-    <!-- <script src="./assets/js/concept.js"></script> -->
-  </body>
+    </section>
+  </main>
+  <!-- GSAP Library -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/smooth-scrollbar@latest/dist/smooth-scrollbar.js"></script>
+
+  <script src="./assets/js/header.js"></script>
+  <script src="./assets/js/top.js"></script>
+  <script src="./assets/js/fv.js"></script>
+  <script src="./assets/js/value.js"></script>
+  <script src="./assets/js/swipe.js"></script>
+  <script src="./assets/js/flow.js"></script>
+  <script src="./assets/js/concept.js"></script>
+  <script src="./assets/js/gear.js"></script>
+  <script src="./assets/js/study.js"></script>
+  <!-- <script src="./assets/js/concept.js"></script> -->
+</body>
+
 </html>

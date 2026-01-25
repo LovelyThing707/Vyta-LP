@@ -865,19 +865,6 @@
   left: 250px;  
 }
 
-/* リセット */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  transition: all 0.3s ease;
-}
-
-body {
-  overflow-x: hidden;
-}
-
-
 
 /* コンテナの設定 - フルスクリーン */
 .solution-list {
@@ -1244,6 +1231,12 @@ transform: translateX(-85vw);
   display: inline-block;
 }
 
+.flow {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
 
 .flow-container {
   width: 100%;
@@ -1254,7 +1247,7 @@ transform: translateX(-85vw);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 200vh;
+  height: 300vh;
   overflow-x: hidden;
 }
 

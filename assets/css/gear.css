@@ -1,0 +1,411 @@
+/* ベーススタイル */
+:root {
+    --color-bg-start: #fce4ec;
+    --color-bg-end: #ffffff;
+    --color-text-main: #333333;
+    --color-text-sub: #666666;
+    --color-accent: #a2dec5;
+    --color-white: #ffffff;
+    --circle-size: 80vh;
+    --marker-size: 100px;
+    --gear-size: 450px;
+   
+    /* 番号を円からどれくらい離すか */
+    --marker-offset: 60px;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans JP', sans-serif;
+    color: var(--color-text-main);
+    overflow-x: hidden;
+    background: linear-gradient(135deg, var(--color-bg-start), var(--color-bg-end));
+    min-height: 100vh;
+}
+
+
+.page-wrapper {
+    display: flex;
+    position: relative;
+    background: linear-gradient(to right, #F8EDF2, #E8F1F4);
+}
+
+
+/* --- 左側：回転ホイールエリア --- */
+.left-panel {
+    position: sticky;
+    top: 0;
+    width: 35%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 10;
+    pointer-events: none;
+}
+
+
+/* コンテナ（画面左端垂直中央） */
+.rotating-circle-container {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 0;
+    height: 0;
+}
+
+
+/* 外円（数字が乗る円） */
+.rotating-circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--circle-size);
+    height: var(--circle-size);
+    border-radius: 50%;
+    /* 中心を合わせる */
+    transform: translate(-50%, -50%);
+   
+    /* シャドウを削除、ボーダーのみ薄く残す */
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    /* box-shadow: 0 0 50px rgba(255, 255, 255, 0.5); 削除 */
+   
+    will-change: transform;
+}
+
+/* 外円のアニメーション用クラス */
+.rotating-circle.interactive {
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.rotating-circle.opening-animation {
+    animation: wheelEntrance 2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+
+@keyframes wheelEntrance {
+    0% { transform: translate(-150%, -50%) rotate(-180deg); opacity: 0; }
+    100% { transform: translate(-50%, -50%) rotate(0deg); opacity: 1; }
+}
+
+
+/* --- ギア (Center Gear) --- */
+.gear-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--gear-size);
+    height: var(--gear-size);
+    transform: translate(-50%, -50%);
+   
+    pointer-events: none;
+    z-index: 5;
+   
+    will-change: transform;
+}
+
+
+.gear-container.interactive {
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.gear-container.opening-animation {
+    animation: gearEntrance 2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+
+@keyframes gearEntrance {
+    0% { transform: translate(-50%, -50%) rotate(-180deg); opacity: 0; }
+    100% { transform: translate(-50%, -50%) rotate(0deg); opacity: 1; }
+}
+
+
+/* レスポンシブ: スマホ時はギアを小さく */
+@media (max-width: 768px) {
+    :root {
+        --gear-size: 200px;
+        --marker-offset: 40px; /* スマホ時のオフセット */
+    }
+}
+
+
+.gear-container svg {
+    width: 100%;
+    height: 100%;
+    /* filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8)); 削除 */
+}
+
+
+.gear-path {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 1; /* 線を細く */
+    stroke-linejoin: round;
+    stroke-linecap: round;
+}
+
+
+/* --- マーカー --- */
+.step-marker {
+    position: absolute;
+    width: var(--marker-size);
+    height: var(--marker-size);
+    top: 50%;
+    left: 50%;
+    margin-top: calc(var(--marker-size) / -2);
+    margin-left: calc(var(--marker-size) / -2);
+    z-index: 10;
+}
+
+
+/* 配置 (60度間隔 + オフセット) */
+.marker-1 { transform: rotate(0deg) translate(calc(var(--circle-size) / 2 + var(--marker-offset))); }
+.marker-2 { transform: rotate(60deg) translate(calc(var(--circle-size) / 2 + var(--marker-offset))); }
+.marker-3 { transform: rotate(120deg) translate(calc(var(--circle-size) / 2 + var(--marker-offset))); }
+.marker-4 { transform: rotate(180deg) translate(calc(var(--circle-size) / 2 + var(--marker-offset))); }
+.marker-5 { transform: rotate(240deg) translate(calc(var(--circle-size) / 2 + var(--marker-offset))); }
+.marker-6 { transform: rotate(300deg) translate(calc(var(--circle-size) / 2 + var(--marker-offset))); }
+
+
+/* マーカー中身 (逆回転用) */
+.marker-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    will-change: transform;
+}
+
+/* オープニングアニメーション（逆回転） */
+.rotating-circle.opening-animation .marker-content {
+    animation-duration: 2s;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    animation-fill-mode: forwards;
+}
+
+/* 初期角度補正 */
+.marker-1 .marker-content { --initial-angle: 0deg; }
+.marker-2 .marker-content { --initial-angle: -60deg; }
+.marker-3 .marker-content { --initial-angle: -120deg; }
+.marker-4 .marker-content { --initial-angle: -180deg; }
+.marker-5 .marker-content { --initial-angle: -240deg; }
+.marker-6 .marker-content { --initial-angle: -300deg; }
+
+
+.rotating-circle.opening-animation .marker-1 .marker-content { animation-name: counterRotate1; }
+.rotating-circle.opening-animation .marker-2 .marker-content { animation-name: counterRotate2; }
+.rotating-circle.opening-animation .marker-3 .marker-content { animation-name: counterRotate3; }
+.rotating-circle.opening-animation .marker-4 .marker-content { animation-name: counterRotate4; }
+.rotating-circle.opening-animation .marker-5 .marker-content { animation-name: counterRotate5; }
+.rotating-circle.opening-animation .marker-6 .marker-content { animation-name: counterRotate6; }
+
+
+@keyframes counterRotate1 { 0% { transform: rotate(180deg); } 100% { transform: rotate(0deg); } }
+@keyframes counterRotate2 { 0% { transform: rotate(120deg); } 100% { transform: rotate(-60deg); } }
+@keyframes counterRotate3 { 0% { transform: rotate(60deg); } 100% { transform: rotate(-120deg); } }
+@keyframes counterRotate4 { 0% { transform: rotate(0deg); } 100% { transform: rotate(-180deg); } }
+@keyframes counterRotate5 { 0% { transform: rotate(-60deg); } 100% { transform: rotate(-240deg); } }
+@keyframes counterRotate6 { 0% { transform: rotate(-120deg); } 100% { transform: rotate(-300deg); } }
+
+
+
+
+.diamond-shape {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-white);
+    transform: rotate(45deg);
+    /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 削除 */
+    transition: transform 0.3s ease; /* box-shadow transition 削除 */
+}
+
+
+.number {
+    position: relative;
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--color-accent);
+    z-index: 1;
+}
+
+
+.step-marker.active-marker .diamond-shape {
+    transform: rotate(45deg) scale(1.2);
+    /* box-shadow: 0 0 20px rgba(162, 222, 197, 0.4); 削除（緑の光彩なし） */
+    background-color: #fff;
+}
+.step-marker.active-marker .number {
+    color: #4FB086; /* 番号のみ緑 */
+}
+
+
+
+
+/* --- 右側：コンテンツエリア --- */
+.right-panel {
+    width: 60%;
+    padding-bottom: 50vh;
+}
+
+
+.content-section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 50px;
+    opacity: 1;
+    position: relative;
+}
+
+
+.step-title-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    z-index: 1;
+}
+
+
+.step-title-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: -1;
+    font-weight: bold;
+    /* box-shadow: 0 4px 20px rgba(0,0,0,0.05); 削除 */
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+.content-section.animate-trigger .step-title-container::before {
+    transform: scaleX(1);
+}
+
+
+.step-title {
+    font-size: 30px;
+    font-weight: 900;
+    letter-spacing: 10px;
+    color: var(--color-text-main);
+    margin: 0;
+    display: inline-block;
+    line-height: 1.4;
+}
+
+
+.char-reveal {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+
+.content-section.animate-trigger .char-reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.step-sub {
+    font-size: 0.5em;
+    background-color: #f0f0f0;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-left: 10px;
+    color: #666;
+    vertical-align: middle;
+    font-weight: normal;
+    opacity: 0;
+    transition: opacity 0.5s ease 1s;
+}
+.content-section.animate-trigger .step-sub {
+    opacity: 1;
+}
+
+
+.step-description {
+    font-size: 1.1rem;
+    line-height: 2;
+    color: var(--color-text-sub);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    transition-delay: 0.8s;
+}
+
+
+.content-section.animate-trigger .step-description {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.bg-flow-text {
+    position: fixed;
+    right: 2%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: min(15rem, 20vw);
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.4);
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    pointer-events: none;
+    z-index: 0;
+    user-select: none;
+}
+
+
+@media (max-width: 768px) {
+    .page-wrapper { flex-direction: column; }
+    .left-panel {
+        position: fixed;
+        width: 100%;
+        height: 300px;
+        top: 0;
+        background: linear-gradient(to bottom, rgba(255,255,255,0.9) 50%, transparent);
+    }
+    .rotating-circle-container { top: -50px; left: 50%; }
+    .rotating-circle { width: 400px; height: 400px; }
+    .gear-container { transform: translate(-50%, -50%); }
+   
+     @keyframes wheelEntrance {
+        0% { transform: translate(-150%, -50%) rotate(-180deg); opacity: 0; }
+        100% { transform: translate(-50%, -50%) rotate(0deg); opacity: 1; }
+    }
+    @keyframes gearEntrance {
+        0% { transform: translate(-50%, -50%) rotate(-180deg); opacity: 0; }
+        100% { transform: translate(-50%, -50%) rotate(0deg); opacity: 1; }
+    }
+
+
+    .right-panel { width: 100%; margin-top: 250px; }
+    .content-section { height: 80vh; padding: 0 20px; justify-content: flex-start; padding-top: 50px; }
+   
+    /* スマホ用配置 (上から時計回り: Start at 90deg) */
+    .marker-1 { transform: rotate(90deg) translate(240px); }
+    .marker-2 { transform: rotate(150deg) translate(240px); }
+    .marker-3 { transform: rotate(210deg) translate(240px); }
+    .marker-4 { transform: rotate(270deg) translate(240px); }
+    .marker-5 { transform: rotate(330deg) translate(240px); }
+    .marker-6 { transform: rotate(390deg) translate(240px); }
+   
+    /* スマホ用逆回転アニメーション */
+    @keyframes counterRotate1 { 0% { transform: rotate(90deg); } 100% { transform: rotate(-90deg); } }
+    @keyframes counterRotate2 { 0% { transform: rotate(30deg); } 100% { transform: rotate(-150deg); } }
+    @keyframes counterRotate3 { 0% { transform: rotate(-30deg); } 100% { transform: rotate(-210deg); } }
+    @keyframes counterRotate4 { 0% { transform: rotate(-90deg); } 100% { transform: rotate(-270deg); } }
+    @keyframes counterRotate5 { 0% { transform: rotate(-150deg); } 100% { transform: rotate(-330deg); } }
+    @keyframes counterRotate6 { 0% { transform: rotate(-210deg); } 100% { transform: rotate(-390deg); } }
+}

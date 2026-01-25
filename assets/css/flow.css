@@ -1,0 +1,154 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    background-color: #fff;
+    position: relative;
+}
+
+.header, .footer {
+    width: 100%;
+    height: 100vh;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flow-container {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-image: url(./flow-bg.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 200vh;
+    overflow-x: hidden;
+}
+
+.flow-demo-title {
+    position: absolute;
+    right: 100px;
+    top: 40px;
+    z-index: 100;
+}
+
+.flow-title {
+    height: 100vh;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+    font-size: 280px;
+    font-weight: bold;
+    color: #fff;
+    transform: rotate(-90deg) translate(0%, 56%);
+}
+
+.flow-animation {
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.animation-img {
+    width: 755px;
+    height: 755px;
+    position: absolute;
+    left: -35%;
+    top: 50%;
+    transform: translateY(-50%);
+    background-image: url(./circle.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.animation-img img.img-t {
+    width: 540px;
+    height: 540px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    rotate: 0;
+}
+
+.animation-img .flow-item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    padding-left: 400px;
+    transform-origin: 0% 0%;
+}
+
+.flow-item-title {
+    background-image: url(./flow-text-bg.png);
+    width: 116px;
+    height: 116px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+}
+
+.flow-item-title p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 40px;
+    color: aqua;
+    padding: 0;
+    margin: 0;
+    transform: translate(-50%, -50%);
+}
+
+.flow-content-title {
+    background-color: #333;
+    width: fit-content;
+}
+
+.flow-content-title h3 {
+    color: white;
+}
+
+.item1 {
+    rotate: 0;
+}
+
+.item2 {
+    rotate: 30deg;
+}
+
+.item3 {
+    rotate: 60deg;
+}
+
+.item4 {
+    rotate: 90deg;
+}
+
+.item5 {
+    rotate: 120deg;
+}
+
+.item6 {
+    rotate: 150deg;
+}
