@@ -13,14 +13,17 @@
   <link rel="stylesheet" href="./assets/css/header.css" />
   <link rel="stylesheet" href="./assets/css/footer.css" />
   <link rel="stylesheet" href="./assets/css/fv.css" />
+  <link rel="stylesheet" href="./assets/css/concept.css" />
   <link rel="stylesheet" href="./assets/css/top.css" />
   <link rel="stylesheet" href="./assets/css/gear.css" />
-  <link rel="stylesheet" href="./assets/styles/contact.css" />
+  <link rel="stylesheet" href="./assets/css/contact.css" />
   <link rel="stylesheet" href="./assets/css/study.css" />
+  <link rel="stylesheet" href="./assets/css/about.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 
 <body>
+  <div class="fixed-bg"></div>
   <header>
     <div class="header-container">
       <a href="#" class="logo">
@@ -181,7 +184,11 @@
         </div>
       </div>
     </section>
-
+    <section class="value-txt" id="value-txt">
+      <div class="title-box">
+        <h1></h1>
+      </div>
+    </section>
     <section class="value" id="value">
       <title class="value-title">ディベロッパーが得られる3つの価値</title>
       <title class="value-en-title">VALUE</title>
@@ -260,7 +267,7 @@
     </section>
     <section class="solution">
       <div class="title-box">
-        <h1>SOLUTION</h1>
+        <h1></h1>
       </div>
       <div class="content">
         <div class="tip">
@@ -356,7 +363,7 @@
     </section>
     <section class="study">
       <div class="title-box">
-        <h1>CASE STUDY</h1>
+        <h1></h1>
       </div>
       <div class="swiper mySwiper" id="swiper">
         <div class="swiper-wrapper badges">
@@ -472,15 +479,15 @@
           </div>
         </div>
         <div class="swiper-scrollbar"></div>
-      </div> <!-- Swiperバナー終了 --> <!-- ポイントグループ開始 -->
+      </div>
       <div class="study-title-container">
         <p class="study-title">実績・計画中案件の紹介</p>
-        <p class="en-study-title">CASE STUDY</p>
+        <p class="en-study-title">CASE STUDIES</p>
       </div>
     </section>
     <section class="flow">
       <div class="title-box">
-        <h1>FLOW</h1>
+        <h1></h1>
       </div>
     </section>
     <div class="page-wrapper">
@@ -488,7 +495,6 @@
       <div class="left-panel">
         <div class="rotating-circle-container">
 
-          <!-- ギア (8本歯) - 線を薄く、シャドウなし -->
           <div class="gear-container opening-animation" id="centerGear">
             <svg viewBox="0 0 100 100">
               <path class="gear-path" d="
@@ -503,8 +509,6 @@
             </svg>
           </div>
 
-
-          <!-- 外円 (数字とダイヤ) - シャドウなし -->
           <div class="rotating-circle opening-animation" id="rotatingCircle">
             <div class="step-marker marker-1">
               <div class="marker-content">
@@ -546,7 +550,6 @@
         <h2 class="section-title"
           style="text-align: right; margin: 50px 50px 0 0; position: absolute; right: 0; width: 100%;">開発の流れ</h2>
 
-        <!-- STEP 1 -->
         <div class="content-section" id="section-1" data-title="初回相談">
           <div class="text-content">
             <div class="step-title-container">
@@ -556,8 +559,6 @@
           </div>
         </div>
 
-
-        <!-- STEP 2 -->
         <div class="content-section" id="section-2" data-title="エリア診断・診療圏調査">
           <div class="text-content">
             <div class="step-title-container">
@@ -567,8 +568,6 @@
           </div>
         </div>
 
-
-        <!-- STEP 3 -->
         <div class="content-section" id="section-3" data-title="基本構想策定">
           <div class="text-content">
             <div class="step-title-container">
@@ -578,8 +577,6 @@
           </div>
         </div>
 
-
-        <!-- STEP 4 -->
         <div class="content-section" id="section-4" data-title="事業収支策定">
           <div class="text-content">
             <div class="step-title-container">
@@ -589,8 +586,6 @@
           </div>
         </div>
 
-
-        <!-- STEP 5 -->
         <div class="content-section" id="section-5" data-title="諸条件・スケジュール調整">
           <div class="text-content">
             <div class="step-title-container">
@@ -600,8 +595,6 @@
           </div>
         </div>
 
-
-        <!-- STEP 6 -->
         <div class="content-section" id="section-6" data-title="合意">
           <div class="text-content">
             <div class="step-title-container">
@@ -612,17 +605,55 @@
         </div>
       </div>
     </div>
-
     <section class="about">
       <div class="title-box">
-        <h1>ABOUT US</h1>
+        <h1></h1>
       </div>
       <div class="content">
         <div class="about-content">
           <div class="about-content-img">
-            <img src="./assets/img/about/about-img.png" alt="">
+            <img src="./assets/img/about/about01.png" alt="">
+            <img src="./assets/img/about/about02.png" alt="">
+            <img src="./assets/img/about/about03.png" alt="">
           </div>
         </div>
+        <div class="about-content-txt">
+          <div class="about-content-txt-title-container">
+            <p class="about-content-txt-title is-pc">私たちは、医療と商業を融合した</p>
+            <p class="about-content-txt-title is-pc">ウェルネスモールの開発を</p>
+            <p class="about-content-txt-title is-pc">プロデュースします。</p>
+          </div>
+          <div class="about-content-txt-description">
+            <p class="about-content-txt-description-text">
+              私たちは、ウェルネスプラットフォーム（医療・介護・福祉）の専業ディベロッパーとして、<br>
+              2010年の創業以来、ワンストップ・ワンサークル型の地域医療の企画開発を行ってまいりました。
+              <br><br>
+              最適化されたし医療機械の提供により、地域医療の質の向上と、<br>
+              社会的医療インフラの新たなスタンダードの構築を目指します。
+            </p>
+            <div class="about-content-company-info">
+              <table class="about-content-company-info-table">
+                <tr>
+                  <th>会社名</th>
+                  <td>株式会社ヴィタ（VYTA Inc.）</td>
+                </tr>
+                <tr>
+                  <th>所在地</th>
+                  <td>大阪市北区堂島浜1丁目1番27号 大阪堂島浜タワー 13F</td>
+                </tr>
+                <tr>
+                  <th>設立年月</th>
+                  <td>2010年2月18日</td>
+                </tr>
+                <tr>
+                  <th>代表取締役</th>
+                  <td>笹原大輔</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
     <section class="contact_download container">
       <div class="cd_wrapper boxed-width flx-row">
@@ -640,7 +671,23 @@
       </div>
     </section>
   </main>
-  <!-- GSAP Library -->
+
+  <footer class="container">
+    <div class="footer_wrapper boxed-width flx-row">
+      <figure class="footer-logo flx-row">
+        <img src="/assets/media/vyta-logo.png" alt="Vyta-logo">
+        <figcaption>Vya Footer Logo</figcaption>
+      </figure>
+
+      <span class="copyright">
+        2026 © VYTA Inc.
+      </span>
+
+      <div class="footer-cta flx-row">
+        <button><a href="">HP</a></button>
+      </div>
+    </div>
+  </footer>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -654,9 +701,16 @@
   <script src="./assets/js/value.js"></script>
   <script src="./assets/js/swipe.js"></script>
   <script src="./assets/js/flow.js"></script>
-  <script src="./assets/js/concept.js"></script>
+  <script src="./assets/js/flow.js"></script>
   <script src="./assets/js/gear.js"></script>
   <script src="./assets/js/study.js"></script>
+  <script src="./assets/js/about.js"></script>
+  <script src="./assets/js/txt-animation/concept-txt-animation.js"></script>
+  <script src="./assets/js/txt-animation/study-txt-animation.js"></script>
+  <script src="./assets/js/txt-animation/value-txt-animation.js"></script>
+  <script src="./assets/js/txt-animation/solution-txt-animation.js"></script>
+  <script src="./assets/js/txt-animation/flow-txt-animation.js"></script>
+  <script src="./assets/js/txt-animation/about-txt-animation.js"></script>
   <!-- <script src="./assets/js/concept.js"></script> -->
 </body>
 

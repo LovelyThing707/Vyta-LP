@@ -37,3 +37,95 @@
   font-size: 14px;
   color: #4e4e4e;
 }
+
+
+.flx-row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.flx-col{
+  display: flex;
+  flex-direction: column;
+}
+
+
+.cd_wrapper  {
+  width: 100%;
+  padding-inline: 80px;
+}
+
+footer.container {
+  padding: 0px 80px;
+  box-sizing: border-box;
+}
+
+footer .footer_wrapper{
+  width: 100%;
+  height: 100px;
+  align-items: center;
+  justify-content: space-between;
+}
+footer .copyright{
+  width: 180px
+}
+footer .footer-cta{
+  width: fit-content;
+  justify-content: center;
+}
+footer .footer-cta button{
+  width: 160px;
+  height: 50px;
+  background-color: hsla(189, 42%, 53%, 1);
+  border: none;
+  border-radius: 40px;
+}
+footer .footer-cta button a{
+  color: white;
+  font-size: 14px;
+  letter-spacing: 10px;
+  font-weight: 700;
+  text-decoration: none;
+}
+footer figure.footer-logo{
+  height: 30px;
+}
+footer figure figcaption{
+  display: none;
+}
+footer figure.footer-logo img{
+  height: 30px;
+  object-fit: cover;
+}
+@media (max-width: 900px){
+  
+  footer .footer_wrapper{
+      height: fit-content;
+      padding-top: 32px;
+      padding-bottom: 14px;
+      flex-direction: column;
+      align-items: center;
+  }
+  footer .footer_wrapper figure{
+      margin-bottom: 23px;
+  }
+  footer .footer_wrapper .copyright{
+      margin-bottom: 35px;
+  }
+  footer .footer_wrapper button{
+      height: 45px;
+  }
+}
+
+.copyright {
+  line-height: 24px;
+  font-weight: 400;
+  font-size: 16px;
+  text-decoration: none;
+  color: #4E4E4E;
+  letter-spacing: normal;
+  text-align: center;
+  font-family: 'Outfit';
+  width: 180px;
+  position: relative;
+}

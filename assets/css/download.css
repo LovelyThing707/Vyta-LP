@@ -153,7 +153,7 @@ section.form form label::after {
     align-items: center;
     padding: 2px 2px;
     background-color: hsla(189, 42%, 53%, 1);
-    width: 36px;
+    width: 39px;
     border-radius: 24px;
     color: white;
     font-size: 10px;
@@ -175,11 +175,11 @@ section.form form label[for="company"]{
 section.form form label[for="department"]{
     top: 310px;
 }
-section.form form label[for="inquiry_details"]{
+/* section.form form label[for="inquiry_details"]{
     top: 379px;
-}
+} */
 section.form form label[for="consent"]{
-    top: 597px;
+    top: 379px;
 }
 
 section.form form input, section.form form textarea{
@@ -298,12 +298,12 @@ section.form .form-cta button a{
 
 section.contact_download{
     position: relative;
+    background-image: url('/assets/media/07c838f81f885815722635c387e123d6bffe250f.webp');
     background-position: 50% 50%;
     background-repeat: no-repeat;
     background-size: cover;
     justify-content: center;
     overflow: hidden;
-    background-color: #FFF2F0;
     
 }
 section.contact_download .cd_wrapper{

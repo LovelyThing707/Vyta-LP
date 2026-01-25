@@ -57,21 +57,28 @@
 }
 
 /* Trees */
+.fv-img-box .treeOne,
+.fv-img-box .treeTwo {
+  will-change: transform, opacity;
+  transform-origin: center bottom;
+  opacity: 0;
+}
+
 .fv-img-box .treeOne {
-  width: 40px;
-  top: 200px;
+  width: 80px;
+  top: 300px;
   left: 0;
 }
 .fv-img-box .treeTwo {
-  width: 55px;
-  top: 20px;
+  width: 80px;
+  top: 50px;
   right: 355px;
 }
 
 /* Houses - Left side (3 houses) */
 .fv-img-box img.homeOne:nth-child(3) {
-  width: 120px;
-  top: 140px;
+  width: 180px;
+  top: 200px;
   left: 40px;
   opacity: 0;
   transform: scale(0.3) translateY(20px);
@@ -79,9 +86,9 @@
     transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 .fv-img-box img.homeOne:nth-child(4) {
-  width: 120px;
-  top: 80px;
-  left: 125px;
+  width: 180px;
+  top: 150px;
+  left: 145px;
   opacity: 0;
   transform: scale(0.3) translateY(20px);
   transition: opacity 0.6s ease-out,
@@ -90,8 +97,8 @@
 
 /* Large central building */
 .fv-img-box .bigHome {
-  width: 350px;
-  top: 0;
+  width: 500px;
+  top: 30px;
   left: 50%;
   transform: translateX(-50%) scale(0.3) translateY(20px);
   opacity: 0;
@@ -101,8 +108,8 @@
 
 /* Houses - Right side (2 houses) */
 .fv-img-box .homeTwo {
-  width: 165px;
-  top: 70px;
+  width: 200px;
+  top: 120px;
   right: 225px;
   opacity: 0;
   transform: scale(0.3) translateY(20px);
@@ -110,9 +117,9 @@
     transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 .fv-img-box .homeThree {
-  width: 125px;
-  top: 140px;
-  right: 135px;
+  width: 200px;
+  top: 200px;
+  right: 105px;
   opacity: 0;
   transform: scale(0.3) translateY(20px);
   transition: opacity 0.6s ease-out,
@@ -139,43 +146,111 @@
   transform: translateX(-50%) scale(1) translateY(0);
 }
 
+/* Animations for people and vehicles */
+@keyframes personFloat {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-8px) translateX(2px);
+  }
+  50% {
+    transform: translateY(-4px) translateX(-1px);
+  }
+  75% {
+    transform: translateY(-10px) translateX(1px);
+  }
+}
+
+@keyframes vehicleMove {
+  0%, 100% {
+    transform: translateX(0) translateY(0);
+  }
+  25% {
+    transform: translateX(5px) translateY(-2px);
+  }
+  50% {
+    transform: translateX(-3px) translateY(1px);
+  }
+  75% {
+    transform: translateX(4px) translateY(-1px);
+  }
+}
+
+@keyframes treeSway {
+  0%, 100% {
+    transform: rotate(0deg) translateY(0);
+  }
+  25% {
+    transform: rotate(2deg) translateY(-3px);
+  }
+  50% {
+    transform: rotate(-1deg) translateY(-1px);
+  }
+  75% {
+    transform: rotate(1.5deg) translateY(-2px);
+  }
+}
+
 /* Vehicles */
+.fv-img-box .truckOne,
+.fv-img-box .truckTwo {
+  will-change: transform, opacity;
+  transform-origin: center center;
+}
+
 .fv-img-box .truckOne {
-  width: 100px;
-  bottom: 135px;
-  left: 335px;
+  width: 130px;
+  bottom: 0px;
+  left: 250px;
+  opacity: 0;
 }
 .fv-img-box .truckTwo {
-  width: 80px;
-  bottom: 0;
-  right: 440px;
+  width: 100px;
+  bottom: -100px;
+  right: 400px;
+  opacity: 0;
 }
 
 /* People */
+.fv-img-box .manOne,
+.fv-img-box .manTwo,
+.fv-img-box .manThree,
+.fv-img-box .manFour,
+.fv-img-box .manFive {
+  will-change: transform, opacity;
+  transform-origin: center bottom;
+}
+
 .fv-img-box .manOne {
-  width: 20px;
-  top: 190px;
+  width: 30px;
+  top: 450px;
   left: 160px;
+  opacity: 0;
 }
 .fv-img-box .manTwo {
-  width: 20px;
+  width: 25px;
   top: 190px;
   left: 410px;
+  opacity: 0;
 }
 .fv-img-box .manThree {
-  width: 20px;
-  top: 275px;
+  width: 35px;
+  top: 505px;
   left: 500px;
+  opacity: 0;
 }
 .fv-img-box .manFour {
-  width: 18px;
-  top: 235px;
+  width: 30px;
+  top: 400px;
   right: 435px;
+  opacity: 0;
 }
 .fv-img-box .manFive {
-  width: 18px;
-  top: 185px;
-  right: 290px;
+  width: 25px;
+  top: 250px;
+  right: 300px;
+  opacity: 0;
 }
 
 /* Streetlights */
@@ -437,7 +512,7 @@
 .title-box {
   width: 100%;
   height: 100vh;
-  background: url("../img/gra-bg.png") no-repeat center / cover;
+  /* background: url("../img/gra-bg.png") no-repeat center / cover; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -450,189 +525,13 @@
   font-family: "Outfit";
 }
 
-/* ------- CONCEPT -------- */
-.concept .content {
-  width: 100%;
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
-  background: url("../img/gra-bg.png") no-repeat center / cover;
-  z-index: -1;
-}
-.concept .content .tip {
-  position: absolute;
-  top: -85px;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  z-index: 0;
-}
-.concept .content .tip p {
-  font-size: 500px;
-  font-weight: bold;
-  font-family: "Outfit";
-  color: rgba(255, 255, 255, 0.5);
-  line-height: 1;
-  white-space: nowrap;
-  display: inline-block;
-  animation: slideTextLeft 80s linear infinite;
-  will-change: transform;
-}
-
-@keyframes slideTextLeft {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-.concept .concept-slider {
-  padding-block: 30px;
-  position: relative;
-  z-index: 2;
-  overflow: hidden;
-}
-.concept-slider-wrap {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  width: fit-content;
-  animation: slideLoop 40s linear infinite;
-}
-.concept-slider-wrap .concept-slide {
-  width: 181px;
-  flex-shrink: 0;
-}
-.concept-slider-wrap .concept-slide img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-@keyframes slideLoop {
-  0% {
-    transform: translateX(-50%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-.concept-main {
-  max-width: 1247px;
-  margin: auto;
-  margin-top: 44px;
-  display: flex;
-  align-items: start;
-  position: relative;
-  z-index: 2;
-  padding-bottom: 45px;
-}
-.concept-main .txt {
-  width: 100%;
-  max-width: 758px;
-}
-.concept-main .txt-t {
-  margin-bottom: 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.concept-main .txt-t p {
-  font-size: 48px;
-  font-weight: bold;
-  line-height: 1.2;
-  width: fit-content;
-  position: relative;
-  padding-inline: 9px;
-}
-.concept-main .txt-t p::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background-color: #ffffff;
-  transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 1.8s;
-  z-index: 0;
-}
-.concept-main .txt-t p span {
-  position: relative;
-  z-index: 1;
-  opacity: 0;
-  transition: opacity 0.6s ease-out;
-}
-.concept-main.animate .txt-t p::before {
-  width: 100%;
-}
-.concept-main.animate .txt-t p:nth-child(1) span {
-  opacity: 1;
-  transition-delay: 2.4s;
-}
-.concept-main.animate .txt-t p:nth-child(2) span {
-  opacity: 1;
-  transition-delay: 2.6s;
-}
-.concept-main .txt-c {
-  padding-block: 10px;
-}
-.concept-main .txt-c p {
-  font-size: 14px;
-  line-height: 28px;
-  color: #000000;
-}
-
-.concept-main .img {
-  width: 100%;
-  max-width: 490px;
-  height: 550px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.concept-main .img img {
-  position: absolute;
-  opacity: 0;
-  transform: translateY(-100px);
-  transition: opacity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
-    transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-.concept-main .img .layerOne {
-  bottom: 0px;
-  transition-delay: 0.2s;
-}
-.concept-main .img .layerTwo {
-  bottom: 110px;
-  transition-delay: 0.4s;
-}
-.concept-main .img .layerThree {
-  bottom: 220px;
-  transition-delay: 0.6s;
-}
-.concept-main .img .layerFour {
-  bottom: 300px;
-  max-width: 340px;
-  transition-delay: 0.8s;
-}
-.concept-main .img .layerFive {
-  top: 20px;
-  max-width: 140px;
-  transition-delay: 1s;
-}
-.concept-main.animate .img img {
-  opacity: 1;
-  transform: translateY(0);
-}
 
 /* ----- VALUE ------ */
 
 .value {
   width: 100%;
   height: 100vh;
-  background: url("../img/gra-bg.png") no-repeat center / cover;
+  /* background: url("../img/gra-bg.png") no-repeat center / cover; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -821,7 +720,7 @@
 .solution {
   width: 100%;
   height: auto;
-  background: url("../img/gra-bg.png") no-repeat center / cover;
+  /* background: url("../img/gra-bg.png") no-repeat center / cover; */
   position: relative;
 }
 
@@ -830,7 +729,7 @@
   height: 100vh;
   position: relative;
   overflow: hidden;
-  background: url("../img/gra-bg.png") no-repeat center / cover;
+  /* background: url("../img/gra-bg.png") no-repeat center / cover; */
   z-index: 2;
 }
 .solution .content .tip {
@@ -1147,7 +1046,7 @@ transform: translateX(-85vw);
 
 .study {
   width: 100%;
-  background: url("../img/gra-bg.png") no-repeat center / cover;
+  /* background: url("../img/gra-bg.png") no-repeat center / cover; */
 }
 
 .slide-container {

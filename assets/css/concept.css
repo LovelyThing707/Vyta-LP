@@ -1,0 +1,221 @@
+/* ------- CONCEPT -------- */
+.concept .content {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    /* background: url("../img/gra-bg.png") no-repeat center / cover; */
+    z-index: -1;
+  }
+  .concept .content .tip {
+    position: absolute;
+    top: -85px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    z-index: 0;
+  }
+  .concept .content .tip p {
+    font-size: 500px;
+    font-weight: bold;
+    font-family: "Outfit";
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1;
+    white-space: nowrap;
+    display: inline-block;
+    animation: slideTextLeft 80s linear infinite;
+    will-change: transform;
+  }
+  
+  @keyframes slideTextLeft {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  .concept .concept-slider {
+    padding-block: 30px;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+  }
+  .concept-slider-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: fit-content;
+    animation: slideLoop 40s linear infinite;
+  }
+  .concept-slider-wrap .concept-slide {
+    width: 181px;
+    flex-shrink: 0;
+  }
+  .concept-slider-wrap .concept-slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  @keyframes slideLoop {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
+  .concept-main {
+    max-width: 1247px;
+    margin: auto;
+    margin-top: 44px;
+    display: flex;
+    align-items: start;
+    position: relative;
+    z-index: 2;
+    padding-bottom: 45px;
+  }
+  .concept-main .txt {
+    width: 100%;
+    max-width: 758px;
+  }
+  .concept-main .txt-t {
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .concept-main .txt-t p {
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 1.2;
+    width: fit-content;
+    position: relative;
+    padding-inline: 9px;
+  }
+  .concept-main .txt-t p::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: #ffffff;
+    transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 1.8s;
+    z-index: 0;
+  }
+  .concept-main .txt-t p span {
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.6s ease-out;
+  }
+  .concept-main.animate .txt-t p::before {
+    width: 100%;
+  }
+  .concept-main.animate .txt-t p:nth-child(1) span {
+    opacity: 1;
+    transition-delay: 2.4s;
+  }
+  .concept-main.animate .txt-t p:nth-child(2) span {
+    opacity: 1;
+    transition-delay: 2.6s;
+  }
+  .concept-main .txt-c {
+    padding-block: 10px;
+  }
+  .concept-main .txt-c p {
+    font-size: 14px;
+    line-height: 28px;
+    color: #000000;
+  }
+  
+  .concept-main .img {
+    width: 100%;
+    max-width: 490px;
+    height: 550px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .concept-main .img img {
+    position: absolute;
+    opacity: 0;
+    transform: translateY(-100px);
+    transition: opacity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
+      transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .concept-main .img .layerOne {
+    bottom: 0px;
+    transition-delay: 0.2s;
+  }
+  .concept-main .img .layerTwo {
+    bottom: 110px;
+    transition-delay: 0.4s;
+  }
+  .concept-main .img .layerThree {
+    bottom: 220px;
+    transition-delay: 0.6s;
+  }
+  .concept-main .img .layerFour {
+    bottom: 300px;
+    max-width: 340px;
+    transition-delay: 0.8s;
+  }
+  .concept-main .img .layerFive {
+    top: 20px;
+    max-width: 140px;
+    transition-delay: 1s;
+  }
+  .concept-main.animate .img img {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+@media (max-width: 1280px) {
+  .concept-main {
+    align-items: center;
+    padding-inline: 50px;
+  }
+  .concept-main .txt {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .concept-main .txt-t p {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+   .concept-main {
+    display: flex;
+    flex-direction: column;
+    padding-inline: 50px;
+    }
+
+  .concept-main .txt {
+    order: 2;
+  }
+  .concept-main .txt-t p {
+    font-size: 2rem;
+  }
+
+  .concept .content {
+    height: auto;
+  }
+
+}
+
+@media (max-width: 480px) {
+    .concept-main .txt-t p {
+        font-size: 1.5rem;
+      }
+    .concept-main {
+        padding-inline: 20px;
+    }
+}

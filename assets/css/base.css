@@ -30,6 +30,8 @@ header,
 main,
 section {
   width: 100%;
+  position: relative;
+  z-index: 0;
 }
 
 @media (max-width: 768px) {
@@ -39,4 +41,42 @@ section {
   .is-md-hide {
     display: none !important;
   }
+}
+
+body {
+  min-height: 100vh;
+  background-image: url("./assets/img/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+
+.fixed-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../img/gra-bg.png"); /* your image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  z-index: -1; /* stays behind content */
+}
+
+.fixed-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.fixed-bg {
+  animation: fadeIn 1.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
