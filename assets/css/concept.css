@@ -218,4 +218,12 @@
     .concept-main {
         padding-inline: 20px;
     }
+    .concept-main .img .layerTwo {
+        bottom: 140px;
+        transition-delay: 0.4s;
+    }
+    .concept-main .img .layerOne {
+        bottom: 50px;
+        transition-delay: 0.4s;
+    }
 }

@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="./assets/css/footer.css" />
   <link rel="stylesheet" href="./assets/css/fv.css" />
   <link rel="stylesheet" href="./assets/css/concept.css" />
+  <link rel="stylesheet" href="./assets/css/value.css" />
   <link rel="stylesheet" href="./assets/css/top.css" />
   <link rel="stylesheet" href="./assets/css/gear.css" />
   <link rel="stylesheet" href="./assets/css/contact.css" />
@@ -24,6 +25,7 @@
 
 <body>
   <div class="fixed-bg"></div>
+  <canvas id="mesh-bg"></canvas>
   <header>
     <div class="header-container">
       <a href="#" class="logo">
@@ -85,7 +87,7 @@
           <div class="interactive"></div>
         </div>
       </div>
-      <div class="mesh"></div>
+      <!-- <div class="mesh"></div> -->
       <div class="fv-img-box">
         <img src="./assets/img/fv/tree-1.png" class="treeOne" alt="" />
         <img src="./assets/img/fv/tree-2.png" class="treeTwo" alt="" />
@@ -190,7 +192,8 @@
       </div>
     </section>
     <section class="value" id="value">
-      <title class="value-title">ディベロッパーが得られる3つの価値</title>
+      <p class="value-title is-pc-show">ディベロッパーが得られる3つの価値</p>
+      <!-- <p class="value-title is-sp-show">ディベロッパーが得られる<br>3つの価値</p> -->
       <title class="value-en-title">VALUE</title>
       <div class="value-content">
         <div class="value-item one">
@@ -232,12 +235,12 @@
                 <img src="./assets/img/value/icon.png" alt="">
               </div>
               <span class="value-item-content-title-text">
-                Predictability<br>& Sustainability
+                Streamlined<br>Development
               </span>
             </div>
             <div class="value-item-content-description">
               <p>
-                ウェルネスプラットフォームの中核をなすクリニックセグメントでは、マスターリース契約を基軸に据えています。これにより竣工初年度から賃料収入を固定化し、精緻なキャッシュフロー管理を実現。空室期間を織り込んだ保守的な収支調整の必要性を排除しました。また、景気耐性の高い医療機関がアンカーテナントとなることで、事業の継続性を担保。投資フェーズを「リーシングリスクの解消」から「資産価値の最大化」へと早期にシフトさせます。
+                従来の商業施設開発が孕むテナント入替リスクや、管理コスト増大といった不確実性を独自のゾーニングデザインにより解消。低退去率を誇る医療機関に特化し、原則スケルトン渡しによる設備投資の抑制を両立しました。 この構造は日々の運営業務負荷を最小化し、人的・時間的リソースの最適化に寄与。ディベロッパーにとって、煩雑な管理を排したレジリエンスの高い「極めて持ち続けやすいアセット」を提供します。排除しました。また、景気耐性の高い医療機関がアンカーテナントとなることで、事業の継続性を担保。投資フェーズを「リーシングリスクの解消」から「資産価値の最大化」へと早期にシフトさせます。
               </p>
             </div>
           </div>
@@ -253,12 +256,12 @@
                 <img src="./assets/img/value/icon.png" alt="">
               </div>
               <span class="value-item-content-title-text">
-                Predictability<br>& Sustainability
+                Asset Value<br>& Exit Strategy
               </span>
             </div>
             <div class="value-item-content-description">
               <p>
-                ウェルネスプラットフォームの中核をなすクリニックセグメントでは、マスターリース契約を基軸に据えています。これにより竣工初年度から賃料収入を固定化し、精緻なキャッシュフロー管理を実現。空室期間を織り込んだ保守的な収支調整の必要性を排除しました。また、景気耐性の高い医療機関がアンカーテナントとなることで、事業の継続性を担保。投資フェーズを「リーシングリスクの解消」から「資産価値の最大化」へと早期にシフトさせます。
+                ヘルスケア領域への投資は世界的な長期潮流であり、ESGを重視する機関投資家から極めて強い関心を集めています。生活インフラとしての公共性は、オフィス等の既存用途では困難な立地においても不動産ポテンシャルを再定義し、ポートフォリオ全体の質を底上げします。 インカムゲインの安定確保はもとより、高い市場流動性を背景とした有利なキャピタルゲイン獲得も射程に。保有・売却を問わず、マーケットの動向に左右されない柔軟な出口戦略を実現します。
               </p>
             </div>
           </div>
@@ -704,7 +707,8 @@
   <script src="./assets/js/flow.js"></script>
   <script src="./assets/js/gear.js"></script>
   <script src="./assets/js/study.js"></script>
-  <script src="./assets/js/about.js"></script>
+  <script src="./assets/js/about.js"></script>  
+  <script src="./assets/js/mesh.js"></script>  
   <script src="./assets/js/txt-animation/concept-txt-animation.js"></script>
   <script src="./assets/js/txt-animation/study-txt-animation.js"></script>
   <script src="./assets/js/txt-animation/value-txt-animation.js"></script>

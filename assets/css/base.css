@@ -58,7 +58,7 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-image: url("../img/gra-bg.png"); /* your image */
+  background-image: url("../img/gra-bg.png"); 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -76,7 +76,10 @@ body {
   animation: fadeIn 1.5s ease forwards;
 }
 
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
+

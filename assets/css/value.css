@@ -1,0 +1,314 @@
+/* ----- VALUE ------ */
+
+.value {
+    width: 100%;
+    height: 100vh;
+    /* background: url("../img/gra-bg.png") no-repeat center / cover; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    padding-right: 250px;
+  }
+  
+  .value-title {
+    font-size: 30px;
+    font-weight: bold;
+    font-family: "Zen Kaku Gothic New";
+    letter-spacing: 20px;
+    color: #4E4E4E;
+    line-height: 1;
+    white-space: nowrap;
+    display: inline-block;
+    position: absolute;
+    top: 100px;
+    left: 250px;
+    z-index: 3;
+  }
+
+  .value-title .title-char {
+    opacity: 0;
+    display: inline-block;
+    transition: opacity 0.3s ease;
+    will-change: opacity;
+  }
+  
+  .value-en-title {
+    font-size: 300px;
+    font-weight: bold;
+    font-family: "Outfit";
+    color: #FFFFFF;
+    line-height: 1;
+    white-space: nowrap;
+    display: inline-block;
+    position: absolute;
+    top: 300px;
+    left: -300px;
+    rotate: -90deg;
+  }
+  
+  .value-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    min-height: 100vh;
+  }
+  
+  .value-item {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    z-index: 2;
+    gap: 50px;
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  .value-item.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  .value-item-number {
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    font-family: "Outfit";
+    color: #FFFFFF;
+    line-height: 1;
+    border-radius: 50%;
+    background-color: #F7EDEC;
+    border: 2px solid #FFFFFF;
+    white-space: nowrap;
+    width: 110px;
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .value-item-content {
+    width: 100%;
+    max-width: 1120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    gap: 40px;
+  }
+  
+  .value-item-content-title {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .value-item-content-title p {
+    font-size: 60px;
+    font-weight: medium;
+    font-family: "Zen Kaku Gothic New";
+    color: #4E4E4E;
+    line-height: 1;
+    white-space: nowrap;
+    display: inline-block;
+  }
+  
+  .value-item-content-title-icon {
+    width: 205px;
+    height: 205px;
+    background-color: #56ABBA;
+    border-radius: 50%;
+  }
+  
+  .value-item-content-title-icon img {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .value-item-content-title-text {
+    font-size: 130px;
+    font-weight: bold;
+    font-family: "Outfit";
+    color: #ffffff;
+    line-height: 1;
+    white-space: nowrap;
+    display: inline-block;
+    position: absolute;
+  }
+  
+  .value-item-content-description {
+    width: 100%;
+    font-size: 14px;
+    font-family: "Zen Kaku Gothic New";
+    color: #4E4E4E;
+    line-height: 28px;
+    position: relative;
+  }
+  
+  .value-item-content-description-highlight {
+    font-weight: bold;
+    font-size: 18px;
+    color: #56ABBA;
+  }
+  
+  .tri-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  .tri-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  .tri-icon.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  /* Ensure value section can be pinned */
+  .value {
+    overflow: hidden;
+  }
+
+  is-pc-show {
+    display: block;
+  }
+  is-sp-show {
+    display: none;
+  }
+
+  @media (max-width: 1440px) {
+    .value {   
+       padding-right: 0 !important
+    }
+    .value-en-title {
+        display: none;
+    }
+
+    .value-item {
+        padding-right: 50px;
+    }
+    .value-item-content-title-icon {
+        width: 200px;
+        height: 200px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .value-item-content {
+        width: 80%;
+    }
+    .value-item-content-title-text {
+        font-size: 88px;
+    }
+    .value-item-content-title p {
+        font-size: 48px;
+        font-weight: bolder;
+        z-index: 2;
+    }
+    .value-title {
+        font-size: 30px;
+        top: 80px;
+        left: 150px;
+        letter-spacing: 10px;
+      }
+  }
+
+  @media (max-width: 768px) {
+    .value-item-content-title-text {
+        font-size: 60px;
+    }
+    .value-item-content-title p {
+        font-size: 48px;
+        font-weight: bolder;
+        z-index: 2;
+        line-height: 2.5;
+    }
+    .value-item-content-title {
+        gap: 10px;
+        flex-direction: column;
+    }
+    .value-item-content-title-icon {
+        width: 120px;
+        height: 120px;
+    }
+    .value-item-content {
+        gap: 10px;
+    }
+    .value-item {
+        padding-right: 20px;
+    }
+    .value-title {
+        font-size: 24px;
+        top: 80px;
+        left: 100px;
+        letter-spacing: 5px;
+    }
+    .value-item {
+        align-items: flex-start;
+    }
+  }
+
+  @media (max-width: 440px) {
+    .value-item-content {
+        width: 70%;
+    }
+    .value-item-content-title-text {
+        font-size: 36px;
+        line-height: 1.4;
+    }
+    .value-item-content-title p {
+        font-size: 24px;
+        font-weight: bolder;
+        z-index: 2;
+        line-height: 4;
+    }
+    .value-item-content-title-icon {
+        width: 100px;
+        height: 100px;
+    }
+    .value-item-number {
+        width: 100px;
+        height: 100px;
+    }
+    .value-title {
+        font-size: 16px;
+        top: 80px;
+        left: 20px;
+        letter-spacing: 5px;
+        line-height: 1.5;
+    }
+    .is-pc-show {
+        display: none;
+    }
+    .is-sp-show {
+        display: block;
+    }
+  }
