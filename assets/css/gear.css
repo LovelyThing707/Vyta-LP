@@ -7,6 +7,7 @@
     --color-accent: #a2dec5;
     --color-white: #ffffff;
     --circle-size: 80vh;
+    --circle-size-small: 70vh;
     --marker-size: 100px;
     --gear-size: 450px;
    
@@ -72,6 +73,20 @@ body {
     /* box-shadow: 0 0 50px rgba(255, 255, 255, 0.5); 削除 */
    
     will-change: transform;
+}
+.rotating-circle-small {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--circle-size-small);
+    height: var(--circle-size-small);
+    border-radius: 50%;
+    /* 中心を合わせる */
+    transform: translate(-50%, -50%);
+   
+    /* シャドウを削除、ボーダーのみ薄く残す */
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    /* box-shadow: 0 0 50px rgba(255, 255, 255, 0.5); 削除 */
 }
 
 /* 外円のアニメーション用クラス */
@@ -363,10 +378,15 @@ body {
     writing-mode: vertical-rl;
     text-orientation: upright;
     pointer-events: none;
-    z-index: -2;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
     user-select: none;
 }
 
+.bg-flow-text.is-visible {
+    opacity: 1;
+  }
 
 @media (max-width: 768px) {
     .page-wrapper { flex-direction: column; }

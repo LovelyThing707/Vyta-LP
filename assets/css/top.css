@@ -79,19 +79,19 @@
 .fv-img-box .treeOne {
   width: 80px;
   top: 300px;
-  left: 0;
+  left: -100px;
 }
 .fv-img-box .treeTwo {
   width: 80px;
-  top: 50px;
-  right: 355px;
+  top: 100px;
+  right: 250px;
 }
 
 /* Houses - Left side (3 houses) */
 .fv-img-box img.homeOne:nth-child(3) {
   width: 180px;
-  top: 200px;
-  left: 40px;
+  top: 220px;
+  left: 0px;
   opacity: 0;
   transform: scale(0.3) translateY(20px);
   transition: opacity 0.6s ease-out,
@@ -121,8 +121,8 @@
 /* Houses - Right side (2 houses) */
 .fv-img-box .homeTwo {
   width: 200px;
-  top: 120px;
-  right: 225px;
+  top: 150px;
+  right: 100px;
   opacity: 0;
   transform: scale(0.3) translateY(20px);
   transition: opacity 0.6s ease-out,
@@ -130,8 +130,8 @@
 }
 .fv-img-box .homeThree {
   width: 200px;
-  top: 200px;
-  right: 105px;
+  top: 250px;
+  right: 0px;
   opacity: 0;
   transform: scale(0.3) translateY(20px);
   transition: opacity 0.6s ease-out,
@@ -255,32 +255,32 @@
 
 .fv-img-box .manOne {
   width: 30px;
-  top: 450px;
-  left: 160px;
+  top: 300px;
+  left: 200px;
   opacity: 0;
 }
 .fv-img-box .manTwo {
   width: 25px;
-  top: 190px;
-  left: 410px;
+  top: 300px;
+  left: 330px;
   opacity: 0;
 }
 .fv-img-box .manThree {
   width: 35px;
-  top: 505px;
-  left: 500px;
+  top: 450px;
+  left: 450px;
   opacity: 0;
 }
 .fv-img-box .manFour {
   width: 30px;
-  top: 400px;
-  right: 435px;
+  top: 350px;
+  right: 350px;
   opacity: 0;
 }
 .fv-img-box .manFive {
   width: 25px;
-  top: 250px;
-  right: 300px;
+  top: 300px;
+  right: 200px;
   opacity: 0;
 }
 
