@@ -1,8 +1,7 @@
-
+/* 
 .solution {
     width: 100%;
     height: auto;
-    /* background: url("../img/gra-bg.png") no-repeat center / cover; */
     position: relative;
   }
   
@@ -11,7 +10,6 @@
     height: 100vh;
     position: relative;
     overflow: hidden;
-    /* background: url("../img/gra-bg.png") no-repeat center / cover; */
     z-index: 2;
   }
   .solution .content .tip {
@@ -47,7 +45,6 @@
   }
   
   
-  /* コンテナの設定 - フルスクリーン */
   .solution-list {
     position: absolute;
     bottom: 0;
@@ -57,7 +54,6 @@
   
   }
   
-  /* アイテムの基本スタイル - フルスクリーン */
   .solution-list > .solution-item {
     position: absolute;
     width: 90vw;
@@ -75,7 +71,6 @@
     overflow: hidden;
   }
   
-  /* エディトリアルレイアウト用のスタイル */
   .solution-list > .solution-item h3 {
     font-size: 4rem;
     margin-bottom: 1rem;
@@ -102,7 +97,6 @@
     opacity: 0.7;
   }
   
-  /* 1番目のアイテム - 画面の90%を表示 */
   .solution-list > .solution-item:nth-child(1) {
     left: 0;
     z-index: 3;
@@ -114,8 +108,7 @@
     color: #fff;
     border-bottom-color: #fff;
   }
-  
-  /* 2番目のアイテム - 1番目の後ろ、右端5%が見える */
+
   .solution-list > .solution-item:nth-child(2) {
     left: 5vw;
     z-index: 2;
@@ -128,7 +121,6 @@
     border-bottom-color: #fff;
   }
   
-  /* 3番目のアイテム - 2番目の後ろ、右端5%が見える */
   .solution-list > .solution-item:nth-child(3) {
     left: 10vw;
     z-index: 1;
@@ -141,36 +133,29 @@
     border-bottom-color: #fff;
   }
   
-  /* ホバー時のアニメーション */
-  /* 1番目のアイテムにホバーしたときは移動させない */
   .solution-list > .solution-item:nth-child(1):hover {
     transform: translateX(0);
     z-index: 10;
   }
   
-  /* 1番目にホバーしたとき、2番目と3番目は移動させない（重要度を高く設定） */
   .solution-list > .solution-item:nth-child(1):hover ~ .solution-item:nth-child(2),
   .solution-list > .solution-item:nth-child(1):hover ~ .solution-item:nth-child(3) {
     transform: translateX(0) !important;
   }
   
-  /* 2番目または3番目にホバーしたとき、1番目がホバーされていなければ左に85vw移動 */
   .solution-list:hover > .solution-item:nth-child(1):not(:hover) {
     transform: translateX(-85vw);
   }
   
-  /* 2番目のアイテムにホバーしたとき、2番目のアイテムは1番目の後ろに配置 */
   .solution-list > .solution-item:nth-child(2):hover {
     z-index: 2;
     transform: translateX(0);
   }
   
-  /* 3番目にホバーしたとき、2番目がホバーされていなければ左に85vw移動 */
   .solution-list:hover > .solution-item:nth-child(3):hover ~ .solution-item:nth-child(2) {
     transform: translateX(-85vw);
   }
   
-  /* 3番目のアイテムにホバーしたとき、3番目のアイテム自体は最前面に */
   .solution-list > .solution-item:nth-child(3):hover {
     z-index: 0;
   }
@@ -325,4 +310,245 @@
   #solution-item-content-title-3 {
     line-height: 1.5 !important;
   }
+   */
+
+.solution {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+.solution .content {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.solution-title {
+  font-size: 30px;
+  font-weight: bold;
+  font-family: "Zen Kaku Gothic New";
+  letter-spacing: 20px;
+  color: #4E4E4E;
+  line-height: 1;
+  white-space: nowrap;
+  display: inline-block;
+  position: absolute;
+  top: 50px;
+  left: 250px;  
+}
+
+.solution .content .tip {
+  position: absolute;
+  top: -80px;
+  left: 0;
+  width: 100%;
+  z-index: -5;
+  overflow: hidden; 
+}
+.solution .content .tip p {
+  font-size: 500px;
+  font-weight: bold;
+  font-family: "Outfit";
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1;
+  white-space: nowrap;
+  display: inline-block;
+  animation: slideTextLeft 80s linear infinite;
+  will-change: transform;
+}
+
+.solution-slid-main-content {
+  display: flex;
+  gap: 50px;
+}
+
+.solution-item-container-img {
+  width: 600px;
+  height: 120%;
+  position: relative;
+  overflow: hidden;
+}
+
+.solution-item-container-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.solution-item-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: relative;
+  overflow: hidden;
+}
+
+.solution-item-content-title {
+  font-size: 90px !important;
+  font-weight: bold;
+  font-family: "Outfit";
+  color: #4E4E4E;
+  line-height: 1 !important;
+  z-index: 20;
+}
+
+.solution-item-content-subtitle {
+  font-size: 30px;
+  font-weight: bold;
+  font-family: "Zen Kaku Gothic New";
+  color: #4E4E4E;
+  background-color: #FFFFFF;
+  padding: 0px 10px;
+  width: fit-content;
+  z-index: 2;
+}
+
+.solution-item-content-text {
+  font-size: 14px;
+  font-family: "Zen Kaku Gothic New";
+  color: #4E4E4E;
+  line-height: 2;
+  white-space: nowrap;
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+}
+
+.solution-item-number {
+  font-size: 300px;
+  font-weight: bold;
+  font-family: "Outfit";
+  color: #FFFFFF;
+  line-height: 1.2;
+  white-space: nowrap;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.solution-item-label {
+  font-size: 24px;
+  font-weight: bold;
+  font-family: "Outfit";
+  color: #4E4E4E;
+  line-height: 1;
+  padding: 30px 0px;
+  white-space: nowrap;
+  display: inline-block;
+  opacity: 0.7;
+  position: absolute;
+  top: 0;
+  right: 100px;
+  z-index: 2;
+}
+
+.slid-item-order {
+  font-size: 24px;
   
+  color: #4E4E4E;
+  opacity: 1;
+  z-index: 2;
+  text-align: center;
+}
+
+.solution-item-content-label {
+  rotate: 90deg;
+  height: fit-content;
+  text-wrap: nowrap;
+  bottom: 140px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #4E4E4E;
+  opacity: 0.7;
+  right: -80px;
+  z-index: 2;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#solution-item-content-title-1 {
+  line-height: 1 !important;
+}
+#solution-item-content-title-2 {
+  line-height: 3.5 !important;
+}
+#solution-item-content-title-3 {
+  line-height: 1.5 !important;
+}
+
+.top-part {
+  height: 150px;
+  position: relative;
+  z-index: 0;
+}
+
+.solution-slid-animation {
+  width: 100%;
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.solution-slid-item {
+  height: calc(100vh - 150px);
+  position: absolute;
+  display: flex;
+  z-index: 1;
+  width: 100%; /* Fixed width for all items */
+  will-change: top, right;
+  /* Initial state: off-screen at bottom (will be set by GSAP) */
+  top: 100vh;
+}
+
+.solution-slid-item1 {
+  background-color: #F4FFF8;
+  z-index: 1;
+}
+
+.solution-slid-item2 {
+  z-index: 3 !important;
+  width: calc(100% - 100px) !important;
+  background-color: #EAFFFF;
+  right: 100px;
+} 
+
+.solution-slid-item3 {
+  z-index: 5 !important;
+  background-color: #FFF4FE;
+  width: calc(100% - 200px) !important;
+  right: 200px;
+}
+
+.solution-slid-item-title {
+  width: 100px;
+  height: 100%;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-block: 20px;
+}
+
+.solution-slid-content {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.solution-slid-item2 .solution-slid-item-title {
+}
+
+.solution-slid-item2 .solution-slid-content {
+}
+
+.solution-slid-item3 .solution-slid-item-title {
+}
+
+.solution-slid-item3 .solution-slid-content { 
+}
