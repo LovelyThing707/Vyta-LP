@@ -92,6 +92,36 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
+  // Animate streetlights
+  const animateStreetlights = () => {
+    const streetlights = [
+      document.querySelector('.fv-img-box img:nth-of-type(16)'),
+      document.querySelector('.fv-img-box img:nth-of-type(17)'),
+    ];
+
+    // Animate streetlights with fade-in and gentle glow effect
+    streetlights.forEach((light, index) => {
+      if (light) {
+        // Initial state: invisible and slightly offset
+        light.style.opacity = '0';
+        light.style.transform = 'translateY(10px) scale(0.95)';
+        light.style.transition = 'opacity 1s ease-out, transform 1s cubic-bezier(0.34, 1.56, 0.64, 1)';
+        
+        // Animate in with delay
+        setTimeout(() => {
+          light.style.opacity = '0.5';
+          light.style.transform = 'translateY(0) scale(1)';
+          
+          // Add gentle glow animation after fade-in
+          setTimeout(() => {
+            light.style.animation = `streetlightGlow ${4 + index * 0.6}s ease-in-out infinite`;
+            light.style.animationDelay = `${index * 0.3}s`;
+          }, 1000);
+        }, 1000 + (index * 200)); // Start after trees, staggered
+      }
+    });
+  };
+
   // Animate people and vehicles
   const animatePeopleAndVehicles = () => {
     // People elements
@@ -157,5 +187,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Start animation after a short delay to ensure page is ready
   setTimeout(animateBuildings, 300);
   setTimeout(animateTrees, 500);
+  setTimeout(animateStreetlights, 700);
   setTimeout(animatePeopleAndVehicles, 600);
 });

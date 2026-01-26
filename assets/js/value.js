@@ -7,41 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const valueItems = document.querySelectorAll(".value-item");
   const triIcons = document.querySelectorAll(".tri-icon");
-  const valueTitles = document.querySelectorAll(".value-title");
 
   if (valueItems.length === 0) return;
-
-  // =============================
-  // PREPARE VALUE TITLE FOR LETTER ANIMATION
-  // =============================
-  const prepareTitleAnimation = () => {
-    valueTitles.forEach((title) => {
-      // Get the original HTML to preserve <br> tags
-      const originalHTML = title.innerHTML;
-      
-      // Extract text content and split by <br> tags
-      const parts = originalHTML.split(/<br\s*\/?>/i);
-      
-      let newHTML = '';
-      parts.forEach((part, partIndex) => {
-        if (partIndex > 0) {
-          newHTML += '<br>';
-        }
-        
-        // Process each part character by character
-        const text = part.trim();
-        const characters = Array.from(text);
-        
-        characters.forEach((char) => {
-          newHTML += `<span class="title-char" style="opacity: 0; display: inline-block;">${char === ' ' ? '&nbsp;' : char}</span>`;
-        });
-      });
-      
-      title.innerHTML = newHTML;
-    });
-  };
-
-  prepareTitleAnimation();
 
   function getLeftOffset() {
     const width = window.innerWidth;
@@ -51,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (width >= 1024) return 20;  // Small desktop
     if (width >= 640)  return 20;  // Tablet
     if (width >= 440)  return 10;  // Large mobile
-    if (width >= 320)  return 5;  // Large mobile
+    if (width >= 320)  return 10;  // Large mobile
     return 100;                    // Small mobile
   }
   
@@ -59,7 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
   
   function getTopOffset() {
     const width = window.innerWidth;
-  
     if (width >= 1520) return 300;  // Desktop
     if (width >= 1280) return 500;  // Desktop
     if (width >= 1024) return 20;  // Small desktop
@@ -68,8 +34,51 @@ document.addEventListener("DOMContentLoaded", () => {
     if (width >= 320)  return 5;  // Large mobile
     return 300;                    // Small mobile
   }
-  
+
   let AUTO_TOP_OFFSET = getTopOffset();
+
+  function getInitialYPosition() {
+    const width = window.innerWidth;
+    if (width >= 1520) return 100;  // Desktop
+    if (width >= 1280) return 100;  // Desktop
+    if (width >= 1024) return 200;  // Small desktop
+    if (width >= 640)  return 300;  // Tablet
+    if (width >= 440)  return 300;  // Large mobile
+    if (width >= 320)  return 400;  // Large mobile
+  }
+
+  let AUTO_INITIAL_Y_POSITION = getInitialYPosition();
+
+  function animationDuration() {
+    const width = window.innerWidth;
+    if (width >= 1520) return 300;  // Desktop
+    if (width >= 1280) return 300;  // Desktop
+    if (width >= 1024) return 300;  // Small desktop
+    if (width >= 640)  return 400;  // Tablet
+    if (width >= 440)  return 1;  // Large mobile
+    if (width >= 320)  return 450;  // Large mobile
+  }
+
+  let AUTO_ANIMATION_DURATION = animationDuration();
+
+  function getFinalYPosition() {
+    const width = window.innerWidth;
+    if (width >= 1520) return -250;  // Desktop
+    if (width >= 1280) return -250;  // Desktop
+    if (width >= 1024) return -250;  // Small desktop
+    if (width >= 640)  return -100;  // Tablet
+    if (width >= 440)  return -100;  // Large mobile
+    if (width >= 320)  return -50;  // Large mobile
+  }
+
+  let AUTO_FINAL_Y_POSITION = getFinalYPosition();
+
+  function getScale() {
+    const width = window.innerWidth;
+    if (width >= 1020) return 0.5;  // Desktop
+    if (width >= 320)  return 0.8;  // Large mobile
+  }
+  let AUTO_SCALE = getScale();
   // =============================
   // CONFIG — TUNE FEEL HERE
   // =============================
@@ -80,6 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const TOP_OFFSET = 50; // px from top lock position
   const RIGHT_OFFSET = 250; // px from right when fixed
   const LEFT_OFFSET = AUTO_LEFT_OFFSET; // px from left when fixed
+  const INITIAL_Y_POSITION = AUTO_INITIAL_Y_POSITION;
   // =============================
   // INITIAL STATES
   // =============================
@@ -99,8 +109,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     gsap.set(number, {
-      scale: 0.5,
-      y: 100,
+      scale: AUTO_SCALE,
+      y: INITIAL_Y_POSITION,
       opacity: 1,
       position: "fixed",
       left: LEFT_OFFSET,
@@ -108,6 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     gsap.set(content, {
       opacity: 0,
+      y: INITIAL_Y_POSITION,
     });
   });
 
@@ -149,32 +160,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const itemEnd = (index + 1) / valueItems.length;
     const animationDuration = itemEnd - itemStart;
 
-    // Animate value title letters when first value appears
-    if (index === 0) {
-      valueTitles.forEach((title) => {
-        const chars = title.querySelectorAll('.title-char');
-        if (chars.length === 0) return;
-        
-        // Animate each character with staggered delay
-        let charIndex = 0;
-        chars.forEach((char) => {
-          // Skip if already visible (shouldn't happen, but safety check)
-          if (char.tagName === 'BR') return;
-          
-          masterTl.to(
-            char,
-            {
-              opacity: 1,
-              duration: 0.3,
-              ease: "power2.out",
-            },
-            itemStart + (charIndex * 0.05) // Start when first item appears, 50ms delay between each character
-          );
-          charIndex++;
-        });
-      });
-    }
-
     const topYPosition = TOP_OFFSET + index * NUMBER_SPACING;
 
     const initialBottom = BOTTOM_OFFSET + index * 120;
@@ -188,8 +173,8 @@ document.addEventListener("DOMContentLoaded", () => {
       content,
       {
         opacity: 1,
-        y: yDistance + 300,
-        duration: animationDuration * 0.8,
+        y: yDistance + AUTO_ANIMATION_DURATION,
+        duration: animationDuration * 0.5,
         ease: "power2.out",
       },
       itemStart
@@ -222,7 +207,7 @@ document.addEventListener("DOMContentLoaded", () => {
       number,
       {
         scale: 1,
-        y: yDistance + 300,
+        y: yDistance + AUTO_ANIMATION_DURATION,
         duration: animationDuration * 0.5,
         ease: "power2.out",
       },
@@ -236,9 +221,9 @@ document.addEventListener("DOMContentLoaded", () => {
         position: "fixed",
         // top: topYPosition,
         left: LEFT_OFFSET,
-        y: -250,
+        y: AUTO_FINAL_Y_POSITION,
         opacity: 1,
-        scale: 0.5,
+        scale: AUTO_SCALE,
         zIndex: 10,
         duration: animationDuration * 1,
         ease: "power2.out",
@@ -256,16 +241,6 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     );
 
-    masterTl.to(
-      content,
-      {
-        opacity: 1,
-        y: yDistance + 300,
-        duration: animationDuration * 0.5,
-        ease: "power2.out",
-      },
-      itemStart
-    );
   });
 
   // =============================

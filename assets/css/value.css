@@ -25,13 +25,6 @@
     left: 250px;
     z-index: 3;
   }
-
-  .value-title .title-char {
-    opacity: 0;
-    display: inline-block;
-    transition: opacity 0.3s ease;
-    will-change: opacity;
-  }
   
   .value-en-title {
     font-size: 300px;
@@ -278,7 +271,7 @@
 
   @media (max-width: 440px) {
     .value-item-content {
-        width: 70%;
+        width: 80%;
     }
     .value-item-content-title-text {
         font-size: 36px;
@@ -295,8 +288,9 @@
         height: 100px;
     }
     .value-item-number {
-        width: 100px;
-        height: 100px;
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
     }
     .value-title {
         font-size: 16px;

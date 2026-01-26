@@ -21,7 +21,7 @@ if (imgT) {
 gsap.to(flowItems, {
   rotate: (i, el) => {
     const base = parseFloat(el.dataset.baseRotate || 0);
-    return base - 1000;
+    return base - 360;
   },
   ease: "none",
   scrollTrigger: {
