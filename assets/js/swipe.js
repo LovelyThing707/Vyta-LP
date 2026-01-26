@@ -12,6 +12,29 @@ document.addEventListener("DOMContentLoaded", () => {
   const item3 = document.querySelector(".solution-slid-item3");
   const items = [item1, item2, item3].filter(item => item !== null);
 
+  function getRightMargin() {
+    const width = window.innerWidth;
+  
+    if (width >= 1440) {
+      return [0, 100, 200];
+    }  // Desktop
+    if (width >= 1024) {
+      return [0, 50, 100];
+    };  // Desktop // Large mobile
+    if (width >= 640) {
+      return [0, 50, 100];
+    }; 
+    if (width >= 425)  {  // Large mobile
+      return [0, 40, 80];           
+    }         // Small mobile
+    if (width >= 320)  {  // Large mobile
+      return [0, 25, 50];           
+    }         // Small mobile
+    return [0, 0, 0];
+  }
+
+  const FINAL_RIGHT_MARGINS = getRightMargin();
+
   if (items.length === 0) return;
 
   // =============================
@@ -21,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const SCRUB_SMOOTHNESS = 2; // higher = smoother
 
   // Final right margin positions
-  const FINAL_RIGHT_MARGINS = [0, 100, 200]; // px: item1=0, item2=100, item3=200
+  // const FINAL_RIGHT_MARGINS = [0, 100, 200]; // px: item1=0, item2=100, item3=200
 
   // =============================
   // INITIAL STATES

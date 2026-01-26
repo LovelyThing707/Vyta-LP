@@ -166,14 +166,17 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 const flowText = document.querySelector('.bg-flow-text');
+const sectionTitle = document.querySelector('.section-title');
 const wrapper = document.querySelector('.page-wrapper');
 
 const observer = new IntersectionObserver(
   ([entry]) => {
     if (entry.isIntersecting) {
-      flowText.classList.add('is-visible');
+      if (flowText) flowText.classList.add('is-visible');
+      if (sectionTitle) sectionTitle.classList.add('is-visible');
     } else {
-      flowText.classList.remove('is-visible');
+      if (flowText) flowText.classList.remove('is-visible');
+      if (sectionTitle) sectionTitle.classList.remove('is-visible');
     }
   },
   {
@@ -181,4 +184,6 @@ const observer = new IntersectionObserver(
   }
 );
 
-observer.observe(wrapper);
+if (wrapper) {
+  observer.observe(wrapper);
+}
