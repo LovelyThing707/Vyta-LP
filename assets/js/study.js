@@ -3,12 +3,16 @@ const swiper = new Swiper(".mySwiper", {
   centeredSlides: true,
 
   // This controls how slow/smooth the movement is
-  speed: 8000, // higher = slower, smoother
+  speed: 10000, // higher = slower, smoother
 
   autoplay: {
     delay: 0, // must be 0 for continuous motion
-    disableOnInteraction: false
+    disableOnInteraction: false,
+    reverseDirection: false
   },
+
+  freeMode: true,
+  freeModeMomentum: false,
 
   allowTouchMove: true, // still draggable
   grabCursor: true,
@@ -16,11 +20,6 @@ const swiper = new Swiper(".mySwiper", {
   navigation: {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev"
-  },
-
-  scrollbar: {
-    el: ".swiper-scrollbar",
-    draggable: true
   },
 
   breakpoints: {
