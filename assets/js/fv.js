@@ -8,9 +8,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const move = () => {
     curX += (tgX - curX) / 20;
     curY += (tgY - curY) / 20;
-    interBubble.style.transform = `translate(${Math.round(
-      curX
-    )}px, ${Math.round(curY)}px)`;
+    if (interBubble) {
+      interBubble.style.transform = `translate(${Math.round(
+        curX
+      )}px, ${Math.round(curY)}px)`;
+    }
     requestAnimationFrame(move);
   };
 
@@ -19,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     tgY = event.clientY;
   });
 
+  // Start mouse tracking immediately (this doesn't affect visual animations)
   move();
 
   // Building pop-up animation
@@ -184,10 +187,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  // Start animation after a short delay to ensure page is ready
-  setTimeout(animateBuildings, 300);
-  setTimeout(animateTrees, 500);
-  setTimeout(animateStreetlights, 700);
-  setTimeout(animatePeopleAndVehicles, 600);
+  // Wait for loading screen to start fading before beginning FV animations
+  // This ensures the FV animation starts as the loading screen fades out
+  window.addEventListener('loadingFadeStart', () => {
+    // Start FV animations when loading fade begins
+    setTimeout(animateBuildings, 300);
+    setTimeout(animateTrees, 500);
+    setTimeout(animateStreetlights, 700);
+    setTimeout(animatePeopleAndVehicles, 600);
+  }, { once: true }); // Use once: true so it only fires once
 });
 

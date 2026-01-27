@@ -18,6 +18,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (width >= 1440) {
       return [0, 100, 200];
     }  // Desktop
+    if (width >= 1280) {
+      return [0, 80, 160];
+    }  // Desktop
     if (width >= 1024) {
       return [0, 50, 100];
     };  // Desktop // Large mobile

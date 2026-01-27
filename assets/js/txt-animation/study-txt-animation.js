@@ -25,6 +25,16 @@ var Typo = {};
 	var text = 'CASE STUDY', interactive = true;
 	
 	/*
+	 * Get text with line break for small screens (425px and below)
+	 */
+	function getTextForScreen(canvasWidth) {
+		if (canvasWidth <= 425) {
+			return 'CASE\nSTUDY';
+		}
+		return 'CASE STUDY';
+	}
+	
+	/*
 	 * Get responsive font size based on screen width.
 	 */
 	
@@ -262,10 +272,23 @@ var Typo = {};
 			var fontSize = getResponsiveFontSize(canvas.width);
 			var particleSpacing = getResponsiveParticleSpacing(canvas.width);
 			
+			// Get text with line break for small screens
+			var displayText = getTextForScreen(canvas.width);
+			
 			context.font = 'bold ' + fontSize + 'px Outfit';
 			context.fillStyle = '#FFFFFF';		
 			context.textAlign = 'center';
-			context.fillText(text, canvas.width * 0.5, canvas.height * 0.55);
+			
+			// Handle multi-line text
+			var lines = displayText.split('\n');
+			var lineHeight = fontSize * 1.2; // Line height multiplier
+			var totalHeight = (lines.length - 1) * lineHeight;
+			var startY = canvas.height * 0.55 - (totalHeight / 2);
+			
+			lines.forEach(function(line, index) {
+				var y = startY + (index * lineHeight);
+				context.fillText(line, canvas.width * 0.5, y);
+			});
 			
 			var surface = context.getImageData(0, 0, canvas.width, canvas.height);
 			
@@ -364,8 +387,11 @@ var Typo = {};
 		[].forEach.call(nodes, function(node, index) {
 			
 			if(!interactive) {
+				// Get current display text for measurement
+				var displayText = getTextForScreen(canvas.width);
+				var textWidth = context.measureText(displayText.split('\n')[0]).width; // Use first line width
 					
-				mouse.x = canvas.width * 0.5 + Math.sin(force) * context.measureText(text).width * 0.5;
+				mouse.x = canvas.width * 0.5 + Math.sin(force) * textWidth * 0.5;
 				mouse.y = canvas.height * 0.47;
 				
 				force += 0.0001;

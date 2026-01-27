@@ -65,15 +65,22 @@ header.header-visible {
   background-color: #969696;
   line-height: 1.2;
 }
-.ham-btn {
+.ham-button {
   display: none;
   width: 32px;
+  height: 25px;
   background: none;
   border: none;
   cursor: pointer;
   padding: 0;
   z-index: 101;
   position: relative;
+}
+
+.ham-button img {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 .ham-list {
   position: fixed;
@@ -125,6 +132,28 @@ header.header-visible {
   visibility: visible;
 }
 
+.black-btn {
+  display: none !important;
+}
+
+.white-btn {
+  display: block !important;
+}
+
+.white-logo {
+  display: block !important;
+}
+
+.black-logo {
+  display: none !important;
+}
+.black-logo-visible {
+  display: block !important;
+}
+.white-logo-visible {
+  display: none !important;
+}
+
 @media (max-width: 768px) {
   .header-container {
     padding: 15px;
@@ -135,7 +164,20 @@ header.header-visible {
   .header-btn-group {
     display: none;
   }
-  .ham-btn {
+  .ham-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .black-ham-btn-visible {
+    display: block !important;
+  }
+  .white-ham-btn-visible {
+    display: none !important;
+  }
+
+  .logo {
     display: flex;
   }
 }

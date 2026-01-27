@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Zen+Kaku+Gothic+New&display=swap"
     rel="stylesheet" />
+  <link rel="stylesheet" href="./assets/css/loading.css" />
   <link rel="stylesheet" href="./assets/css/base.css" />
   <link rel="stylesheet" href="./assets/css/header.css" />
   <link rel="stylesheet" href="./assets/css/footer.css" />
@@ -25,11 +26,19 @@
 </head>
 
 <body>
+  <section class="loading">
+    <div class="watereffect">
+      <img src="./assets/img/Vya_logo.svg" alt="">
+    </div>
+  </section>
   <div class="fixed-bg"></div>
   <canvas id="mesh-bg"></canvas>
   <header>
     <div class="header-container">
-      <a href="./index.html" class="logo">
+      <a href="./index.html" class="logo white-logo">
+        <img src="./assets/img/white-logo.png" alt="" />
+      </a>
+      <a href="./index.html" class="logo black-logo">
         <img src="./assets/img/logo.png" alt="" />
       </a>
       <div class="header-btn-group">
@@ -46,8 +55,9 @@
           <a href="./contact.html">CONTACT</a>
         </div>
       </div>
-      <button type="button" class="ham-btn">
-        <img src="./assets/img/ham.png" alt="" />
+      <button type="button" class="ham-button">
+        <img src="./assets/img/ham-white.png" alt="" class="white-btn"/>
+        <img src="./assets/img/ham-black.png" alt="" class="black-btn"/>
       </button>
       <div class="ham-list">
         <a href="#concept">CONCEPT</a>
@@ -606,7 +616,7 @@
         <div class="content-section" id="section-1" data-title="初回相談">
           <div class="text-content">
             <div class="step-title-container">
-              <h3 class="step-title">初回相談<span class="step-sub">無料</span></h3>
+              <h3 class="step-title">初回相談(無料)</h3>
             </div>
             <p class="step-description">構想段階から無料で相談可能。<br>用地条件や方針を整理し、開発可否と次の検討軸を明確にします。</p>
           </div>
@@ -756,6 +766,7 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
+  <script src="./assets/js/loading.js"></script>
   <script src="./assets/js/header.js"></script>
   <script src="./assets/js/top.js"></script>
   <script src="./assets/js/fv.js"></script>
