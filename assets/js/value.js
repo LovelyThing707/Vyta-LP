@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const width = window.innerWidth;
   
     if (width >= 1520) return 370;  // Desktop
-    if (width >= 1280) return 80;  // Desktop
+    if (width >= 1280) return 10;  // Desktop
     if (width >= 1024) return 20;  // Small desktop
     if (width >= 640)  return 20;  // Tablet
     if (width >= 440)  return 10;  // Large mobile

@@ -1,43 +1,46 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Download</title>
-    <link rel="stylesheet" href="/assets/css/download.css">
-    <link rel="stylesheet" href="/assets/style/base.css">
+    <link rel="stylesheet" href="./assets/css/download.css">
+    <link rel="stylesheet" href="./assets/styles/base.css">
 </head>
 
 <body>
     <header class="flx-row">
         <div class="container flx-row">
             <figure class="header-logo flx-row">
-                <img src="/assets/media/vyta-logo.png" alt="Vyta-logo">
+                <a href="./index.html">
+                    <img src="./assets/media/vyta-logo.png" alt="Vyta-logo">
+                </a>
                 <figcaption>Vyta Header Logo</figcaption>
             </figure>
-            
-           
-                <nav class="header-nav flx-row">
-                    <li><a href="">Concept</a></li>
-                    <li><a href="">Value</a></li>
-                    <li><a href="">Solution</a></li>
-                    <li><a href="">Case Study</a></li>
-                    <li><a href="">Flow</a></li>
-                    <li><a href="">About Us</a></li>
-                </nav>
 
-                <div class="nav-buttons flx-row">
-                    <button class="download">
-                        <a href="">Download</a>
-                    </button>
 
-                    <button class="contact">
-                        <a href="">Contact</a>
-                    </button>
-                </div>
-            
+            <nav class="header-nav flx-row">
+                <li><a href="./index.html#concept">Concept</a></li>
+                <li><a href="./index.html#value">Value</a></li>
+                <li><a href="./index.html#solution">Solution</a></li>
+                <li><a href="./index.html#case-study">Case Study</a></li>
+                <li><a href="./index.html#flow">Flow</a></li>
+                <li><a href="./index.html#about">About Us</a></li>
+            </nav>
+
+            <div class="nav-buttons flx-row">
+                <button class="download">
+                    <a href="./download.html">Download</a>
+                </button>
+
+                <button class="contact">
+                    <a href="./contact.html">Contact</a>
+                </button>
+            </div>
+
             <span class="menu-open">
-                <img src="/assets/media/menu-icon.png" alt="menu-open-icon">
+                <img src="./assets/media/menu-icon.png" alt="menu-open-icon">
             </span>
         </div>
     </header>
@@ -46,20 +49,7 @@
             <div class="vertical-text">
                 <span>Scroll Down</span>
             </div>
-            
-            <div class="cd_wrapper boxed-width flx-row">
-                <button>
-                    <a href=""class="flx-col">
-                    <span>CONTACT</span>
-                    <span>お問い合わせ</span>
-                </a></button>
 
-                <button>
-                    <a href="" class="flx-col">
-                    <span>DOWNLOAD</span>
-                    <span>資料ダウンロード</span>
-                </a></button>
-            </div>
             <span class="intro-bg-text">DOWNLOAD</span>
         </section>
 
@@ -70,53 +60,82 @@
                     <p>弊社の事業内容についてより詳しく知ることができる<br>
                         コンセプトシートをダウンロードいただけます。</p>
                 </div>
-                <form action="" class="form-main flx-col">
-                    <label for="name">氏名</label>
-                    <input type="text" name="name" id="name">
+                <form action="https://business.form-mailer.jp/fm/service/Forms/confirm" method="post" name="form1"
+                    ENCTYPE="multipart/form-data" accept-charset="UTF-8">
+                    <input type="hidden" name="key" value="0bcf7f63330242">
 
-                    <label for="email_address">メールアドレス</label>
-                    <input type="email" name="email_address" id="email_address">
+                    <!-- name -->
+                    <div class="form-row">
+                        <label class="required">氏名</label>
+                        <div class="input-group-name">
+                            <input name="field_5628194_sei" type="text" placeholder="姓">
+                            <input name="field_5628194_mei" type="text" placeholder="名">
+                        </div>
+                    </div>
 
-                    <label for="phone_number">電話番号</label>
-                    <input type="tel" name="phone_number" id="phone_number">
+                    <!-- email -->
+                    <div class="form-row">
+                        <label class="required">メールアドレス</label>
+                        <input name="field_5628195" type="email" placeholder="info@example.com">
+                    </div>
 
-                    <label for="company">会社名</label>
-                    <input type="text" name="company" id="company">
+                    <!-- phone -->
+                    <div class="form-row">
+                        <label class="required">電話番号</label>
+                        <input name="field_5628196" type="tel" placeholder="090-0000-0000">
+                    </div>
 
-                    <label for="department">部署名</label>
-                    <input type="text" name="department" id="department">
+                    <!-- company -->
+                    <div class="form-row">
+                        <label class="required">会社名</label>
+                        <input name="field_5628197" type="text" value="">
+                    </div>
 
-                    <!-- <label for="inquiry_details">お問い合わせ内容</label>
-                    <textarea type="text" name="inquiry_details" id="inquiry_details" rows="15">
-                    </textarea> -->
+                    <!-- department -->
+                    <div class="form-row">
+                        <label class="required">部署名</label>
+                        <input name="field_5628198" type="text" value="">
+                    </div>
 
-                     <label for="consent">プライバシーの同意</label>
-                    <input type="checkbox" name="consent" id="consent">
+                    <!-- agreement -->
+                    <div class="form-row">
+                        <label class="required">プライバシーの同意</label>
+                        <div style="width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: 10px;">
+                            <p class="agreement-text">
+                                弊社<a href="https://www.vyta.co.jp/privacypolicy.html" target="_blank"
+                                    style="text-decoration: underline;">プライバシーポリシー</a>を読み、それに同意する場合はチェックをお願いいたします。
+                            </p>
+                            <label class="agreement-checkbox" style="width: auto; padding: 0;">
+                                <input name="field_5628200" type="checkbox" value="同意する">
+                                <span style="font-weight: normal; font-size: 16px;">同意する</span>
+                            </label>
+                        </div>
+                    </div>
 
+                    <div class="submit-container">
+                        <input name="submit" type="submit" value="確認画面へ">
+                    </div>
 
+                    <input type="hidden" name="code" value="utf8">
                 </form>
-
-                <div class="form-cta flx-row">
-                    <button><a href="">送信確認</a></button>
-                </div>
             </div>
-             <span class="bg-text">DOWNLOAD</span>
+            <span class="bg-text">DOWNLOAD</span>
         </section>
 
 
         <section class="contact_download container">
             <div class="cd_wrapper boxed-width flx-row">
                 <button>
-                    <a href="./contact.html"class="flx-col">
-                    <span>CONTACT</span>
-                    <span>お問い合わせ</span>
-                </a></button>
+                    <a href="./contact.html" class="flx-col">
+                        <span>CONTACT</span>
+                        <span>お問い合わせ</span>
+                    </a></button>
 
                 <button>
                     <a href="./download.html" class="flx-col">
-                    <span>DOWNLOAD</span>
-                    <span>資料ダウンロード</span>
-                </a></button>
+                        <span>DOWNLOAD</span>
+                        <span>資料ダウンロード</span>
+                    </a></button>
             </div>
         </section>
     </main>
@@ -124,8 +143,10 @@
     <footer class="container">
         <div class="footer_wrapper boxed-width flx-row">
 
-             <figure class="footer-logo flx-row">
-                <img src="/assets/media/vyta-logo.png" alt="Vyta-logo">
+            <figure class="footer-logo flx-row">
+                <a href="./index.html">
+                    <img src="./assets/media/vyta-logo.png" alt="Vyta-logo">
+                </a>
                 <figcaption>Vya Footer Logo</figcaption>
             </figure>
 
@@ -133,10 +154,11 @@
                 2026 © VYTA Inc.
             </span>
 
-             <div class="footer-cta flx-row">
-                    <button><a href="">HP</a></button>
-                </div>
+            <div class="footer-cta flx-row">
+                <button><a href="./index.html">HP</a></button>
+            </div>
         </div>
     </footer>
 </body>
+
 </html>

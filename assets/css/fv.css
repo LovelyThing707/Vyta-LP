@@ -17,8 +17,14 @@
   0% {
     transform: rotate(0deg);
   }
+  25% {
+    transform: rotate(90deg);
+  }
   50% {
     transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(270deg);
   }
   100% {
     transform: rotate(360deg);
@@ -29,8 +35,14 @@
   0% {
     transform: translateY(-50%);
   }
+  25% {
+    transform: translateY(0%);
+  }
   50% {
     transform: translateY(50%);
+  }
+  75% {
+    transform: translateY(0%);
   }
   100% {
     transform: translateY(-50%);
@@ -41,8 +53,14 @@
   0% {
     transform: translateX(-50%) translateY(-10%);
   }
+  25% {
+    transform: translateX(0%) translateY(0%);
+  }
   50% {
     transform: translateX(50%) translateY(10%);
+  }
+  75% {
+    transform: translateX(0%) translateY(0%);
   }
   100% {
     transform: translateX(-50%) translateY(-10%);
@@ -94,7 +112,8 @@
     left: calc(50% - var(--circle-size) / 2);
 
     transform-origin: center center;
-    animation: moveVertical 30s ease infinite;
+    animation: moveVertical 45s ease-in-out infinite;
+    will-change: transform;
 
     opacity: 1;
   }
@@ -115,7 +134,8 @@
     left: calc(50% - var(--circle-size) / 2);
 
     transform-origin: calc(50% - 400px);
-    animation: moveInCircle 20s reverse infinite;
+    animation: moveInCircle 35s reverse ease-in-out infinite;
+    will-change: transform;
 
     opacity: 1;
   }
@@ -136,7 +156,8 @@
     left: calc(50% - var(--circle-size) / 2 - 500px);
 
     transform-origin: calc(50% + 400px);
-    animation: moveInCircle 40s linear infinite;
+    animation: moveInCircle 55s linear infinite;
+    will-change: transform;
 
     opacity: 1;
   }
@@ -157,7 +178,8 @@
     left: calc(50% - var(--circle-size) / 2);
 
     transform-origin: calc(50% - 200px);
-    animation: moveHorizontal 40s ease infinite;
+    animation: moveHorizontal 50s ease-in-out infinite;
+    will-change: transform;
 
     opacity: 0.7;
   }
@@ -178,7 +200,8 @@
     left: calc(50% - var(--circle-size));
 
     transform-origin: calc(50% - 800px) calc(50% + 200px);
-    animation: moveInCircle 20s ease infinite;
+    animation: moveInCircle 40s ease-in-out infinite;
+    will-change: transform;
 
     opacity: 1;
   }

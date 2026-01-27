@@ -1,13 +1,13 @@
-section.intro-section{
+section.intro-section {
     height: 100vh;
-    background-image: url('/assets/media/07c838f81f885815722635c387e123d6bffe250f.webp');
+    background-image: url('../media/07c838f81f885815722635c387e123d6bffe250f.webp');
     background-position: 50% 50%;
     background-repeat: no-repeat;
     background-size: cover;
     justify-content: center;
 }
 
-section.intro-section .intro-bg-text{
+section.intro-section .intro-bg-text {
     height: fit-content;
     font-size: 16.4vw;
     color: white;
@@ -19,11 +19,13 @@ section.intro-section .intro-bg-text{
 section.intro-section .cd_wrapper {
     display: none;
 }
-section.intro-section .vertical-text{
-        display: none
-    }
-@media (max-width: 900px){
-    section.intro-section .cd_wrapper{
+
+section.intro-section .vertical-text {
+    display: none
+}
+
+@media (max-width: 900px) {
+    section.intro-section .cd_wrapper {
         position: absolute;
         bottom: 26px;
         width: 100%;
@@ -31,35 +33,40 @@ section.intro-section .vertical-text{
         justify-content: space-around;
         background-color: rgba(255, 255, 255, 0.2);
     }
-    section.intro-section button{
+
+    section.intro-section button {
         width: fit-content;
         padding: 16px 30px;
         border-radius: 31px;
         background-color: white;
         border: none;
     }
-    section.intro-section button a{
+
+    section.intro-section button a {
         width: 100%;
         align-items: center;
         text-decoration: none;
     }
-    section.intro-section button span{
+
+    section.intro-section button span {
         width: fit-content;
     }
-    section.intro-section button span:nth-child(1){
+
+    section.intro-section button span:nth-child(1) {
         font-size: 18px;
         color: var(--text-default);
         font-weight: 600;
         font-family: 'Outfit';
         line-height: 18px;
-    
+
     }
-    section.intro-section button span:nth-child(2){
+
+    section.intro-section button span:nth-child(2) {
         font-size: 10px;
         line-height: 12px
     }
-    
-    section.intro-section .vertical-text{
+
+    section.intro-section .vertical-text {
         display: flex;
         height: 240px;
         border-left: 2px solid white;
@@ -70,13 +77,14 @@ section.intro-section .vertical-text{
         bottom: 50px;
         z-index: 5;
     }
-    section.intro-section .vertical-text span{
+
+    section.intro-section .vertical-text span {
         writing-mode: vertical-rl;
         color: white;
         font-family: 'Outfit';
         font-size: 14px;
         font-weight: 400;
-        
+
     }
 }
 
@@ -85,10 +93,10 @@ section.intro-section .vertical-text{
 
 
 
-section.form{
+section.form {
     position: relative;
     /* height: 500px; */
-    background-image: url('/assets/media/07c838f81f885815722635c387e123d6bffe250f.webp');
+    background-image: url('../media/07c838f81f885815722635c387e123d6bffe250f.webp');
     background-position: 50% 50%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -96,7 +104,7 @@ section.form{
     overflow: hidden;
 }
 
-section.form .bg-text{
+section.form .bg-text {
     position: absolute;
     top: 20%;
     left: 50%;
@@ -109,194 +117,223 @@ section.form .bg-text{
     text-align: center;
     z-index: 1;
 }
-section.form  .form-wrapper{
+
+section.form .form-wrapper {
     width: 100%;
     position: relative;
     z-index: 2;
-     
+
 }
-section.form  .form-title-wrapper{
+
+section.form .form-title-wrapper {
     width: 100%;
     justify-content: space-between;
     align-items: center;
     height: 180px;
 }
-section.form  .form-title-wrapper h3{
+
+section.form .form-title-wrapper h3 {
     font-size: 30px;
     letter-spacing: 26px;
     font-weight: 600;
 }
-section.form  .form-title-wrapper p{
+
+section.form .form-title-wrapper p {
     font-size: 18px;
     font-weight: 400;
     text-align: end;
 }
+
 section.form form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 24px;
+    margin-top: 40px;
+}
+
+section.form .form-row {
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+}
+
+section.form .form-row label {
+    width: 245px;
+    flex-shrink: 0;
+    padding-top: 13px;
     position: relative;
-    padding-left: 245px;
-    gap: 20px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
 }
-section.form form label{
-    width: fit-content;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    z-index: 3;
-}
-section.form form label::after {
-    position: absolute;
-    left: 186px;
-    top: 4px;
+
+section.form .form-row label.required::after {
     content: '必須';
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2px 2px;
     background-color: hsla(189, 42%, 53%, 1);
-    width: 36px;
+    width: 39px;
     border-radius: 24px;
     color: white;
     font-size: 10px;
-}
-
-section.form form label[for="name"]{
+    height: 20px;
+    position: absolute;
+    left: 186px;
     top: 13px;
 }
 
-section.form form label[for="email_address"]{
-    top: 88px;
-}
-section.form form label[for="phone_number"]{
-    top: 162px;
-}
-section.form form label[for="company"]{
-    top: 236px;
-}
-section.form form label[for="department"]{
-    top: 310px;
-}
-section.form form label[for="inquiry_details"]{
-    top: 379px;
-}
-section.form form label[for="consent"]{
-    top: 597px;
-}
-
-section.form form input, section.form form textarea{
+section.form form input[type="text"],
+section.form form input[type="email"],
+section.form form input[type="tel"] {
     width: 400px;
     height: 50px;
-    position: relative;
-    z-index: 1;
-    background-color: hsla(0, 0%, 100%, 0.4);;
-    padding: 0;
+    background-color: hsla(0, 0%, 100%, 0.4);
     border: 2px solid hsla(0, 0%, 100%, 1);
     border-radius: 10px;
-    position: relative;
+    padding: 0 16px;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 16px;
+    color: var(--text-default);
 }
-section.form form textarea{
-    height: unset;
-    width: 100%;
-    max-width: 718px;
+
+section.form form input::placeholder {
+    color: rgba(0, 0, 0, 0.3);
 }
-section.form form input[type="checkbox"]{
+
+/* Grouped inputs like Name (Sei/Mei) */
+section.form .input-group-name {
+    display: flex;
+    gap: 10px;
+    width: 400px;
+}
+
+section.form .input-group-name input {
+    width: 100% !important;
+}
+
+/* Agreement Section in contact form */
+section.form .agreement-row {
+    display: flex;
+    flex-direction: column;
+    padding-left: 245px;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+section.form .agreement-text {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+section.form .agreement-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+section.form .agreement-checkbox input[type="checkbox"] {
     width: 26px;
     height: 26px;
-    border-radius: unset;
-    border: 2px solid hsla(0, 0%, 100%, 1) !important;
-    outline: unset;
-    margin: 0px;
-    margin-top: 10px;
-    position: relative;
+    border: 2px solid hsla(0, 0%, 100%, 1);
+    margin: 0;
+    cursor: pointer;
 }
-section.form form input[type="checkbox"]::after{
-    position: absolute;
-    left: 58px;
-    top: 4px;
-    content: '弊社プライバシーポリシーを読み、それに同意する。';
-    width: 350px;
-    font-size: 14px;
-}
-section.form .form-cta{
+
+section.form .form-cta {
     width: 100%;
+    display: flex;
     justify-content: center;
-    margin-top: 47px;
-    margin-bottom: 55px;
+    margin-top: 40px;
+    margin-bottom: 50px;
 }
-section.form .form-cta button{
-    width: 160px;
+
+section.form .form-cta button {
+    width: 180px;
     height: 50px;
     background-color: hsla(0, 0%, 31%, 1);
+    color: white;
     border: none;
     border-radius: 40px;
-}
-section.form .form-cta button a{
-    color: white;
     font-size: 14px;
-    letter-spacing: 10px;
     font-weight: 700;
-    text-decoration: none;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: opacity 0.3s;
 }
-@media (max-width: 900px){
+
+section.form .form-cta button:hover {
+    opacity: 0.8;
+}
+
+@media (max-width: 900px) {
     section.form form {
         padding-left: unset;
-        gap: 0px;
-    }
-    section.form form label{
-        position: static;
-        margin-bottom: 15px;
-        height: 27px;
-    }
-    section.form form label::after{
-        left: unset;
-        position: relative;
-        top: -23px;
-        left: calc(100% + 14px);
-    }
-    section.form form input, section.form form textarea{
-        width: 100%;
-        margin-bottom: 26px;
-    }
-   section.form .bg-text{
-    font-size: 380px;
-    top: 8%;
-    }
-    section.form form input[type="checkbox"]{
-        left: 20px;
-       
-    }
-    section.form form input[type="checkbox"]::after{
-         width: 230px;
+        gap: 20px;
     }
 
-    section.form  .form-title-wrapper{
-        flex-direction:column;
+    section.form .form-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    section.form .form-row label {
+        width: 100%;
+        margin-bottom: 10px;
+        padding-top: 0;
+        justify-content: flex-start;
+    }
+
+    section.form .form-row label.required::after {
+        position: static;
+        margin-left: 14px;
+        top: unset;
+        left: unset;
+    }
+
+    section.form form input[type="text"],
+    section.form form input[type="email"],
+    section.form form input[type="tel"],
+    section.form .input-group-name {
+        width: 100%;
+    }
+
+    section.form .bg-text {
+        font-size: 20vw;
+        top: 10%;
+    }
+
+    section.form .form-title-wrapper {
+        flex-direction: column;
         justify-content: unset;
         align-items: start;
         height: fit-content;
-        margin-bottom: 70px;
+        margin-bottom: 50px;
     }
-    section.form  .form-title-wrapper h3{
-        line-height: 74px;
-        font-size: 16px;
-        font-weight: 500;
+
+    section.form .form-title-wrapper h3 {
+        font-size: 24px;
         letter-spacing: 10px;
+        margin-bottom: 10px;
     }
-    section.form  .form-title-wrapper p{
+
+    section.form .form-title-wrapper p {
         font-size: 14px;
         text-align: start;
-        line-height: 100%;
-        letter-spacing: unset;
     }
 }
 
-@media (max-width: 400px){
-    section.form form input[type="checkbox"]::after{
-         width: 180px;
+@media (max-width: 440px) {
+    section.form .input-group-name {
+        gap: 5px;
     }
-
 }
 
-section.contact_download{
+section.contact_download {
     position: relative;
     background-position: 50% 50%;
     background-repeat: no-repeat;
@@ -304,46 +341,81 @@ section.contact_download{
     justify-content: center;
     overflow: hidden;
     background-color: #FFF2F0;
-    
+
 }
-section.contact_download .cd_wrapper{
-   gap: 73px;
-   margin: 108px 0px;
+
+section.contact_download .cd_wrapper {
+    gap: 73px;
+    margin: 108px 0px;
 }
-section.contact_download button{
+
+section.contact_download button {
     width: 100%;
     height: 143px;
     border-radius: 31px;
     background-color: white;
     border: none;
 }
-section.contact_download button a{
+
+section.contact_download button a {
     width: 100%;
     align-items: center;
     text-decoration: none;
     line-height: 30px;
 }
-section.contact_download button span{
+
+section.contact_download button span {
     width: fit-content;
 }
-section.contact_download button span:nth-child(1){
+
+section.contact_download button span:nth-child(1) {
     font-size: 48px;
     color: var(--text-default);
     font-weight: 600;
     font-family: 'Outfit';
 
     line-height: 52px;
-    
+
 }
-section.contact_download button span:nth-child(2){
+
+section.contact_download button span:nth-child(2) {
     font-size: 14px;
 }
-@media (max-width: 900px){
-    section.contact_download{
-        display: none;
+
+@media (max-width: 900px) {
+    section.contact_download {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 999;
+        background-color: rgba(255, 255, 255, 0.3);
+        margin: 0;
+        padding: 10px 0;
     }
-    section.contact_download .cd_wrapper{
-        flex-direction: column;
+
+    section.contact_download .cd_wrapper {
+        flex-direction: row;
+        gap: 15px;
+        margin: 0;
+        justify-content: center;
+        padding: 0 15px;
+    }
+
+    section.contact_download button {
+        height: auto;
+        padding: 12px 20px;
+        border-radius: 30px;
+    }
+
+    section.contact_download button span:nth-child(1) {
+        font-size: 18px;
+        line-height: 1.2;
+    }
+
+    section.contact_download button span:nth-child(2) {
+        font-size: 10px;
+        line-height: 10px;
     }
 }
 
@@ -357,60 +429,70 @@ section.contact_download button span:nth-child(2){
 
 
 
-footer .footer_wrapper{
+footer .footer_wrapper {
     width: 100%;
     height: 100px;
     align-items: center;
     justify-content: space-between;
 }
-footer .copyright{
+
+footer .copyright {
     width: 180px
 }
-footer .footer-cta{
+
+footer .footer-cta {
     width: fit-content;
     justify-content: center;
 }
-footer .footer-cta button{
+
+footer .footer-cta button {
     width: 160px;
     height: 50px;
     background-color: hsla(189, 42%, 53%, 1);
     border: none;
     border-radius: 40px;
 }
-footer .footer-cta button a{
+
+footer .footer-cta button a {
     color: white;
     font-size: 14px;
     letter-spacing: 10px;
     font-weight: 700;
     text-decoration: none;
 }
-footer figure.footer-logo{
+
+footer figure.footer-logo {
     height: 30px;
 }
-footer figure figcaption{
+
+footer figure figcaption {
     display: none;
 }
-footer figure.footer-logo img{
+
+footer figure.footer-logo img {
     height: 30px;
     object-fit: cover;
 }
-@media (max-width: 900px){
-    
-    footer .footer_wrapper{
+
+@media (max-width: 900px) {
+
+    footer .footer_wrapper {
         height: fit-content;
         padding-top: 32px;
         padding-bottom: 14px;
         flex-direction: column;
         align-items: center;
     }
-    footer .footer_wrapper figure{
+
+    footer .footer_wrapper figure {
         margin-bottom: 23px;
     }
-    footer .footer_wrapper .copyright{
+
+    footer .footer_wrapper .copyright {
         margin-bottom: 35px;
     }
-    footer .footer_wrapper button{
+
+    footer .footer_wrapper button {
         height: 45px;
     }
 }
-

@@ -190,3 +190,4 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(animateStreetlights, 700);
   setTimeout(animatePeopleAndVehicles, 600);
 });
+

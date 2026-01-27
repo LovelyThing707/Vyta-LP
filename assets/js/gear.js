@@ -5,10 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const markers = document.querySelectorAll('.step-marker');
     const markerContents = document.querySelectorAll('.marker-content');
     const pageWrapper = document.querySelector('.page-wrapper');
-   
+
     const stepAngle = 60; // 外円のステップ角度 (360/6)
     const gearStepAngle = 45; // ギアのステップ角度 (360/8)
-   
+
     let isOpening = true;
     let hasStarted = false; // Track if animation has started
 
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
             span.style.transitionDelay = `${0.6 + (i * 0.05)}s`;
             title.appendChild(span);
         });
-        if(subSpan) {
+        if (subSpan) {
             title.appendChild(subSpan);
         }
     });
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
             centerGear.classList.remove('opening-animation');
             centerGear.classList.add('interactive');
             centerGear.style.transform = `translate(-50%, -50%) rotate(0deg)`;
-           
+
             // マーカーのアニメーションリセット
             markerContents.forEach((el) => {
                 el.style.animation = 'none';
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 3. アニメーション制御関数 ---
     const updateAnimation = () => {
-        if(isOpening || !hasStarted) return;
+        if (isOpening || !hasStarted) return;
 
         // Check if page-wrapper is still in viewport
         const wrapperRect = pageWrapper.getBoundingClientRect();
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const scrollY = window.scrollY;
         const windowHeight = window.innerHeight;
         const sectionHeight = windowHeight;
-       
+
         // アクティブセクション判定
         let activeIndex = 0;
         sections.forEach((section, index) => {
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const center = rect.top + rect.height / 2;
             const dist = Math.abs(windowHeight / 2 - center);
             if (center > 0 && center < windowHeight && dist < windowHeight / 3) {
-                 activeIndex = index;
+                activeIndex = index;
             }
         });
 
@@ -125,11 +125,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const wrapperTop = pageWrapper.offsetTop;
         const relativeScroll = Math.max(0, scrollY - wrapperTop);
         const floatIndex = Math.max(0, relativeScroll / sectionHeight);
-       
+
         // 外円の回転 (反時計回り)
         const currentCircleRotation = -(floatIndex * stepAngle);
         rotatingCircle.style.transform = `translate(-50%, -50%) rotate(${currentCircleRotation}deg)`;
-       
+
         // ギアの回転 (反時計回り・8歯ペース)
         const currentGearRotation = -(floatIndex * gearStepAngle);
         centerGear.style.transform = `translate(-50%, -50%) rotate(${currentGearRotation}deg)`;
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const counterRotation = -currentCircleRotation - initialAngles[index];
             content.style.transform = `rotate(${counterRotation}deg)`;
         });
-       
+
         // クラス付与
         markers.forEach((marker, index) => {
             if (index === activeIndex) {
@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', updateAnimation);
     window.addEventListener('resize', updateAnimation);
-   
+
     // Initialize first section after opening animation completes
     setTimeout(() => {
         if (hasStarted && !isOpening) {
@@ -170,20 +170,20 @@ const sectionTitle = document.querySelector('.section-title');
 const wrapper = document.querySelector('.page-wrapper');
 
 const observer = new IntersectionObserver(
-  ([entry]) => {
-    if (entry.isIntersecting) {
-      if (flowText) flowText.classList.add('is-visible');
-      if (sectionTitle) sectionTitle.classList.add('is-visible');
-    } else {
-      if (flowText) flowText.classList.remove('is-visible');
-      if (sectionTitle) sectionTitle.classList.remove('is-visible');
+    ([entry]) => {
+        if (entry.isIntersecting) {
+            if (flowText) flowText.classList.add('is-visible');
+            if (sectionTitle) sectionTitle.classList.add('is-visible');
+        } else {
+            if (flowText) flowText.classList.remove('is-visible');
+            if (sectionTitle) sectionTitle.classList.remove('is-visible');
+        }
+    },
+    {
+        threshold: 0.1 // Show when at least 10% of wrapper is visible
     }
-  },
-  {
-    threshold: 0.1 // Show when at least 10% of wrapper is visible
-  }
 );
 
 if (wrapper) {
-  observer.observe(wrapper);
+    observer.observe(wrapper);
 }

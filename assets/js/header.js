@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const hamBtn = document.querySelector(".ham-btn");
   const hamList = document.querySelector(".ham-list");
   const body = document.body;
+  const hNav = document.querySelector(".h-nav");
 
   // Create overlay element
   const overlay = document.createElement("div");
@@ -39,4 +40,24 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+
+  // Show h-nav after scrolling 100vh
+  const handleScroll = () => {
+    const scrollY = window.scrollY || window.pageYOffset;
+    const viewportHeight = window.innerHeight;
+    
+    if (hNav) {
+      if (scrollY >= viewportHeight) {
+        hNav.classList.add("h-nav-visible");
+      } else {
+        hNav.classList.remove("h-nav-visible");
+      }
+    }
+  };
+
+  // Check on initial load
+  handleScroll();
+
+  // Listen to scroll events
+  window.addEventListener("scroll", handleScroll);
 });

@@ -369,14 +369,14 @@ body {
 
 .bg-flow-text {
     position: fixed;
-    right: 2%;
+    right: 100px;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateX(50%) translateY(-50%) rotate(-90deg);
+    transform-origin: center;
     font-size: min(15rem, 20vw);
     font-weight: 900;
     color: rgba(255, 255, 255, 0.4);
-    writing-mode: vertical-rl;
-    text-orientation: upright;
+    white-space: nowrap;
     pointer-events: none;
     z-index: 0;
     opacity: 0;
