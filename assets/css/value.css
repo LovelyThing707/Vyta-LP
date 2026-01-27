@@ -155,9 +155,10 @@
 }
 
 .value-item-content-description-highlight {
-  font-weight: bold;
+  font-weight: medium;
   font-size: 18px;
-  color: #56ABBA;
+  color: #4E4E4E;
+  background-color: #B6E7EF;
 }
 
 .tri-icon {
