@@ -108,7 +108,7 @@
   font-weight: bold;
   font-family: "Outfit";
   color: #FFFFFF;
-  line-height: 1.2;
+  line-height: 1;
   white-space: nowrap;
   display: inline-block;
   position: absolute;
@@ -259,6 +259,9 @@
   #solution-item-content-title-3 {
     line-height: 1 !important;
   }
+  .solution-title {
+    top: 80px;
+  }
 }
 
 @media (max-width: 1280px) {
@@ -270,10 +273,16 @@
     line-height: 2.5 !important;
   }
   .solution-slid-item2 {
-    width: calc(100% - 80px) !important;
+    width: calc(100% - 60px) !important;
   }
   .solution-slid-item3 {
-    width: calc(100% - 160px) !important;
+    width: calc(100% - 120px) !important;
+  }
+  .solution-slid-item-title {
+    width: 60px;
+  }
+  .solution-item-content-title {
+    font-size: 60px !important;
   }
 }
 
@@ -302,6 +311,9 @@
   .solution-slid-item3 {
     z-index: 3 !important;
     width: calc(100% - 100px) !important;
+  }
+  .solution-title {
+    top: 75px;
   }
 }
 
@@ -444,7 +456,58 @@
     font-size: 16px;
     letter-spacing: 5px;
     left: 15px;
-    top: 80px;
+    top: 70px;
+  }
+}
+
+@media (max-width: 425px) {
+  .solution-slid-item2 {
+    z-index: 3 !important;
+    width: calc(100% - 30px) !important;
+  }
+
+  .solution-slid-item3 {
+    z-index: 3 !important;
+    width: calc(100% - 60px) !important;
+  }
+  .solution-item-label {
+    padding-block: 15px;
+    font-size: 18px;
+    top: 2px;
+    right: 40px;
+  }
+  .slid-item-order {
+    font-size: 18px;
+    line-height: 1;
+  }
+  .solution-slid-item-title {
+    padding-block: 15px;
+    width: 30px !important;
+  }
+  .solution-item-content-title {
+    font-size: 35px !important;
+  }
+  .solution-item-container-img img {
+    height: 180px;
+  }
+  .solution-item-content-label {    
+    margin-bottom: 50px !important;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 390px) {
+  .solution-slid-item2 {
+    z-index: 3 !important;
+    width: calc(100% - 30px) !important;
+  }
+
+  .solution-slid-item3 {
+    z-index: 3 !important;
+    width: calc(100% - 60px) !important;
+  }
+  .solution-slid-item-title {
+    width: 30px;
   }
 }
 

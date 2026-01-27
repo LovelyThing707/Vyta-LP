@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // The longest animation is the move animation (100s), but we can trigger earlier
   // Adjust this duration based on when you want the fade-out to start
   const animationDuration = 0; // 100 seconds (matching the move animation)
-  const transitionDelay = 500; // 0.5 second buffer for smooth transition
+  const transitionDelay = 5000; // 0.5 second buffer for smooth transition
   const totalDuration = animationDuration + transitionDelay;
 
   setTimeout(() => {

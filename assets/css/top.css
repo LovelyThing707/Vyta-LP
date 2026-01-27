@@ -339,7 +339,7 @@
   right: 300px;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1024px) {
   .fv .fv-img-box {
     max-width: 1000px;
   }
@@ -354,48 +354,56 @@
   }
 
   .fv-img-box img:nth-of-type(16) {
-    left: 270px;
+    left: 200px;
     width: 30px;
   }
 
   .fv-img-box img:nth-of-type(17) {
-    right: 270px;
+    right: 200px;
     width: 30px;
   }
 
   .fv-img-box .truckOne {
     width: 90px;
-    bottom: 145px;
+    bottom: 0px;
     left: 220px;
   }
 
   .fv-img-box .truckTwo {
-    width: 75px;
-    bottom: 35px;
+    width: 80px;
+    bottom: 0px;
+    right: 220px
   }
 
   .fv-img-box .manTwo {
-    left: 300px;
+    left: 100px;
+    top: 350px;
   }
 
   .fv-img-box .manThree {
     left: 390px;
+    bottom: -200px;
   }
 
   .fv-img-box .manFour {
-    right: 330px;
+    right: 200px;
   }
 
   .fv-img-box .homeTwo {
-    right: 110px;
+    right: 100px;
   }
 
   .fv-img-box .homeThree {
-    right: 25px;
+    right: 0px;
   }
 
   .fv-img-box .manFive {
-    right: 175px;
+    right: 150px;
+  }
+
+  .fv-img-box .manOne {
+    top: 350px;
+    left: 150px;
   }
 
   .fv-img-box .treeTwo {
@@ -520,7 +528,7 @@
   }
 
   .fv .fv-txt {
-    bottom: 35px;
+    bottom: 100px;
     left: 16px;
     gap: 10px;
   }
@@ -532,7 +540,6 @@
 
   .fv .fv-scroll {
     right: 15px;
-    bottom: 35px;
     width: 27px;
   }
 
@@ -661,7 +668,7 @@
   }
 
   .title-box {
-    height: 40vh;
+    height: 100vh;
     padding-top: 60px;
   }
 }
@@ -684,8 +691,8 @@
 }
 
 .slide-item {
-  width: 350px;
-  height: fit-content;
+  width: 350px !important;
+  height: 420px !important;
   position: relative;
   padding: 35px 20px;
   background: rgba(255, 255, 255, 0.3);
@@ -693,6 +700,11 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+}
+
+.swiper-backface-hidden .swiper-slide {
+  width: 350px !important;
+  height: 420px !important;
 }
 
 .slide-item-content {
@@ -708,14 +720,14 @@
 
 .slide-item-img {
   width: 100%;
-  height: 100%;
+  height: 250px !important;
   position: relative;
   overflow: hidden;
 }
 
 .slide-item-img img {
   width: 100%;
-  height: 100%;
+  height: 250px !important;
   object-fit: cover;
 }
 
@@ -894,4 +906,84 @@
 
 section.contact_download .cd_wrapper {
   display: flex;
+}
+
+.fv-scroll-container {
+  height: 200vh;
+  position: relative;
+  /* Ensure it sits above or below correctly */
+  z-index: 10;
+}
+
+/* Sticky Wrapper */
+/* This stays fixed in the viewport while scrolling through the container */
+.fv-sticky-wrapper {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Slides */
+.fv-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out, transform 0.8s ease-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  transform: scale(1.05);
+  /* Start slightly zoomed in */
+}
+
+/* Active State for Slides */
+.fv-slide.active {
+  opacity: 1;
+  transform: scale(1);
+  /* Zoom to normal */
+  z-index: 2;
+}
+
+/* Backgrounds */
+.fv-slide-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* Text Content in Slides */
+.fv-content h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease-out 0.2s;
+}
+
+.fv-content p {
+  font-size: 1.5rem;
+  font-weight: 400;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease-out 0.4s;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.fv-slide.active .fv-content h1,
+.fv-slide.active .fv-content p {
+  opacity: 1;
+  transform: translateY(0);
 }

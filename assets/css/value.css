@@ -105,7 +105,7 @@
 .value-item-content-title {
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   position: relative;
   z-index: 2;
@@ -216,6 +216,10 @@ is-sp-show {
     padding-right: 50px;
   }
 
+  .value-item-content-title {
+    align-items: center;
+  }
+
   .value-item-content-title-icon {
     width: 200px;
     height: 200px;
@@ -228,6 +232,12 @@ is-sp-show {
     left: -325px;
     top: 40%;
     display: none;
+  }
+  
+  .value-item-number {
+    width: 80px;
+    height: 80px;
+    font-size: 20px;
   }
 }
 
@@ -252,6 +262,17 @@ is-sp-show {
     left: 150px;
     letter-spacing: 10px;
   }
+   .value-item-content-title-icon {
+    position: absolute;
+    right: 0;
+    z-index: -1;
+   }
+   .value-item-content {
+    gap: 60px;
+   }
+   .value-item-content-description {
+    z-index: 5;
+   }
 }
 
 @media (max-width: 768px) {
@@ -260,7 +281,7 @@ is-sp-show {
   }
 
   .value-item-content-title p {
-    font-size: 48px;
+    font-size: 36px;
     font-weight: bolder;
     z-index: 2;
     line-height: 2.5;
@@ -277,7 +298,7 @@ is-sp-show {
   }
 
   .value-item-content {
-    gap: 10px;
+    gap: 40px;
   }
 
   .value-item {
@@ -338,5 +359,14 @@ is-sp-show {
 
   .is-sp-show {
     display: block;
+  }
+}
+
+@media (max-width: 375px) {
+  .value-item-content-description {
+      line-height: 24px;
+  }
+  .value-item-content-title p {
+    font-size: 20px;
   }
 }

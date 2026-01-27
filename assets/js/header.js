@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const whiteHamBtn = document.querySelector(".white-btn");
   const blackLogo = document.querySelector(".black-logo");
   const whiteLogo = document.querySelector(".white-logo");
+  const header = document.querySelector("header");
 
   // Create overlay element
   const overlay = document.createElement("div");
@@ -74,6 +75,13 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         blackLogo.classList.remove("black-logo-visible");
         whiteLogo.classList.remove("white-logo-visible");
+      }
+    }
+    if (header) {
+      if (scrollY >= viewportHeight) {
+        header.classList.add("active");
+      } else {
+        header.classList.remove("active");
       }
     }
   };

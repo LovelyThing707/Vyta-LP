@@ -3,7 +3,7 @@ const swiper = new Swiper(".mySwiper", {
   centeredSlides: true,
 
   // This controls how slow/smooth the movement is
-  speed: 10000, // higher = slower, smoother
+  speed: 5000, // higher = slower, smoother
 
   autoplay: {
     delay: 0, // must be 0 for continuous motion
@@ -23,8 +23,8 @@ const swiper = new Swiper(".mySwiper", {
   },
 
   breakpoints: {
-    0: {
-      slidesPerView: 1,
+    375: {
+      slidesPerView: 2,
       spaceBetween: 0
     },
     640: {

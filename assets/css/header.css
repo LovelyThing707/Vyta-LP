@@ -9,6 +9,11 @@ header {
 header.header-visible {
   transform: translateY(0);
 }
+
+
+header.active {
+  background-color: hsla(0, 0%, 100%, 0.5);
+}
 .header-container {
   width: 100%;
   display: flex;
@@ -48,8 +53,8 @@ header.header-visible {
   }
 }
 .header-btn-group .h-nav a {
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 12px;
+  font-weight: bolder;
 }
 .header-btn-group .h-btns {
   display: flex;
@@ -57,10 +62,10 @@ header.header-visible {
   gap: 5px;
 }
 .header-btn-group .h-btns a {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: bold;
   color: #FFFFFF;
-  padding: 5px 10px;
+  padding: 10px 25px;
   border-radius: 100px;
   background-color: #969696;
   line-height: 1.2;
@@ -152,6 +157,12 @@ header.header-visible {
 }
 .white-logo-visible {
   display: none !important;
+}
+
+@media (max-width: 1280px) {
+  .header-btn-group {
+    gap: 25px;
+  }
 }
 
 @media (max-width: 768px) {

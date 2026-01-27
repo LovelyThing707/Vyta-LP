@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const valueItems = document.querySelectorAll(".value-item");
   const triIcons = document.querySelectorAll(".tri-icon");
+  
 
   if (valueItems.length === 0) return;
 
@@ -14,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const width = window.innerWidth;
   
     if (width >= 1520) return 370;  // Desktop
+    if (width >= 1440) return 80;  // Desktop
     if (width >= 1280) return 10;  // Desktop
     if (width >= 1024) return 20;  // Small desktop
     if (width >= 640)  return 20;  // Tablet
@@ -44,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (width >= 1024) return 200;  // Small desktop
     if (width >= 640)  return 300;  // Tablet
     if (width >= 440)  return 300;  // Large mobile
-    if (width >= 320)  return 400;  // Large mobile
+    if (width >= 320)  return 450;  // Large mobile
   }
 
   let AUTO_INITIAL_Y_POSITION = getInitialYPosition();
@@ -54,9 +56,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (width >= 1520) return 300;  // Desktop
     if (width >= 1280) return 300;  // Desktop
     if (width >= 1024) return 300;  // Small desktop
+    if (width >= 768)  return 300;  // Small desktop
     if (width >= 640)  return 400;  // Tablet
-    if (width >= 440)  return 1;  // Large mobile
-    if (width >= 320)  return 450;  // Large mobile
+    if (width >= 425)  return 350;  // Large mobile
+    if (width >= 320)  return 350;  // Large mobile
   }
 
   let AUTO_ANIMATION_DURATION = animationDuration();
@@ -66,6 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (width >= 1520) return -250;  // Desktop
     if (width >= 1280) return -250;  // Desktop
     if (width >= 1024) return -250;  // Small desktop
+    if (width >= 768)  return -150;  // Small desktop
     if (width >= 640)  return -100;  // Tablet
     if (width >= 440)  return -100;  // Large mobile
     if (width >= 320)  return -50;  // Large mobile
@@ -79,6 +83,30 @@ document.addEventListener("DOMContentLoaded", () => {
     if (width >= 320)  return 0.8;  // Large mobile
   }
   let AUTO_SCALE = getScale();
+
+  function getTriIconYPosition() {
+    const width = window.innerWidth;
+    if (width >= 1020) return 200;  // Desktop
+    if (width >= 320)  return 500;  // Large mobile
+  }
+  
+  let AUTO_TRI_ICON_Y_POSITION = getTriIconYPosition();
+
+  function getTriIconLeftPosition() {
+    const width = window.innerWidth;
+    if (width >= 1281) return LEFT_OFFSET + 55;  // Desktop
+    if (width >= 1024) return LEFT_OFFSET + 40;  // Desktop
+    if (width >= 320)  return LEFT_OFFSET + 25;  // Large mobile
+  }
+
+  function getNumberSpacing() {
+    const width = window.innerWidth;
+    if (width >= 1281) return -80;  // Desktop
+    if (width >= 1024) return -100;  // Desktop
+    if (width >= 390)  return 0;  // Large mobile
+  }
+
+  const AUTO_NUMBER_SPACING = getNumberSpacing();
   // =============================
   // CONFIG — TUNE FEEL HERE
   // =============================
@@ -97,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const number = item.querySelector(".value-item-number");
     const content = item.querySelector(".value-item-content");
 
-    const bottomPosition = BOTTOM_OFFSET + index * -80;
+    const bottomPosition = BOTTOM_OFFSET + index * AUTO_NUMBER_SPACING;
 
     gsap.set(item, {
       opacity: 1,
@@ -125,8 +153,8 @@ document.addEventListener("DOMContentLoaded", () => {
   triIcons.forEach((icon) => {
     gsap.set(icon, { 
       opacity: 0,
-      left: LEFT_OFFSET + 55,
-      y: -300,
+      left: getTriIconLeftPosition(),
+      y: AUTO_TRI_ICON_Y_POSITION,
       position: "fixed",
       zIndex: 10,
     });
@@ -184,7 +212,7 @@ document.addEventListener("DOMContentLoaded", () => {
       triIcons,
       {
         opacity: 1,
-        y: yDistance + 700,
+        y: AUTO_TRI_ICON_Y_POSITION,
         duration: animationDuration * 0.5,
         ease: "power3.out",
       },
@@ -235,7 +263,7 @@ document.addEventListener("DOMContentLoaded", () => {
       triIcons,
       {
         opacity: 1,
-        y: yDistance + 800,
+        y: AUTO_TRI_ICON_Y_POSITION,
         duration: animationDuration * 0.5,
         ease: "power3.out",
       },

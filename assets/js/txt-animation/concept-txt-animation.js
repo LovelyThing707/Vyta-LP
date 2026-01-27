@@ -1,85 +1,105 @@
 /*
  * Copyright MIT © <2013> <Francesco Trillini>
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
- * documentation files (the "Software"), to deal in the Software without restriction, including without limitation 
- * the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and 
- * to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- 
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
- * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR 
- * PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE 
- * FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, 
- * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * Modified for responsive + mobile-friendly ambient animation
+ * Unified version for all text animations: CONCEPT, VALUE, CASE STUDY, SOLUTION, FLOW, ABOUT US
  */
 
 var Typo = {}; 
- 
+
 (function(Typo) {
 	
-	var Typo = window.Typo || {}, canvas, context, mouse = { x: -99999, y: -99999 }, nodes = [], dirtyRegions = [], inputForce = force = 0, input = forceFactor = false, FPS = 60, resizeTimer = null;
+	// Configuration for each section
+	var sections = [
+		{
+			selector: '.concept .title-box',
+			text: 'CONCEPT',
+			name: 'CONCEPT',
+			hasLineBreak: false
+		},
+		{
+			selector: '.value-txt .title-box',
+			text: 'VALUE',
+			name: 'VALUE',
+			hasLineBreak: false
+		},
+		{
+			selector: '.study .title-box',
+			text: 'CASE STUDY',
+			name: 'CASE STUDY',
+			hasLineBreak: true,
+			breakWidth: 425
+		},
+		{
+			selector: '.solution .title-box',
+			text: 'SOLUTION',
+			name: 'SOLUTION',
+			hasLineBreak: false
+		},
+		{
+			selector: '.flow .title-box',
+			text: 'FLOW',
+			name: 'FLOW',
+			hasLineBreak: false
+		},
+		{
+			selector: '.about .title-box',
+			text: 'ABOUT US',
+			name: 'ABOUT US',
+			hasLineBreak: true,
+			breakWidth: 425
+		}
+	];
 
-	// Default values
-	var text = 'CONCEPT', interactive = true;
-	
-	/*
-	 * Get responsive font size based on screen width.
-	 */
-	
+	// Store instances for each section
+	var instances = {};
+
+	// ==========================
+	// RESPONSIVE HELPERS
+	// ==========================
+
+	function isMobile() {
+		return window.innerWidth < 768;
+	}
+
+	function getTextForScreen(section, canvasWidth) {
+		if (section.hasLineBreak && canvasWidth <= section.breakWidth) {
+			if (section.name === 'CASE STUDY') {
+				return 'CASE\nSTUDY';
+			} else if (section.name === 'ABOUT US') {
+				return 'ABOUT\nUS';
+			}
+		}
+		return section.text;
+	}
+
 	function getResponsiveFontSize(canvasWidth) {
-		// Base font size is 250px for desktop (based on CSS)
-		// Scale down proportionally for smaller screens
-		if (canvasWidth <= 768) {
-			// Mobile: scale to about 40% of base
-			return Math.max(80, canvasWidth * 0.15);
-		} else if (canvasWidth <= 950) {
-			// Tablet: scale to about 60% of base
-			return Math.max(120, canvasWidth * 0.18);
-		} else if (canvasWidth <= 1200) {
-			// Small desktop: scale to about 80% of base
-			return Math.max(180, canvasWidth * 0.2);
-		} else {
-			// Desktop: use proportional scaling
-			return Math.min(250, canvasWidth / 5);
-		}
+		if (canvasWidth <= 768) return Math.max(80, canvasWidth * 0.15);
+		if (canvasWidth <= 950) return Math.max(120, canvasWidth * 0.18);
+		if (canvasWidth <= 1200) return Math.max(180, canvasWidth * 0.2);
+		return Math.min(250, canvasWidth / 5);
 	}
-	
-	/*
-	 * Get responsive particle spacing based on screen width.
-	 */
-	
+
 	function getResponsiveParticleSpacing(canvasWidth) {
-		// Base spacing is 12px
-		// Scale down for smaller screens
-		if (canvasWidth <= 768) {
-			return 8; // Mobile: smaller spacing
-		} else if (canvasWidth <= 950) {
-			return 10; // Tablet: medium spacing
-		} else {
-			return 12; // Desktop: default spacing
-		}
+		if (canvasWidth <= 768) return 8;
+		if (canvasWidth <= 950) return 10;
+		return 12;
 	}
-		
-	/*
-	 * Init.
-	 */
-	
-	Typo.init = function() {
-		
-		var titleBox = document.querySelector('.concept .title-box');
-		
+
+	// ==========================
+	// INIT FOR EACH SECTION
+	// ==========================
+
+	function initSection(section) {
+		var titleBox = document.querySelector(section.selector);
 		if (!titleBox) {
-			console.error("CONCEPT title-box not found");
-			return;
+			console.error(section.name + " title-box not found");
+			return null;
 		}
-		
-		canvas = document.createElement('canvas');
-			
+
+		var canvas = document.createElement('canvas');
 		canvas.width = titleBox.offsetWidth;
 		canvas.height = titleBox.offsetHeight;
-		
+
 		canvas.style.position = 'absolute';
 		canvas.style.top = 0;
 		canvas.style.left = 0;
@@ -87,409 +107,299 @@ var Typo = {};
 		canvas.style.height = '100%';
 		canvas.style.zIndex = 1;
 		canvas.style.pointerEvents = 'auto';
-		
+
 		titleBox.appendChild(canvas);
-		
-		// Browser supports canvas?
-		if(!!(Typo.gotSupport())) {
-		
-			context = canvas.getContext('2d');
-		
-			// Events
-			if('ontouchstart' in window) {
-				
-				canvas.addEventListener('touchstart', Typo.onTouchStart, false);
-				canvas.addEventListener('touchend', Typo.onTouchEnd, false);
-				canvas.addEventListener('touchmove', Typo.onTouchMove, false);
-				
-			}	
-			
-			else {
-				
-				canvas.addEventListener('mousedown', Typo.onMouseDown, false);
-				canvas.addEventListener('mouseup', Typo.onMouseUp, false);
-				canvas.addEventListener('mousemove', Typo.onMouseMove, false);
-				
-			}
-			
-			window.onresize = onResize;
-		
-			Typo.buildTexture();
-			
-		}
-		
-		else {
-		
+
+		if (!canvas.getContext || !canvas.getContext('2d')) {
 			console.error("Sorry, your browser doesn't support canvas.");
-		
+			return null;
 		}
-        
-	};
-	
-	/*
-	 * On resize window event with debounce.
-	 */
-	
-	function onResize() {
-		
-		// Clear existing timer
-		if (resizeTimer) {
-			clearTimeout(resizeTimer);
+
+		var context = canvas.getContext('2d');
+		var interactive = !isMobile();
+		var mouse = { x: -99999, y: -99999 };
+		var nodes = [];
+		var dirtyRegions = [];
+		var inputForce = 0;
+		var force = 0;
+		var input = false;
+		var forceFactor = false;
+		var resizeTimer = null;
+
+		// Update interaction mode
+		function updateInteractionMode() {
+			interactive = !isMobile();
+			forceFactor = false;
+			inputForce = 0;
 		}
-		
-		// Debounce resize event
-		resizeTimer = setTimeout(function() {
-			var titleBox = document.querySelector('.concept .title-box');
-			if (titleBox && canvas) {
+
+		// Resize handler
+		function onResize() {
+			if (resizeTimer) clearTimeout(resizeTimer);
+
+			resizeTimer = setTimeout(function() {
+				var titleBox = document.querySelector(section.selector);
+				if (!titleBox || !canvas) return;
+
+				updateInteractionMode();
+
 				var newWidth = titleBox.offsetWidth;
 				var newHeight = titleBox.offsetHeight;
-				
-				// Only update if size actually changed
+
 				if (canvas.width !== newWidth || canvas.height !== newHeight) {
 					canvas.width = newWidth;
 					canvas.height = newHeight;
-					
-					// Reset nodes and dirty regions to trigger re-render
 					nodes = [];
 					dirtyRegions = [];
-					input = true; // Trigger texture rebuild
+					input = true;
 				}
-			}
-		}, 150); // 150ms debounce
-			
-	}
-	
-	/*
-	 * Check if browser supports canvas element.
-	 */
-	
-	Typo.gotSupport = function() {
-	
-		return canvas.getContext && canvas.getContext('2d');
-	
-	};
-	
-	/*
-	 * Mouse down event.
-	 */
-	
-	Typo.onMouseDown = function(event) {
-	
-		event.preventDefault();
-		
-		forceFactor = true;
-	
-	};
-	
-	/*
-	 * Mouse up event.
-	 */
-	
-	Typo.onMouseUp = function(event) {
-	
-		event.preventDefault();
-		
-		forceFactor = false;
-	
-	};
-	
-	/*
-	 * Mouse move event.
-	 */
-	
-	Typo.onMouseMove = function(event) {
-	
-		event.preventDefault();
-	
-		var rect = canvas.getBoundingClientRect();
-		mouse.x = event.clientX - rect.left;
-		mouse.y = event.clientY - rect.top;
-			
-	};
-	
-	/*
-	 * Touch start event.
-	 */
-	
-	Typo.onTouchStart = function(event) {
-	
-		event.preventDefault();
-
-		forceFactor = true;
-
-	};
-	
-	/*
-	 * Touch end event.
-	 */
-	
-	Typo.onTouchEnd = function(event) {
-	
-		event.preventDefault();
-		
-		forceFactor = false;
-	
-	};
-	
-	/*
-	 * Touch move event.
-	 */
-	
-	Typo.onTouchMove = function(event) {
-	
-		event.preventDefault();
-	
-		var rect = canvas.getBoundingClientRect();
-		mouse.x = event.touches[0].clientX - rect.left;
-		mouse.y = event.touches[0].clientY - rect.top;
-			
-	};
-	
-	/*
-	 * Building texture.
-	 */
-	
-	Typo.buildTexture = function() {
-		context.clearRect(0, 0, canvas.width, canvas.height);
-	
-		// Let's start by drawing the original texture
-		if(nodes.length === 0 || input) {
-			
-			// Reset input flag
-			input = false;
-			
-			// Get responsive font size
-			var fontSize = getResponsiveFontSize(canvas.width);
-			var particleSpacing = getResponsiveParticleSpacing(canvas.width);
-			
-			context.font = 'bold ' + fontSize + 'px Outfit';
-			context.fillStyle = '#FFFFFF';		
-			context.textAlign = 'center';
-			context.fillText(text, canvas.width * 0.5, canvas.height * 0.55);
-			
-			var surface = context.getImageData(0, 0, canvas.width, canvas.height);
-			
-			context.clearRect(0, 0, canvas.width, canvas.height);
-			
-			// Clear existing nodes and dirty regions
-			nodes = [];
-			dirtyRegions = [];
-			
-			for(var width = 0; width < surface.width; width += particleSpacing) {
-			
-				for(var height = 0; height < surface.height; height += particleSpacing) {
-			
-					var color = surface.data[(height * surface.width * 4) + (width * 4) - 1];
-					
-					// The pixel color is white? So draw on it...
-					if(color === 255) {	
-						
-						var x, y, radius;				
-						
-						x = canvas.width * 0.5;
-						y = canvas.height * 0.5;
-						
-						// Responsive particle radius
-						var baseRadius = canvas.width <= 768 ? 1.5 : 2;
-						var maxRadius = canvas.width <= 768 ? 3 : 5;
-						radius = baseRadius + Math.random() * (maxRadius - baseRadius);
-					
-						nodes.push({
-						
-							x: x,
-							y: y,
-							vx: 0,
-							vy: 0,
-							goalX: width,
-							goalY: height,
-							
-							radius: radius
-							
-						});
-						
-						dirtyRegions.push({
-						
-							x: x,
-							y: y,
-							
-							radius: radius
-						
-						});
-					
-					}
-					
-				}
-		
-			}
-							
+			}, 150);
 		}
-	
-		// Logic
-		Typo.clear();
-		Typo.update();
-		Typo.render();
-		
-		requestAnimFrame(Typo.buildTexture);
-	
-	};
-	
-	/*
-	 * Clear only dirty regions.
-	 */
-	
-	Typo.clear = function() {
-	
-		[].forEach.call(dirtyRegions, function(dirty, index) {
-		
-			var x, y, width, height;
-			
-			width = (2 * dirty.radius) + 4;
-            height = width;
-				
-            x = dirty.x - (width / 2);
-			y = dirty.y - (height / 2);
-			
-			context.clearRect(Math.floor(x), Math.floor(y), Math.ceil(width), Math.ceil(height));
-		
-		});
-	
-	};
-	
-	/*
-	 * Let's update the nodes.
-	 */
-	
-	Typo.update = function() {
-			
-		[].forEach.call(nodes, function(node, index) {
-			
-			if(!interactive) {
-					
-				mouse.x = canvas.width * 0.5 + Math.sin(force) * context.measureText(text).width * 0.5;
-				mouse.y = canvas.height * 0.47;
-				
-				force += 0.0001;
-			
-			}	
-					
-			var angle = Math.atan2(node.y - mouse.y, node.x - mouse.x);
-			
-			// Ease
-			node.vx += Math.cos(angle) * Typo.distanceTo(mouse, node, true) + (node.goalX - node.x) * 0.1;
-			node.vy += Math.sin(angle) * Typo.distanceTo(mouse, node, true) + (node.goalY - node.y) * 0.1;
-			
-			// Friction
-			node.vx *= 0.7;
-			node.vy *= 0.7;
-				
-			node.x += node.vx;
-			node.y += node.vy;	
 
-			if(!!forceFactor) 
-					
-				inputForce = Math.min(inputForce + 1, 2000);
-						
-			else
-					
-				inputForce = Math.max(inputForce - 1, 0);
-					
-					
-			// Check a neighborhood node
-			// Responsive connection distance
-			var connectionDistance = canvas.width <= 768 ? 30 : 50;
-			
-			for(var nextMolecule = index + 1; nextMolecule < nodes.length; nextMolecule++) {
-			
-				var otherMolecule = nodes[nextMolecule];
-				
-				// Oh we've found one!
-				if(Typo.distanceTo(node, otherMolecule) < connectionDistance) {
-					
-					context.save();
-					context.beginPath();
-					context.globalCompositeOperation = 'destination-over';
-					context.globalAlpha = 1 - Typo.distanceTo(node, otherMolecule) / (connectionDistance * 2);
-					context.lineWidth = canvas.width <= 768 ? 0.5 : 1;
-					context.strokeStyle = '#FFFFFF';
-					context.moveTo(node.x, node.y);
-					context.lineTo(otherMolecule.x, otherMolecule.y);
-					context.stroke();
-					context.closePath();
-					context.restore();
-					
+		// Input handlers
+		function onMouseDown(e) {
+			e.preventDefault();
+			forceFactor = true;
+		}
+
+		function onMouseUp(e) {
+			e.preventDefault();
+			forceFactor = false;
+		}
+
+		function onMouseMove(e) {
+			e.preventDefault();
+			var rect = canvas.getBoundingClientRect();
+			mouse.x = e.clientX - rect.left;
+			mouse.y = e.clientY - rect.top;
+		}
+
+		function onTouchStart(e) {
+			e.preventDefault();
+			forceFactor = true;
+		}
+
+		function onTouchEnd(e) {
+			e.preventDefault();
+			forceFactor = false;
+		}
+
+		function onTouchMove(e) {
+			e.preventDefault();
+			var rect = canvas.getBoundingClientRect();
+			mouse.x = e.touches[0].clientX - rect.left;
+			mouse.y = e.touches[0].clientY - rect.top;
+		}
+
+		// Events (desktop only)
+		updateInteractionMode();
+
+		if (!isMobile() && 'ontouchstart' in window) {
+			canvas.addEventListener('touchstart', onTouchStart, false);
+			canvas.addEventListener('touchend', onTouchEnd, false);
+			canvas.addEventListener('touchmove', onTouchMove, false);
+		} else if (!isMobile()) {
+			canvas.addEventListener('mousedown', onMouseDown, false);
+			canvas.addEventListener('mouseup', onMouseUp, false);
+			canvas.addEventListener('mousemove', onMouseMove, false);
+		}
+
+		window.addEventListener('resize', onResize);
+
+		// Distance calculation
+		function distanceTo(a, b, angle) {
+			var dx = a.x - b.x;
+			var dy = a.y - b.y;
+			var d = Math.sqrt(dx * dx + dy * dy);
+
+			if (angle)
+				return (1000 + (interactive ? inputForce : 0)) / (d || 1);
+			return d;
+		}
+
+		// Clear dirty regions
+		function clear() {
+			dirtyRegions.forEach(function(dirty) {
+				var size = (2 * dirty.radius) + 4;
+				context.clearRect(
+					Math.floor(dirty.x - size / 2),
+					Math.floor(dirty.y - size / 2),
+					Math.ceil(size),
+					Math.ceil(size)
+				);
+			});
+		}
+
+		// Update nodes
+		function update() {
+			nodes.forEach(function(node, index) {
+				// MOBILE = SMOOTH AMBIENT MOTION
+				if (!interactive) {
+					var displayText = getTextForScreen(section, canvas.width);
+					var textWidth = context.measureText(displayText.split('\n')[0] || displayText).width;
+					var t = Date.now() * 0.0005;
+					var radius = textWidth * 0.15;
+
+					mouse.x = canvas.width * 0.3 + Math.cos(t) * radius;
+					mouse.y = canvas.height * 0.8 + Math.sin(t * 1.3) * radius * 0.6;
 				}
-				
-			}
-		
-		});
-		
-	};
-	
-	/*
-	 * Let's render the nodes.
-	 */
-	
-	Typo.render = function() {
-			
-		[].forEach.call(nodes, function(node, index) {
-			
-			context.save();
-			context.fillStyle = '#FFFFFF';
-			context.translate(node.x, node.y);
-			context.beginPath();
-			context.arc(0, 0, node.radius, 0, Math.PI * 2);
-			context.fill();
-			context.restore();
-			
-			// Dirty regions
-			dirtyRegions[index].x = node.x;
-			dirtyRegions[index].y = node.y;
-			dirtyRegions[index].radius = node.radius;
-			
-		});
-	
-	};
-	
-	/*
-	 * Distance between two points.
-	 */
-	
-	Typo.distanceTo = function(pointA, pointB, angle) {
-	
-		var dx = Math.abs(pointA.x - pointB.x);
-		var dy = Math.abs(pointA.y - pointB.y);
-		
-		if(angle) 
-		
-			return (1000 + (interactive ? inputForce : 0)) / Math.sqrt(dx * dx + dy * dy);
-		
-		else
-			
-			return Math.sqrt(dx * dx + dy * dy);
-	
-	};
-	
-	/*
-	 * Request new frame by Paul Irish.
-	 * 60 FPS.
-	 */
-	
-	window.requestAnimFrame = (function() {
-	 
-		return  window.requestAnimationFrame       || 
-				window.webkitRequestAnimationFrame || 
-				window.mozRequestAnimationFrame    || 
-				window.oRequestAnimationFrame      || 
-				window.msRequestAnimationFrame     || 
-			  
-				function(callback) {
-			  
-					window.setTimeout(callback, 1000 / FPS);
-				
-				};
-			  
-    	})();
 
-	window.addEventListener ? window.addEventListener('load', Typo.init, false) : window.onload = Typo.init;
-	
+				var angle = Math.atan2(node.y - mouse.y, node.x - mouse.x);
+				node.vx += Math.cos(angle) * distanceTo(mouse, node, true) + (node.goalX - node.x) * 0.1;
+				node.vy += Math.sin(angle) * distanceTo(mouse, node, true) + (node.goalY - node.y) * 0.1;
+
+				node.vx *= 0.7;
+				node.vy *= 0.7;
+
+				node.x += node.vx;
+				node.y += node.vy;
+
+				if (forceFactor)
+					inputForce = Math.min(inputForce + 1, 2000);
+				else
+					inputForce = Math.max(inputForce - 1, 0);
+
+				var connectionDistance = canvas.width <= 768 ? 30 : 50;
+
+				for (var j = index + 1; j < nodes.length; j++) {
+					var other = nodes[j];
+					var dist = distanceTo(node, other);
+
+					if (dist < connectionDistance) {
+						context.save();
+						context.beginPath();
+						context.globalAlpha = 1 - dist / (connectionDistance * 2);
+						context.lineWidth = canvas.width <= 768 ? 0.5 : 1;
+						context.strokeStyle = '#FFFFFF';
+						context.moveTo(node.x, node.y);
+						context.lineTo(other.x, other.y);
+						context.stroke();
+						context.restore();
+					}
+				}
+			});
+		}
+
+		// Render nodes
+		function render() {
+			nodes.forEach(function(node, i) {
+				context.save();
+				context.fillStyle = '#FFFFFF';
+				context.beginPath();
+				context.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+				context.fill();
+				context.restore();
+
+				dirtyRegions[i].x = node.x;
+				dirtyRegions[i].y = node.y;
+			});
+		}
+
+		// Build texture
+		function buildTexture() {
+			context.clearRect(0, 0, canvas.width, canvas.height);
+
+			if (nodes.length === 0 || input) {
+				input = false;
+
+				var fontSize = getResponsiveFontSize(canvas.width);
+				var particleSpacing = getResponsiveParticleSpacing(canvas.width);
+				var displayText = getTextForScreen(section, canvas.width);
+
+				context.font = 'bold ' + fontSize + 'px Outfit';
+				context.fillStyle = '#FFFFFF';
+				context.textAlign = 'center';
+
+				// Handle multi-line text
+				var lines = displayText.split('\n');
+				if (lines.length > 1) {
+					var lineHeight = fontSize * 1.2;
+					var totalHeight = (lines.length - 1) * lineHeight;
+					var startY = canvas.height * 0.55 - (totalHeight / 2);
+
+					lines.forEach(function(line, index) {
+						var y = startY + (index * lineHeight);
+						context.fillText(line, canvas.width * 0.5, y);
+					});
+				} else {
+					context.fillText(displayText, canvas.width * 0.5, canvas.height * 0.55);
+				}
+
+				var surface = context.getImageData(0, 0, canvas.width, canvas.height);
+				context.clearRect(0, 0, canvas.width, canvas.height);
+
+				nodes = [];
+				dirtyRegions = [];
+
+				for (var w = 0; w < surface.width; w += particleSpacing) {
+					for (var h = 0; h < surface.height; h += particleSpacing) {
+						var color = surface.data[(h * surface.width * 4) + (w * 4) - 1];
+						if (color === 255) {
+							var baseRadius = canvas.width <= 768 ? 1.5 : 2;
+							var maxRadius = canvas.width <= 768 ? 3 : 5;
+							var radius = baseRadius + Math.random() * (maxRadius - baseRadius);
+
+							nodes.push({
+								x: canvas.width * 0.5,
+								y: canvas.height * 0.5,
+								vx: 0,
+								vy: 0,
+								goalX: w,
+								goalY: h,
+								radius: radius
+							});
+
+							dirtyRegions.push({
+								x: canvas.width * 0.5,
+								y: canvas.height * 0.5,
+								radius: radius
+							});
+						}
+					}
+				}
+			}
+
+			clear();
+			update();
+			render();
+			requestAnimFrame(buildTexture);
+		}
+
+		// Start animation
+		buildTexture();
+
+		return {
+			canvas: canvas,
+			section: section
+		};
+	}
+
+	// ==========================
+	// INITIALIZE ALL SECTIONS
+	// ==========================
+
+	Typo.init = function() {
+		sections.forEach(function(section) {
+			var instance = initSection(section);
+			if (instance) {
+				instances[section.name] = instance;
+			}
+		});
+	};
+
+	// ==========================
+	// REQUEST ANIMATION FRAME
+	// ==========================
+
+	window.requestAnimFrame = (function() {
+		return window.requestAnimationFrame ||
+			window.webkitRequestAnimationFrame ||
+			window.mozRequestAnimationFrame ||
+			function(callback) {
+				window.setTimeout(callback, 1000 / 60);
+			};
+	})();
+
+	window.addEventListener('load', Typo.init);
+
 })(Typo);

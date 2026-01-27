@@ -198,3 +198,57 @@ document.addEventListener("DOMContentLoaded", () => {
   }, { once: true }); // Use once: true so it only fires once
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+  const scrollContainer = document.querySelector('.fv-scroll-container');
+  const stickyWrapper = document.querySelector('.fv-sticky-wrapper');
+  const slides = document.querySelectorAll('.fv-slide');
+  const totalSlides = slides.length;
+
+  function onScroll() {
+    if (!scrollContainer || !stickyWrapper) return;
+
+    // Container's position relative to viewport
+    const rect = scrollContainer.getBoundingClientRect();
+
+    // The container starts at the top of the page (usually), so rect.top starts at 0 and goes negative.
+    // The scrollable distance effectively controlled by the sticky container is:
+    // (Container Height - Viewport Height)
+    const scrollHeight = scrollContainer.offsetHeight - window.innerHeight;
+
+    // How many pixels have we scrolled past the start of the container?
+    // -rect.top is the amount scrolled "into" the container because it's at the top.
+    // We clamp it between 0 and scrollHeight.
+    let scrolled = -rect.top;
+    if (scrolled < 0) scrolled = 0;
+    if (scrolled > scrollHeight) scrolled = scrollHeight;
+
+    // Calculate progress 0 to 1
+    const progress = scrolled / scrollHeight;
+
+    // Determine which slide should be active
+    // We map the progress (0 to 1) to the number of slides (0 to totalSlides - 1)
+    // However, we want the last slide to stay visible until the very end, 
+    // effectively naturally scrolling away or just finishing the sequence.
+
+    // Let's divide the progress timeline such that each slide gets an equal share.
+    let activeIndex = Math.floor(progress * totalSlides);
+
+    // Clamp index to valid range (0 to length-1)
+    if (activeIndex < 0) activeIndex = 0;
+    if (activeIndex >= totalSlides) activeIndex = totalSlides - 1;
+
+    // Update classes
+    slides.forEach((slide, index) => {
+      if (index === activeIndex) {
+        slide.classList.add('active');
+      } else {
+        slide.classList.remove('active');
+      }
+    });
+  }
+
+  // Initialize
+  window.addEventListener('scroll', onScroll, { passive: true });
+  // Trigger once on load
+  onScroll();
+});

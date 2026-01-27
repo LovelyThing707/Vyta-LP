@@ -24,15 +24,19 @@
   <link rel="stylesheet" href="./assets/css/about.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
-
+<style>
+  canvas {
+            display: block;
+        }
+</style>
 <body>
   <section class="loading">
     <div class="watereffect">
       <img src="./assets/img/Vya_logo.svg" alt="">
     </div>
   </section>
-  <div class="fixed-bg"></div>
-  <canvas id="mesh-bg"></canvas>
+  <div class="fixed-bg">
+  </div>
   <header>
     <div class="header-container">
       <a href="./index.html" class="logo white-logo">
@@ -46,7 +50,7 @@
           <a href="#concept">CONCEPT</a>
           <a href="#value">VALUE</a>
           <a href="#solution">SOLUTION</a>
-          <a href="#case-study">CASE STUDY</a>
+          <a href="#case-study">CASE STUDIES</a>
           <a href="#flow">FLOW</a>
           <a href="#about">ABOUT US</a>
         </div>
@@ -56,85 +60,92 @@
         </div>
       </div>
       <button type="button" class="ham-button">
-        <img src="./assets/img/ham-white.png" alt="" class="white-btn"/>
-        <img src="./assets/img/ham-black.png" alt="" class="black-btn"/>
+        <img src="./assets/img/ham-white.png" alt="" class="white-btn" />
+        <img src="./assets/img/ham-black.png" alt="" class="black-btn" />
       </button>
       <div class="ham-list">
         <a href="#concept">CONCEPT</a>
         <a href="#value">VALUE</a>
         <a href="#solution">SOLUTION</a>
-        <a href="#case-study">CASE STUDY</a>
+        <a href="#case-study">CASE STUDIES</a>
         <a href="#flow">FLOW</a>
         <a href="#about">ABOUT US</a>
       </div>
     </div>
   </header>
   <main>
-    <div class="fv">
-      <div class="gradient-bg">
-        <svg viewBox="0 0 100vw 100vw" xmlns="http://www.w3.org/2000/svg" class="noiseBg">
-          <filter id="noiseFilterBg">
-            <feTurbulence type="fractalNoise" baseFrequency="0.6" stitchTiles="stitch" />
-          </filter>
-
-          <rect width="100%" height="100%" preserveAspectRatio="xMidYMid meet" filter="url(#noiseFilterBg)" />
-        </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" class="svgBlur">
-          <defs>
-            <filter id="goo">
-              <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
-              <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8"
-                result="goo" />
-              <feBlend in="SourceGraphic" in2="goo" />
-            </filter>
-          </defs>
-        </svg>
-        <div class="gradients-container">
-          <div class="g1"></div>
-          <div class="g2"></div>
-          <div class="g3"></div>
-          <div class="g4"></div>
-          <div class="g5"></div>
-          <div class="interactive"></div>
+    <div class="fv-scroll-container">
+      <div class="fv-sticky-wrapper">
+        <div class="fv fv-slide" id="slide1">
+          <canvas id="mesh-bg"
+            style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1;"></canvas>
+          <div class="gradient-bg">
+            <svg viewBox="0 0 100vw 100vw" xmlns="http://www.w3.org/2000/svg" class="noiseBg">
+              <filter id="noiseFilterBg">
+                <feTurbulence type="fractalNoise" baseFrequency="0.6" stitchTiles="stitch" />
+              </filter>
+              <rect width="100%" height="100%" preserveAspectRatio="xMidYMid meet" filter="url(#noiseFilterBg)" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="svgBlur">
+              <defs>
+                <filter id="goo">
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                  <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8"
+                    result="goo" />
+                  <feBlend in="SourceGraphic" in2="goo" />
+                </filter>
+              </defs>
+            </svg>
+            <div class="gradients-container">
+              <div class="g1"></div>
+              <div class="g2"></div>
+              <div class="g3"></div>
+              <div class="g4"></div>
+              <div class="g5"></div>
+              <div class="interactive"></div>
+            </div>
+          </div>
+          <!-- <div class="mesh"></div> -->
+          <div class="fv-img-box">
+            <img src="./assets/img/fv/tree-1.png" class="treeOne" alt="" />
+            <img src="./assets/img/fv/tree-2.png" class="treeTwo" alt="" />
+            <img src="./assets/img/fv/home-1.png" class="homeOne" alt="" />
+            <img src="./assets/img/fv/home-1.png" class="homeOne" alt="" />
+            <img src="./assets/img/fv/big-home.png" class="bigHome" alt="" />
+            <img src="./assets/img/fv/home-2.png" class="homeTwo" alt="" />
+            <img src="./assets/img/fv/home-3.png" class="homeThree" alt="" />
+            <img src="./assets/img/fv/home-4.png" class="homeFour" alt="" />
+            <img src="./assets/img/fv/truck-1.png" class="truckOne" alt="" />
+            <img src="./assets/img/fv/truck-2.png" class="truckTwo" alt="" />
+            <img src="./assets/img/fv/man-1.png" class="manOne" alt="" />
+            <img src="./assets/img/fv/man-2.png" class="manTwo" alt="" />
+            <img src="./assets/img/fv/man-3.png" class="manThree" alt="" />
+            <img src="./assets/img/fv/man-4.png" class="manFour" alt="" />
+            <img src="./assets/img/fv/man-5.png" class="manFive" alt="" />
+            <img src="./assets/img/fv/light.png" class="light" alt="" />
+            <img src="./assets/img/fv/light.png" class="light" alt="" />
+          </div>
+          <div class="fv-txt">
+            <p class="is-md-hide">豊かさを街へ届ける、</p>
+            <p class="is-md-hide">未来型ウェルネス拠点を。</p>
+            <p class="is-md-show">豊かさを</p>
+            <p class="is-md-show">街へ届ける、</p>
+            <p class="is-md-show">未来型</p>
+            <p class="is-md-show">ウェルネス拠点を。</p>
+          </div>
+          <div class="fv-scroll">
+            <img src="./assets/img/fv/scroll.png" class="s-down" alt="" />
+          </div>
         </div>
-      </div>
-      <!-- <div class="mesh"></div> -->
-      <div class="fv-img-box">
-        <img src="./assets/img/fv/tree-1.png" class="treeOne" alt="" />
-        <img src="./assets/img/fv/tree-2.png" class="treeTwo" alt="" />
-        <img src="./assets/img/fv/home-1.png" class="homeOne" alt="" />
-        <img src="./assets/img/fv/home-1.png" class="homeOne" alt="" />
-        <img src="./assets/img/fv/big-home.png" class="bigHome" alt="" />
-        <img src="./assets/img/fv/home-2.png" class="homeTwo" alt="" />
-        <img src="./assets/img/fv/home-3.png" class="homeThree" alt="" />
-        <img src="./assets/img/fv/home-4.png" class="homeFour" alt="" />
-        <img src="./assets/img/fv/truck-1.png" class="truckOne" alt="" />
-        <img src="./assets/img/fv/truck-2.png" class="truckTwo" alt="" />
-        <img src="./assets/img/fv/man-1.png" class="manOne" alt="" />
-        <img src="./assets/img/fv/man-2.png" class="manTwo" alt="" />
-        <img src="./assets/img/fv/man-3.png" class="manThree" alt="" />
-        <img src="./assets/img/fv/man-4.png" class="manFour" alt="" />
-        <img src="./assets/img/fv/man-5.png" class="manFive" alt="" />
-        <img src="./assets/img/fv/light.png" class="light" alt="" />
-        <img src="./assets/img/fv/light.png" class="light" alt="" />
-      </div>
-      <div class="fv-txt">
-        <p class="is-md-hide">豊かさを街へ届ける、</p>
-        <p class="is-md-hide">未来型ウェルネス拠点を。</p>
-        <p class="is-md-show">豊かさを</p>
-        <p class="is-md-show">街へ届ける、</p>
-        <p class="is-md-show">未来型</p>
-        <p class="is-md-show">ウェルネス拠点を。</p>
-      </div>
-      <div class="fv-scroll">
-        <img src="./assets/img/fv/scroll.png" class="s-down" alt="" />
+        <section class="concept fv-slide" id="slide2">
+          <div class="title-box">
+            <h1></h1>
+          </div>
+        </section>
       </div>
     </div>
-
-    <section class="concept" id="concept">
-      <div class="title-box">
-        <h1></h1>
-      </div>
+    <canvas id="canvas"></canvas>
+    <section class="concept" id="canva">
       <div class="content">
         <div class="tip">
           <p>CONCEPT</p>
@@ -251,11 +262,11 @@
             </div>
             <div class="value-item-content-description">
               <p>ウェルネスプラットフォームの中核をなすクリニックセグメントでは、 <span
-                  class="value-item-content-description-highlight">マスターリース契約</span>を基軸に据えています。これにより竣工初年度から賃料収入を固定化し、精緻なキャッシュフロー管理を実現。空室期間を織り込んだ保守的な収支調整の必要性を排除しました。また、
-                <span
-                  class="value-item-content-description-highlight">景気耐性の高い医療機関</span>がアンカーテナントとなることで、事業の継続性を担保。投資フェーズを「<span
-                  class="value-item-content-description-highlight"></span>リーシングリスクの解消</span>」から「<span
-                  class="value-item-content-description-highlight">資産価値の最大化</span>」へと早期にシフトさせます。
+                class="value-item-content-description-highlight">マスターリース契約</span>を基軸に据えています。これにより竣工初年度から賃料収入を固定化し、精緻なキャッシュフロー管理を実現。空室期間を織り込んだ保守的な収支調整の必要性を排除しました。また、
+              <span
+                class="value-item-content-description-highlight">景気耐性の高い医療機関</span>がアンカーテナントとなることで、事業の継続性を担保。投資フェーズを「<span
+                class="value-item-content-description-highlight"></span>リーシングリスクの解消</span>」から「<span
+                class="value-item-content-description-highlight">資産価値の最大化</span>」へと早期にシフトさせます。
               </p>
             </div>
           </div>
@@ -267,7 +278,7 @@
           <div class="value-item-content">
             <div class="value-item-content-title">
               <p>資産価値の最大化と
-出口戦略</p>
+                出口戦略</p>
               <div class="value-item-content-title-icon">
                 <img src="./assets/img/value/icon.png" alt="">
               </div>
@@ -277,11 +288,11 @@
             </div>
             <div class="value-item-content-description">
               <p>ウェルネスプラットフォームの中核をなすクリニックセグメントでは、 <span
-                  class="value-item-content-description-highlight">マスターリース契約</span>を基軸に据えています。これにより竣工初年度から賃料収入を固定化し、精緻なキャッシュフロー管理を実現。空室期間を織り込んだ保守的な収支調整の必要性を排除しました。また、
-                <span
-                  class="value-item-content-description-highlight">景気耐性の高い医療機関</span>がアンカーテナントとなることで、事業の継続性を担保。投資フェーズを「<span
-                  class="value-item-content-description-highlight"></span>リーシングリスクの解消</span>」から「<span
-                  class="value-item-content-description-highlight">資産価値の最大化</span>」へと早期にシフトさせます。
+                class="value-item-content-description-highlight">マスターリース契約</span>を基軸に据えています。これにより竣工初年度から賃料収入を固定化し、精緻なキャッシュフロー管理を実現。空室期間を織り込んだ保守的な収支調整の必要性を排除しました。また、
+              <span
+                class="value-item-content-description-highlight">景気耐性の高い医療機関</span>がアンカーテナントとなることで、事業の継続性を担保。投資フェーズを「<span
+                class="value-item-content-description-highlight"></span>リーシングリスクの解消</span>」から「<span
+                class="value-item-content-description-highlight">資産価値の最大化</span>」へと早期にシフトさせます。
               </p>
             </div>
           </div>
@@ -292,6 +303,7 @@
       <div class="title-box">
         <h1></h1>
       </div>
+      <canvas class="title-box-noscroll" id="title-solution"></canvas>
       <div class="content">
         <div class="solution-slid-animation">
           <div class="top-part">
@@ -350,7 +362,8 @@
             <div class="solution-slid-content">
               <div class="solution-slid-main-content">
                 <div class="solution-item-container-img">
-                  <p class="solution-item-content-title is-sp-show" id="solution-item-content-title-2">Accessibility</p>
+                  <p class="solution-item-content-title is-sp-show" id="solution-item-content-title-2">Accessibility
+                  </p>
                   <img src="./assets/img/solution/solution02.png" alt="">
                   <div class="solution-item-number is-sp-show">
                     2
@@ -427,12 +440,12 @@
       <div class="title-box">
         <h1></h1>
       </div>
-      <div class="swiper mySwiper" id="swiper">
-        <div class="swiper-wrapper badges">
-          <div class="swiper-slide">
+      <div class="swiper mySwiper marquee" id="swiper">
+        <div class="swiper-wrapper badges track" id="track">
+          <div class="swiper-slide slide">
             <div class="slide-item">
               <div class="slide-item-img">
-                <img src="./assets/img/study/study-house.png" alt="">
+                <img src="./assets/img/study/study (1).png" alt="">
               </div>
               <div class="slide-item-content">
                 <p class="slide-item-content-title">都市型医療モール</p>
@@ -440,10 +453,10 @@
               </div>
             </div>
           </div>
-          <div class="swiper-slide">
+          <div class="swiper-slide slide">
             <div class="slide-item">
               <div class="slide-item-img">
-                <img src="./assets/img/study/study-house.png" alt="">
+                <img src="./assets/img/study/study (2).png" alt="">
               </div>
               <div class="slide-item-content">
                 <p class="slide-item-content-title">郊外型医療ビル</p>
@@ -451,10 +464,10 @@
               </div>
             </div>
           </div>
-          <div class="swiper-slide">
+          <div class="swiper-slide slide">
             <div class="slide-item">
               <div class="slide-item-img">
-                <img src="./assets/img/study/study-house.png" alt="">
+                <img src="./assets/img/study/study (3).png" alt="">
               </div>
               <div class="slide-item-content">
                 <p class="slide-item-content-title">都市型医療モール</p>
@@ -462,10 +475,10 @@
               </div>
             </div>
           </div>
-          <div class="swiper-slide">
+          <div class="swiper-slide slide">
             <div class="slide-item">
               <div class="slide-item-img">
-                <img src="./assets/img/study/study-house.png" alt="">
+                <img src="./assets/img/study/study (4).png" alt="">
               </div>
               <div class="slide-item-content">
                 <p class="slide-item-content-title">郊外型医療ビル</p>
@@ -473,10 +486,10 @@
               </div>
             </div>
           </div>
-          <div class="swiper-slide">
+          <div class="swiper-slide slide">
             <div class="slide-item">
               <div class="slide-item-img">
-                <img src="./assets/img/study/study-house.png" alt="">
+                <img src="./assets/img/study/study (5).png" alt="">
               </div>
               <div class="slide-item-content">
                 <p class="slide-item-content-title">郊外型医療ビル</p>
@@ -484,10 +497,10 @@
               </div>
             </div>
           </div>
-          <div class="swiper-slide">
+          <div class="swiper-slide slide">
             <div class="slide-item">
               <div class="slide-item-img">
-                <img src="./assets/img/study/study-house.png" alt="">
+                <img src="./assets/img/study/study (6).png" alt="">
               </div>
               <div class="slide-item-content">
                 <p class="slide-item-content-title">都市型医療モール</p>
@@ -495,10 +508,10 @@
               </div>
             </div>
           </div>
-          <div class="swiper-slide">
+          <div class="swiper-slide slide">
             <div class="slide-item">
               <div class="slide-item-img">
-                <img src="./assets/img/study/study-house.png" alt="">
+                <img src="./assets/img/study/study (7).png" alt="">
               </div>
               <div class="slide-item-content">
                 <p class="slide-item-content-title">郊外型医療モール</p>
@@ -506,10 +519,10 @@
               </div>
             </div>
           </div>
-          <div class="swiper-slide">
+          <div class="swiper-slide slide">
             <div class="slide-item">
               <div class="slide-item-img">
-                <img src="./assets/img/study/study-house.png" alt="">
+                <img src="./assets/img/study/study (8).png" alt="">
               </div>
               <div class="slide-item-content">
                 <p class="slide-item-content-title">郊外型医療ビル
@@ -518,10 +531,10 @@
               </div>
             </div>
           </div>
-          <div class="swiper-slide">
+          <div class="swiper-slide slide">
             <div class="slide-item">
               <div class="slide-item-img">
-                <img src="./assets/img/study/study-house.png" alt="">
+                <img src="./assets/img/study/study (9).png" alt="">
               </div>
               <div class="slide-item-content">
                 <p class="slide-item-content-title">郊外型医療ビル</p>
@@ -529,10 +542,10 @@
               </div>
             </div>
           </div>
-          <div class="swiper-slide">
+          <div class="swiper-slide slide">
             <div class="slide-item">
               <div class="slide-item-img">
-                <img src="./assets/img/study/study-house.png" alt="">
+                <img src="./assets/img/study/study (10).png" alt="">
               </div>
               <div class="slide-item-content">
                 <p class="slide-item-content-title">都市型医療モール</p>
@@ -761,11 +774,11 @@
   <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
   <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
+  
   <script src="./assets/js/loading.js"></script>
   <script src="./assets/js/header.js"></script>
   <script src="./assets/js/top.js"></script>
@@ -779,13 +792,7 @@
   <script src="./assets/js/about.js"></script>
   <script src="./assets/js/mesh.js"></script>
   <script src="./assets/js/txt-animation/concept-txt-animation.js"></script>
-  <script src="./assets/js/txt-animation/study-txt-animation.js"></script>
-  <script src="./assets/js/txt-animation/value-txt-animation.js"></script>
-  <script src="./assets/js/txt-animation/solution-txt-animation.js"></script>
-  <script src="./assets/js/txt-animation/flow-txt-animation.js"></script>
-  <script src="./assets/js/txt-animation/about-txt-animation.js"></script>
 
-  <!-- <script src="./assets/js/concept.js"></script> -->
 </body>
 
 </html>

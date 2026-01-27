@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return [0, 100, 200];
     }  // Desktop
     if (width >= 1280) {
-      return [0, 80, 160];
+      return [0, 60, 120];
     }  // Desktop
     if (width >= 1024) {
       return [0, 50, 100];
@@ -28,7 +28,10 @@ document.addEventListener("DOMContentLoaded", () => {
       return [0, 50, 100];
     }; 
     if (width >= 425)  {  // Large mobile
-      return [0, 40, 80];           
+      return [0, 30, 60];           
+    }         // Small mobile
+    if (width >= 375)  {  // Large mobile
+      return [0, 30, 60];           
     }         // Small mobile
     if (width >= 320)  {  // Large mobile
       return [0, 25, 50];           
@@ -37,6 +40,18 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const FINAL_RIGHT_MARGINS = getRightMargin();
+
+  function finalTopPosition() {
+    const width = window.innerWidth;
+    if (width >= 1520) return 150;  // Desktop
+    if (width >= 1280) return 150;  // Desktop
+    if (width >= 1024) return 150;  // Small desktop
+    if (width >= 640)  return 150;  // Tablet
+    if (width >= 425)  return 100;  // Large mobile
+    if (width >= 320)  return 100;  // Large mobile
+  }
+
+  let FINAL_TOP_POSITION = finalTopPosition();
 
   if (items.length === 0) return;
 
@@ -104,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const finalRightMargin = FINAL_RIGHT_MARGINS[index];
     
     // Final top position (below top-part)
-    const finalTop = 150; // 100px below top (below top-part)
+    const finalTop = FINAL_TOP_POSITION; // 100px below top (below top-part)
     
     // Scroll item from bottom to top and stop at final position
     // Width is fixed, only animate top and right positions

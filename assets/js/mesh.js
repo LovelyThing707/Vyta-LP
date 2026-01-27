@@ -19,16 +19,16 @@ function resize() {
 window.addEventListener("resize", resize);
 resize();
 
-// Mouse
-window.addEventListener("mousemove", e => {
-  mouse.x = e.clientX;
-  mouse.y = e.clientY;
-});
+// // Mouse
+// window.addEventListener("mousemove", e => {
+//   mouse.x = e.clientX;
+//   mouse.y = e.clientY;
+// });
 
-window.addEventListener("mouseleave", () => {
-  mouse.x = -9999;
-  mouse.y = -9999;
-});
+// window.addEventListener("mouseleave", () => {
+//   mouse.x = -9999;
+//   mouse.y = -9999;
+// });
 
 // Noise function - random omnidirectional flow
 function noise(x, y, t) {

@@ -57,7 +57,7 @@ body.loading-active {
   background-size: cover;
   background-position: center;
   background-repeat: none;
-  animation: darken 5s 2s;
+  animation: darken 3s 2s;
   opacity: 1;
   animation-fill-mode: forwards;
 }
@@ -115,5 +115,32 @@ body.loading-active {
   
   to {
     filter: blur(0px);
+  }
+}
+
+@media (max-width: 1024px) {
+  .watereffect::before {
+    width: 55%;
+    height: 55%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .watereffect::before {
+    width: 55%;
+    height: 40%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+@media (max-width: 425px) {
+  .watereffect::before {
+    width: 55%;
+    height: 15%;
+    top: 50%;
+    transform: translateY(-50%);
   }
 }
