@@ -4,10 +4,10 @@
  * Unified version for all text animations: CONCEPT, VALUE, CASE STUDY, SOLUTION, FLOW, ABOUT US
  */
 
-var Typo = {}; 
+var Typo = {};
 
-(function(Typo) {
-	
+(function (Typo) {
+
 	// Configuration for each section
 	var sections = [
 		{
@@ -24,8 +24,8 @@ var Typo = {};
 		},
 		{
 			selector: '.study .title-box',
-			text: 'CASE STUDY',
-			name: 'CASE STUDY',
+			text: 'CASE STUDIES',
+			name: 'CASE STUDIES',
 			hasLineBreak: true,
 			breakWidth: 425
 		},
@@ -63,8 +63,8 @@ var Typo = {};
 
 	function getTextForScreen(section, canvasWidth) {
 		if (section.hasLineBreak && canvasWidth <= section.breakWidth) {
-			if (section.name === 'CASE STUDY') {
-				return 'CASE\nSTUDY';
+			if (section.name === 'CASE STUDIES') {
+				return 'CASE\nSTUDIES';
 			} else if (section.name === 'ABOUT US') {
 				return 'ABOUT\nUS';
 			}
@@ -124,7 +124,15 @@ var Typo = {};
 		var force = 0;
 		var input = false;
 		var forceFactor = false;
+		var isVisible = false;
 		var resizeTimer = null;
+
+		var observer = new IntersectionObserver(function (entries) {
+			entries.forEach(function (entry) {
+				isVisible = entry.isIntersecting;
+			});
+		}, { threshold: 0.01 });
+		observer.observe(titleBox);
 
 		// Update interaction mode
 		function updateInteractionMode() {
@@ -137,7 +145,7 @@ var Typo = {};
 		function onResize() {
 			if (resizeTimer) clearTimeout(resizeTimer);
 
-			resizeTimer = setTimeout(function() {
+			resizeTimer = setTimeout(function () {
 				var titleBox = document.querySelector(section.selector);
 				if (!titleBox || !canvas) return;
 
@@ -210,16 +218,23 @@ var Typo = {};
 		function distanceTo(a, b, angle) {
 			var dx = a.x - b.x;
 			var dy = a.y - b.y;
-			var d = Math.sqrt(dx * dx + dy * dy);
 
-			if (angle)
+			if (angle) {
+				var d = Math.sqrt(dx * dx + dy * dy);
 				return (1000 + (interactive ? inputForce : 0)) / (d || 1);
-			return d;
+			}
+			return Math.sqrt(dx * dx + dy * dy);
+		}
+
+		function distanceToSq(a, b) {
+			var dx = a.x - b.x;
+			var dy = a.y - b.y;
+			return dx * dx + dy * dy;
 		}
 
 		// Clear dirty regions
 		function clear() {
-			dirtyRegions.forEach(function(dirty) {
+			dirtyRegions.forEach(function (dirty) {
 				var size = (2 * dirty.radius) + 4;
 				context.clearRect(
 					Math.floor(dirty.x - size / 2),
@@ -232,7 +247,7 @@ var Typo = {};
 
 		// Update nodes
 		function update() {
-			nodes.forEach(function(node, index) {
+			nodes.forEach(function (node, index) {
 				// MOBILE = SMOOTH AMBIENT MOTION
 				if (!interactive) {
 					var displayText = getTextForScreen(section, canvas.width);
@@ -260,17 +275,19 @@ var Typo = {};
 					inputForce = Math.max(inputForce - 1, 0);
 
 				var connectionDistance = canvas.width <= 768 ? 30 : 50;
+				var connectionDistanceSq = connectionDistance * connectionDistance;
 
 				for (var j = index + 1; j < nodes.length; j++) {
 					var other = nodes[j];
-					var dist = distanceTo(node, other);
+					var distSq = distanceToSq(node, other);
 
-					if (dist < connectionDistance) {
+					if (distSq < connectionDistanceSq) {
+						var dist = Math.sqrt(distSq);
 						context.save();
 						context.beginPath();
 						context.globalAlpha = 1 - dist / (connectionDistance * 2);
 						context.lineWidth = canvas.width <= 768 ? 0.5 : 1;
-						context.strokeStyle = '#FFFFFF';
+						context.strokeStyle = '#d1d5db';
 						context.moveTo(node.x, node.y);
 						context.lineTo(other.x, other.y);
 						context.stroke();
@@ -282,9 +299,9 @@ var Typo = {};
 
 		// Render nodes
 		function render() {
-			nodes.forEach(function(node, i) {
+			nodes.forEach(function (node, i) {
 				context.save();
-				context.fillStyle = '#FFFFFF';
+				context.fillStyle = '#d1d5db';
 				context.beginPath();
 				context.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
 				context.fill();
@@ -297,6 +314,11 @@ var Typo = {};
 
 		// Build texture
 		function buildTexture() {
+			if (!isVisible && nodes.length > 0 && !input) {
+				requestAnimFrame(buildTexture);
+				return;
+			}
+
 			context.clearRect(0, 0, canvas.width, canvas.height);
 
 			if (nodes.length === 0 || input) {
@@ -307,7 +329,7 @@ var Typo = {};
 				var displayText = getTextForScreen(section, canvas.width);
 
 				context.font = 'bold ' + fontSize + 'px Outfit';
-				context.fillStyle = '#FFFFFF';
+				context.fillStyle = '#d1d5db';
 				context.textAlign = 'center';
 
 				// Handle multi-line text
@@ -317,7 +339,7 @@ var Typo = {};
 					var totalHeight = (lines.length - 1) * lineHeight;
 					var startY = canvas.height * 0.55 - (totalHeight / 2);
 
-					lines.forEach(function(line, index) {
+					lines.forEach(function (line, index) {
 						var y = startY + (index * lineHeight);
 						context.fillText(line, canvas.width * 0.5, y);
 					});
@@ -378,8 +400,8 @@ var Typo = {};
 	// INITIALIZE ALL SECTIONS
 	// ==========================
 
-	Typo.init = function() {
-		sections.forEach(function(section) {
+	Typo.init = function () {
+		sections.forEach(function (section) {
 			var instance = initSection(section);
 			if (instance) {
 				instances[section.name] = instance;
@@ -391,15 +413,21 @@ var Typo = {};
 	// REQUEST ANIMATION FRAME
 	// ==========================
 
-	window.requestAnimFrame = (function() {
+	window.requestAnimFrame = (function () {
 		return window.requestAnimationFrame ||
 			window.webkitRequestAnimationFrame ||
 			window.mozRequestAnimationFrame ||
-			function(callback) {
+			function (callback) {
 				window.setTimeout(callback, 1000 / 60);
 			};
 	})();
 
-	window.addEventListener('load', Typo.init);
+	if (document.fonts) {
+		document.fonts.ready.then(function () {
+			Typo.init();
+		});
+	} else {
+		window.addEventListener('DOMContentLoaded', Typo.init);
+	}
 
 })(Typo);
