@@ -156,10 +156,9 @@
 }
 
 .value-item-content-description-highlight {
-  font-weight: medium;
+  font-weight: bolder;
   font-size: 18px;
-  color: #4E4E4E;
-  background-color: #B6E7EF;
+  color: #00525f;
 }
 
 .tri-icon {
@@ -260,8 +259,8 @@ is-sp-show {
   .value-title {
     font-size: 30px;
     top: 80px;
-    left: 150px;
-    letter-spacing: 10px;
+    left: 350px;
+    letter-spacing: 5px;
   }
    .value-item-content-title-icon {
     position: absolute;
@@ -291,6 +290,8 @@ is-sp-show {
   .value-item-content-title {
     gap: 10px;
     flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
   }
 
   .value-item-content-title-icon {

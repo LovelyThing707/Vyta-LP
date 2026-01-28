@@ -41,7 +41,6 @@ body {
     top: 0;
     width: 35%;
     height: 100vh;
-    overflow: hidden;
     z-index: 10;
     pointer-events: none;
 }
@@ -436,9 +435,9 @@ body {
         font-size: 30px;
     }
     :root {
-        --circle-size: 80vh;
-        --circle-size-small: 70vh;
-        --gear-size: 300px;
+        --circle-size: 50vh;
+        --circle-size-small: 40vh;
+        --gear-size: 200px;
         --marker-offset: 40px;
         --marker-size: 80px;
     }
@@ -457,5 +456,21 @@ body {
     }
     .section-title {
         right: 20px
+    }
+    :root {
+        --circle-size: 50vh;
+        --circle-size-small: 40vh;
+        --marker-size: 100px;
+        --gear-size: 200px;
+    }
+    .rotating-circle-container {
+        left: -150px;
+    }
+    .content-section {
+        padding: 0;
+    }
+    .study-title {
+        font-size: 20px;
+        letter-spacing: 2px;
     }
 }

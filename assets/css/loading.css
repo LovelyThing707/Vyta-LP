@@ -40,7 +40,7 @@ body.loading-active {
 }
 
 .watereffect img {
-  max-width: 120%;
+  max-width: 40%;
   max-height: 120%;
   object-fit: contain;
 }
@@ -48,16 +48,18 @@ body.loading-active {
 .watereffect::before {
   content: "";
   display: block;
-  top: 100px;
-  height: 80%;
-  width: 80%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 30%;
+  width: 30%;
   position: absolute;
   background-image: url(https://media0.giphy.com/media/3oEdvaxmd15YTHy6Uo/giphy.gif?cid=ecf05e47azzm1vgxel8zf4vjfphwcu5m9h4lfy1p27sko8uc&ep=v1_gifs_related&rid=giphy.gif&ct=g);
   filter: saturate(0);
   background-size: cover;
   background-position: center;
   background-repeat: none;
-  animation: darken 3s 2s;
+  animation: darken 2s 1s;
   opacity: 1;
   animation-fill-mode: forwards;
 }
@@ -72,7 +74,7 @@ body.loading-active {
   background-color: white;
   color: #0BD3D3;
   overflow: hidden;
-  animation: blur 7s;
+  animation: blur 3s;
 }
   
 .watereffect > *::after {
@@ -84,7 +86,7 @@ body.loading-active {
   position: absolute;
   background-image: linear-gradient(315deg, #000000 0%, #ffffff 50%);
   mix-blend-mode: screen;
-  animation: move 100s;
+  animation: move 10s;
   animation-fill-mode: forwards;
 }
   
@@ -110,7 +112,7 @@ body.loading-active {
   
 @keyframes blur {
   from {
-    filter: blur(10px);
+    filter: blur(3px);
   }
   
   to {
@@ -120,27 +122,23 @@ body.loading-active {
 
 @media (max-width: 1024px) {
   .watereffect::before {
-    width: 55%;
-    height: 55%;
-    top: 50%;
-    transform: translateY(-50%);
+    height: 20%;
   }
 }
 
 @media (max-width: 768px) {
   .watereffect::before {
-    width: 55%;
-    height: 40%;
-    top: 50%;
-    transform: translateY(-50%);
+    height: 10%;
   }
+
 }
 
 @media (max-width: 425px) {
+  .watereffect img {
+    max-width: 100%;
+  }
   .watereffect::before {
-    width: 55%;
-    height: 15%;
-    top: 50%;
-    transform: translateY(-50%);
+    width: 60%;
+    height: 20%;
   }
 }

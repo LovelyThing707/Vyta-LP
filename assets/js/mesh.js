@@ -7,7 +7,7 @@ let mouse = { x: -9999, y: -9999 };
 
 const GRID_SIZE = 40;
 const LINE_COLOR = "rgba(255,255,255,0.35)";
-const SPEED = 0.1;
+const SPEED = 0.02;
 const SPIRAL_RADIUS = 200;
 const SPIRAL_STRENGTH = 0.5;
 

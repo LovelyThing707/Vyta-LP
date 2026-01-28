@@ -21,7 +21,7 @@
   white-space: nowrap;
   display: inline-block;
   position: absolute;
-  top: 50px;
+  top: 85px;
   left: 250px;
 }
 
@@ -70,6 +70,8 @@
   justify-content: space-around;
   position: relative;
   overflow: hidden;
+  padding-top: 150px;
+  padding-bottom: 50px;
 }
 
 .solution-item-content-title {
@@ -112,7 +114,7 @@
   white-space: nowrap;
   display: inline-block;
   position: absolute;
-  top: 0;
+  top: 100px;
   left: 0;
   z-index: 10;
 }
@@ -163,7 +165,7 @@
 }
 
 #solution-item-content-title-2 {
-  line-height: 3.5 !important;
+  line-height: 2.5 !important;
 }
 
 #solution-item-content-title-3 {
@@ -319,7 +321,7 @@
 
 @media (max-width: 768px) {
   #solution-item-content-title-2 {
-    line-height: 5 !important;
+    line-height: 2 !important;
     position: relative;
     z-index: 11;
   }
@@ -341,7 +343,7 @@
   }
 
   #solution-item-content-title-2 {
-    line-height: 4 !important;
+    line-height: 3 !important;
   }
 
   #solution-item-content-title-3 {
@@ -378,10 +380,12 @@
 
   .solution-item-container-img img {
     height: 200px;
+    width: 70%;
   }
 
   .solution-item-number {
     left: 30px;
+    top: 0px;
   }
 
   .solution-slid-item-title {
@@ -410,6 +414,10 @@
 
   .is-sp-show {
     display: block;
+  }
+  .solution-item-content {
+    padding-top: 0px;
+    padding-bottom: 0px;
   }
 
   .solution-item-content-title,
@@ -489,6 +497,7 @@
   }
   .solution-item-container-img img {
     height: 180px;
+    width: 100%;
   }
   .solution-item-content-label {    
     margin-bottom: 50px !important;
