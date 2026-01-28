@@ -1,7 +1,7 @@
 /*
  * Copyright MIT © <2013> <Francesco Trillini>
  * Modified for responsive + mobile-friendly ambient animation
- * Unified version for all text animations: CONCEPT, VALUE, CASE STUDY, SOLUTION, FLOW, ABOUT US
+ * Unified version for all text animations: CONCEPT, VALUE, CASE STUDIES, SOLUTION, FLOW, ABOUT US
  */
 
 var Typo = {};
