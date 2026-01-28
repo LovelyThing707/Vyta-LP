@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const header = document.querySelector('header');
       if (header) {
         header.classList.add('header-visible');
-        
+
         // Animate title section after header animation completes (600ms header animation + 200ms delay)
         setTimeout(() => {
           const fvTxt = document.querySelector('.fv-txt');
@@ -79,12 +79,12 @@ document.addEventListener("DOMContentLoaded", () => {
         tree.style.opacity = '0';
         tree.style.transform = 'translateY(15px) scale(0.9)';
         tree.style.transition = 'opacity 1s ease-out, transform 1s cubic-bezier(0.34, 1.56, 0.64, 1)';
-        
+
         // Animate in with delay
         setTimeout(() => {
           tree.style.opacity = '1';
           tree.style.transform = 'translateY(0) scale(1)';
-          
+
           // Add gentle swaying animation after fade-in
           setTimeout(() => {
             tree.style.animation = `treeSway ${5 + index * 0.8}s ease-in-out infinite`;
@@ -109,12 +109,12 @@ document.addEventListener("DOMContentLoaded", () => {
         light.style.opacity = '0';
         light.style.transform = 'translateY(10px) scale(0.95)';
         light.style.transition = 'opacity 1s ease-out, transform 1s cubic-bezier(0.34, 1.56, 0.64, 1)';
-        
+
         // Animate in with delay
         setTimeout(() => {
           light.style.opacity = '0.5';
           light.style.transform = 'translateY(0) scale(1)';
-          
+
           // Add gentle glow animation after fade-in
           setTimeout(() => {
             light.style.animation = `streetlightGlow ${4 + index * 0.6}s ease-in-out infinite`;
@@ -149,12 +149,12 @@ document.addEventListener("DOMContentLoaded", () => {
         person.style.opacity = '0';
         person.style.transform = 'translateY(20px)';
         person.style.transition = 'opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)';
-        
+
         // Animate in with delay
         setTimeout(() => {
           person.style.opacity = '1';
           person.style.transform = 'translateY(0)';
-          
+
           // Add subtle floating/walking animation after fade-in
           setTimeout(() => {
             person.style.animation = `personFloat ${3 + index * 0.5}s ease-in-out infinite`;
@@ -171,15 +171,15 @@ document.addEventListener("DOMContentLoaded", () => {
         vehicle.style.opacity = '0';
         vehicle.style.transform = 'translateX(-30px)';
         vehicle.style.transition = 'opacity 1s ease-out, transform 1s cubic-bezier(0.34, 1.56, 0.64, 1)';
-        
+
         // Animate in with delay
         setTimeout(() => {
           vehicle.style.opacity = '1';
           vehicle.style.transform = 'translateX(0)';
-          
+
           // Add subtle driving animation after fade-in
           setTimeout(() => {
-            vehicle.style.animation = `vehicleMove ${4 + index * 0.5}s ease-in-out infinite`;
+            vehicle.style.animation = `vehicleMove ${2 + index * 0.5}s ease-in-out infinite`;
             vehicle.style.animationDelay = `${index * 0.3}s`;
           }, 1000);
         }, 1500 + (index * 300)); // Start after people begin appearing
