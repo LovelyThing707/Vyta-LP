@@ -62,7 +62,7 @@ header.active {
 .header-btn-group .h-nav a {
   font-size: 12px;
   font-weight: bolder;
-  color: #ffffff;
+  /* color: #ffffff; */
 }
 
 .header-btn-group .h-btns {
