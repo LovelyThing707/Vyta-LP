@@ -43,10 +43,7 @@ images.forEach((img, i) => {
 // ==========================
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Initialize title text animations (both mobile and desktop versions)
-  initTitleAnimations();
-  
-  // Initialize description and company info animations
+  // Single trigger: title and description appear at the same time
   initContentAnimations();
 });
 
@@ -67,117 +64,88 @@ function splitTextIntoLetters(element) {
   return element.querySelectorAll('.letter');
 }
 
-// Initialize title text animations
-function initTitleAnimations() {
-  // Handle both mobile and desktop versions
+// Build title animation timeline (no ScrollTrigger; added to master timeline)
+function buildTitleTimeline(masterTl) {
   const titleContainers = document.querySelectorAll('.about-content-txt-title-container');
   
   titleContainers.forEach(container => {
     const titleParagraphs = container.querySelectorAll('.about-content-txt-title');
     
-    titleParagraphs.forEach((paragraph, pIndex) => {
-      // Split text into letters
+    titleParagraphs.forEach((paragraph) => {
       const letters = splitTextIntoLetters(paragraph);
-      
-      // Create background element for left-to-right animation
       const bgElement = document.createElement('span');
       bgElement.className = 'title-bg-animation';
       
-      // Ensure paragraph has proper positioning
       if (getComputedStyle(paragraph).position === 'static') {
         paragraph.style.position = 'relative';
       }
-      
-      // Insert background as first child so it's behind the letters
       paragraph.insertBefore(bgElement, paragraph.firstChild);
+      gsap.set(bgElement, { width: '0%' });
       
-      // Set initial state for background
-      gsap.set(bgElement, {
-        width: '0%'
-      });
-      
-      // Create timeline for this paragraph's animation
-      const paragraphTimeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: paragraph,
-          start: 'top 80%',
-          toggleActions: 'play none none none'
-        }
-      });
-      
-      // Step 1: Animate background from left to right
-      paragraphTimeline.to(bgElement, {
+      // Add to master at same start time (position 0)
+      masterTl.to(bgElement, {
         width: '100%',
         duration: 0.8,
         ease: 'power2.out'
-      });
+      }, 0);
       
-      // Step 2: Fade in letters one by one (starts after background completes)
       letters.forEach((letter, lIndex) => {
-        paragraphTimeline.to(letter, {
+        masterTl.to(letter, {
           opacity: 1,
           duration: 0.1,
           ease: 'none'
-        }, 0.8 + (lIndex * 0.03)); // Start after background, stagger each letter
+        }, 0.8 + (lIndex * 0.03));
       });
     });
   });
 }
 
-// Initialize description and company info animations
-function initContentAnimations() {
+// Build description + company info animation (same start time as title)
+function buildContentTimeline(masterTl) {
   const descriptionSection = document.querySelector('.about-content-txt-description');
   if (!descriptionSection) return;
   
   const descriptionText = descriptionSection.querySelector('.about-content-txt-description-text');
   const companyInfo = descriptionSection.querySelector('.about-content-company-info');
   
-  // Set initial states
   if (descriptionText) {
-    gsap.set(descriptionText, {
-      opacity: 0,
-      y: 30
-    });
+    gsap.set(descriptionText, { opacity: 0, y: 30 });
+    masterTl.to(descriptionText, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: 'power2.out'
+    }, 0);
   }
   
   if (companyInfo) {
     const tableRows = companyInfo.querySelectorAll('tr');
     tableRows.forEach((row, index) => {
-      gsap.set(row, {
-        opacity: 0,
-        x: -20
-      });
+      gsap.set(row, { opacity: 0, x: -20 });
+      masterTl.to(row, {
+        opacity: 1,
+        x: 0,
+        duration: 0.6,
+        delay: index * 0.1,
+        ease: 'power2.out'
+      }, 0);
     });
   }
+}
+
+function initContentAnimations() {
+  const aboutTxt = document.querySelector('.about-content-txt');
+  if (!aboutTxt) return;
   
-  // Create ScrollTrigger for description section
-  ScrollTrigger.create({
-    trigger: descriptionSection,
-    start: 'top 80%',
-    onEnter: () => {
-      // Animate description text
-      if (descriptionText) {
-        gsap.to(descriptionText, {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: 'power2.out'
-        });
-      }
-      
-      // Animate company info table rows
-      if (companyInfo) {
-        const tableRows = companyInfo.querySelectorAll('tr');
-        tableRows.forEach((row, index) => {
-          gsap.to(row, {
-            opacity: 1,
-            x: 0,
-            duration: 0.6,
-            delay: 0.4 + (index * 0.1), // Stagger each row
-            ease: 'power2.out'
-          });
-        });
-      }
+  const masterTl = gsap.timeline({
+    scrollTrigger: {
+      trigger: aboutTxt,
+      start: 'top 80%',
+      toggleActions: 'play none none none'
     }
   });
+  
+  // Title and description start at the same time (position 0)
+  buildTitleTimeline(masterTl);
+  buildContentTimeline(masterTl);
 }

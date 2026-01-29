@@ -25,7 +25,7 @@ header.active {
 }
 
 .header-container .logo {
-  width: 70px;
+  width:120px;
   display: inline-block;
 }
 
@@ -77,7 +77,7 @@ header.active {
   color: #FFFFFF;
   padding: 10px 25px;
   border-radius: 100px;
-  background-color: #969696;
+  background-color: #C159B9;
   line-height: 1.2;
 }
 
@@ -190,7 +190,7 @@ header.active {
   }
 
   .header-container .logo {
-    width: 50px;
+    width: 100px;
   }
 
   .header-btn-group {

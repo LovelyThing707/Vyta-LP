@@ -378,6 +378,7 @@ body {
     opacity: 0;
     transition: opacity 0.3s ease;
     user-select: none;
+    font-family: "Outfit";
 }
 
 .bg-flow-text.is-visible {

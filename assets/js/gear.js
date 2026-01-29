@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       updateAnimation();
-    }, 2000);
+    }, 20);
   };
 
   const observer = new IntersectionObserver((entries) => {

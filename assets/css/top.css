@@ -1020,3 +1020,53 @@ section.contact_download .cd_wrapper {
   opacity: 1;
   transform: translateY(0);
 }
+
+.scroll-animation-container {
+  height: 400vh;
+  position: relative;
+  z-index: 10;
+}
+
+.scroll-animation-sticky {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.scroll-animation-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out, transform 0.8s ease-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  transform: scale(1.05);
+}
+
+.scroll-animation-slide.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 2;
+}
+
+
+/* FV section: use same structure with generic classes (optional legacy aliases below) */
+.fv-scroll-container { height: 400vh; position: relative; z-index: 10; }
+.fv-sticky-wrapper { position: sticky; top: 0; width: 100%; height: 100vh; overflow: hidden; }
+.fv-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.8s ease-in-out, transform 0.8s ease-out; display: flex; justify-content: center; align-items: center; text-align: center; color: white; transform: scale(1.05); }
+.fv-slide.active { opacity: 1; transform: scale(1); z-index: 2; }
+.fv-slide-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+.fv-content h1 { font-size: 4rem; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 20px; text-shadow: 0 4px 10px rgba(0,0,0,0.3); opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out 0.2s; }
+.fv-content p { font-size: 1.5rem; font-weight: 400; opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out 0.4s; text-shadow: 0 2px 5px rgba(0,0,0,0.3); }
+.fv-slide.active .fv-content h1, .fv-slide.active .fv-content p { opacity: 1; transform: translateY(0); }
+
+/* Concept section: optional height override (e.g. 300vh for 3 slides) */
+.concept-scroll-container.scroll-animation-container { height: 300vh; }

@@ -198,6 +198,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }, { once: true }); // Use once: true so it only fires once
 });
 
+
+
 document.addEventListener('DOMContentLoaded', () => {
   const scrollContainer = document.querySelector('.fv-scroll-container');
   const stickyWrapper = document.querySelector('.fv-sticky-wrapper');
@@ -250,5 +252,53 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize
   window.addEventListener('scroll', onScroll, { passive: true });
   // Trigger once on load
+  onScroll();
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  /**
+   * Runs scroll-based slide animation for one block.
+   * @param {HTMLElement} scrollContainer - Tall container (e.g. 400vh)
+   * @param {NodeListOf<Element>} slides - Slide elements inside the sticky area
+   */
+  function updateScrollBlock(scrollContainer, slides) {
+      if (!scrollContainer || !slides.length) return;
+
+      const totalSlides = slides.length;
+      const rect = scrollContainer.getBoundingClientRect();
+      const scrollHeight = scrollContainer.offsetHeight - window.innerHeight;
+
+      if (scrollHeight <= 0) return;
+
+      let scrolled = -rect.top;
+      if (scrolled < 0) scrolled = 0;
+      if (scrolled > scrollHeight) scrolled = scrollHeight;
+
+      const progress = scrolled / scrollHeight;
+      let activeIndex = Math.floor(progress * totalSlides);
+      if (activeIndex < 0) activeIndex = 0;
+      if (activeIndex >= totalSlides) activeIndex = totalSlides - 1;
+
+      slides.forEach((slide, index) => {
+          slide.classList.toggle('active', index === activeIndex);
+      });
+  }
+
+  function onScroll() {
+      // FV section (existing)
+      const fvContainer = document.querySelector('.fv-scroll-container');
+      const fvSlides = document.querySelectorAll('.fv-slide');
+      updateScrollBlock(fvContainer, fvSlides);
+
+      // All generic scroll-animation sections (e.g. .concept)
+      document.querySelectorAll('.scroll-animation-container').forEach((container) => {
+          const slides = container.querySelectorAll('.scroll-animation-slide');
+          updateScrollBlock(container, slides);
+      });
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 });
