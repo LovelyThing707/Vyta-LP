@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   const rotatingCircle = document.getElementById("rotatingCircle");
   const centerGear = document.getElementById("centerGear");
-  const sections = document.querySelectorAll(".content-section");
+  const pageWrapper = document.querySelector(".flow-scroll-container .page-wrapper") || document.querySelector(".page-wrapper");
+  const sections = pageWrapper ? pageWrapper.querySelectorAll(".content-section") : document.querySelectorAll(".content-section");
   const markers = document.querySelectorAll(".step-marker");
   const markerContents = document.querySelectorAll(".marker-content");
-  const pageWrapper = document.querySelector(".page-wrapper");
 
   const stepAngle = 60; // 外円のステップ角度 (360/6)
   const gearStepAngle = 45; // ギアのステップ角度 (360/8)
@@ -95,37 +95,54 @@ document.addEventListener("DOMContentLoaded", () => {
   observer.observe(pageWrapper);
 
   // --- 3. アニメーション制御関数 ---
+  const flowContainer = document.querySelector(".flow-scroll-container");
+  const isFlowInView = () => {
+    if (!flowContainer) return false;
+    const rect = flowContainer.getBoundingClientRect();
+    return rect.bottom > 0 && rect.top < window.innerHeight;
+  };
+
   const updateAnimation = () => {
-    const section6 = sections[5];
+    // Visibility: flow container in view (single 100vh page-wrapper)
+    const inView = pageWrapper.closest(".flow-scroll-container")
+      ? isFlowInView()
+      : pageWrapper.getBoundingClientRect().bottom > 0 && pageWrapper.getBoundingClientRect().top < window.innerHeight;
 
-    if (section6.getBoundingClientRect().y > 0) {
-      if (isOpening || !hasStarted) return;
+    if (!inView) {
+      const rp = document.querySelector(".flow-scroll-container .right-panel");
+      if (rp) rp.style.paddingBottom = "0px";
+      return;
+    }
 
-      // Check if page-wrapper is still in viewport
-      const wrapperRect = pageWrapper.getBoundingClientRect();
-      if (wrapperRect.bottom < 0 || wrapperRect.top > window.innerHeight) {
-        return; // Section is not visible, don't update
+    if (isOpening || !hasStarted) return;
+
+    const windowHeight = window.innerHeight;
+    const sectionHeight = windowHeight;
+
+    // Use flow container scroll progress when inside flow-scroll-container (single 100vh; sections stacked)
+    let floatIndex = 0;
+    let activeIndex = 0;
+    if (flowContainer && pageWrapper.closest(".flow-scroll-container")) {
+      const rect = flowContainer.getBoundingClientRect();
+      const scrollHeight = flowContainer.offsetHeight - windowHeight;
+      if (scrollHeight > 0) {
+        const scrolled = Math.max(0, Math.min(-rect.top, scrollHeight));
+        floatIndex = (scrolled / scrollHeight) * 6; // 6 sections
       }
-
-      const scrollY = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const sectionHeight = windowHeight;
-
-      // アクティブセクション判定
-      let activeIndex = 0;
+      activeIndex = Math.min(5, Math.max(0, Math.floor(floatIndex))); // scroll-driven only
+    } else {
+      const wrapperTop = pageWrapper.offsetTop;
+      const relativeScroll = Math.max(0, window.scrollY - wrapperTop);
+      floatIndex = Math.max(0, relativeScroll / sectionHeight);
       sections.forEach((section, index) => {
-        const rect = section.getBoundingClientRect();
-        const center = rect.top + rect.height / 2;
+        const r = section.getBoundingClientRect();
+        const center = r.top + r.height / 2;
         const dist = Math.abs(windowHeight / 2 - center);
         if (center > 0 && center < windowHeight && dist < windowHeight / 3) {
           activeIndex = index;
         }
       });
-
-      // Calculate scroll progress relative to page-wrapper start
-      const wrapperTop = pageWrapper.offsetTop;
-      const relativeScroll = Math.max(0, scrollY - wrapperTop);
-      const floatIndex = Math.max(0, relativeScroll / sectionHeight);
+    }
 
       // 外円の回転 (反時計回り)
       const currentCircleRotation = -(floatIndex * stepAngle);
@@ -153,9 +170,6 @@ document.addEventListener("DOMContentLoaded", () => {
           sections[index].classList.remove("animate-trigger");
         }
       });
-    } else {
-        document.querySelector(".right-panel").style = "padding-bottom : 0px";
-    }
   };
 
   window.addEventListener("scroll", updateAnimation);
@@ -170,9 +184,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 5000);
 });
 
-const flowText = document.querySelector(".bg-flow-text");
-const sectionTitle = document.querySelector(".section-title");
-const wrapper = document.querySelector(".page-wrapper");
+const flowText = document.querySelector(".flow-scroll-container .bg-flow-text") || document.querySelector(".bg-flow-text");
+const sectionTitle = document.querySelector(".flow-scroll-container .section-title") || document.querySelector(".section-title");
+const wrapper = document.querySelector(".flow-scroll-container .page-wrapper") || document.querySelector(".page-wrapper");
 
 const observer = new IntersectionObserver(
   ([entry]) => {

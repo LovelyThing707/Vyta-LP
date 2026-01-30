@@ -71,7 +71,7 @@
   <main>
     <div class="fv-scroll-container">
       <div class="fv-sticky-wrapper">
-        <section class="fv fv-slide" id="slide1">
+        <section class="fv fv-slide" id="slide1" data-scroll-weight="2">
           <canvas id="mesh-bg"
             style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1;"></canvas>
           <div class="gradient-bg">
@@ -132,7 +132,7 @@
             <img src="./assets/img/fv/scroll.png" class="s-down" alt="" />
           </div>
         </section>
-        <section class="concept fv-slide" id="slide2">
+        <section class="concept fv-slide" id="slide2" data-scroll-weight="1">
           <div class="title-box">
             <h1></h1>
           </div>
@@ -141,7 +141,7 @@
     </div>
     <div class="scroll-animation-container concept-scroll-container" id="concept">
       <div class="scroll-animation-sticky">
-        <section class="concept scroll-animation-slide" id="canva">
+        <section class="concept scroll-animation-slide" id="canva" data-scroll-weight="2">
           <div class="content">
             <div class="tip">
               <p>CONCEPT</p>
@@ -204,16 +204,16 @@
             </div>
           </div>
         </section>
-        <section class="value-txt scroll-animation-slide" id="value">
+        <section class="value-txt scroll-animation-slide" id="value" data-scroll-weight="1">
           <div class="title-box">
             <h1></h1>
           </div>
         </section>
       </div>
     </div>
-    <div class="scroll-animation-container concept-scroll-container value-scroll-container" id="concept">
+    <div class="scroll-animation-container value-scroll-container" id="concept">
       <div class="scroll-animation-sticky">
-        <section class="value scroll-animation-slide" id="value">
+        <section class="value scroll-animation-slide" id="value" data-scroll-weight="4">
           <p class="value-title is-pc-show">デベロッパーが得られる3つの価値</p>
           <!-- <p class="value-title is-sp-show">デベロッパーが得られる<br>3つの価値</p> -->
           <title class="value-en-title">VALUE</title>
@@ -297,7 +297,7 @@
             </div>
           </div>
         </section>
-        <section class="solution solution-title scroll-animation-slide" id="solution">
+        <section class="solution solution-title scroll-animation-slide" id="solution" data-scroll-weight="1">
           <div class="title-box">
             <h1></h1>
           </div>
@@ -306,7 +306,7 @@
     </div>
     <div class="scroll-animation-container solution-scroll-container" id="solution">
       <div class="scroll-animation-sticky">
-        <section class="solution scroll-animation-slide" id="solution">
+        <section class="solution scroll-animation-slide" id="solution" data-scroll-weight="4">
           <div class="content">
             <div class="solution-slid-animation">
               <div class="top-part">
@@ -439,395 +439,269 @@
             </div>
           </div>
         </section>
-        <section class="study study-title scroll-animation-slide" id="study">
+        <section class="study study-title scroll-animation-slide" id="study" data-scroll-weight="1">
           <div class="title-box">
             <h1></h1>
           </div>
         </section>
       </div>
     </div>
-    <section class="solution" id="solution">
-      <div class="content">
-        <div class="solution-slid-animation">
-          <div class="top-part">
-            <title class="solution-title">
-              なぜ私たちが成功できるのか
-            </title>
-            <div class="tip">
-              <p>SOLUTION</p>
-            </div>
-          </div>
-          <div class="solution-slid-item solution-slid-item1">
-            <title class="solution-item-label">
-              SOLUTION
-            </title>
-            <div class="solution-slid-content">
-              <div class="solution-slid-main-content">
-                <div class="solution-item-container-img">
-                  <p class="solution-item-content-title is-sp-show" id="solution-item-content-title-1">Medical <br>
-                    Environment<br>
-                    Specification</p>
-                  <img src="./assets/img/solution/solution01.png" alt="">
-                  <div class="solution-item-number is-sp-show">
-                    1
+    <div class="scroll-animation-container study-scroll-container" id="study">
+      <div class="scroll-animation-sticky">
+        <section class="scroll-animation-slide study" id="case-study">
+          <div class="swiper mySwiper marquee" id="swiper">
+            <div class="swiper-wrapper badges track" id="track">
+              <div class="swiper-slide slide">
+                <div class="slide-item">
+                  <div class="slide-item-img">
+                    <img src="./assets/img/study/study (1).png" alt="">
                   </div>
-                </div>
-                <div class="solution-item-content">
-                  <p class="solution-item-content-title is-pc-show" id="solution-item-content-title-1">Medical <br>
-                    Environment<br>
-                    Specification</p>
-                  <p class="solution-item-content-subtitle">
-                    医療環境スペック
-                  </p>
-                  <p class="solution-item-content-text">
-                    調査に基づく収益性の高い立地を選定。徹底した調査と蓄積されたマーケティング力、<br>
-                    来客導線の設計により、高い収益性を提供。
-                  </p>
-                  <div class="solution-item-number is-pc-show">
-                    1
+                  <div class="slide-item-content">
+                    <p class="slide-item-content-title">都市型医療モール</p>
+                    <p class="slide-item-content-text">あべのウェルビーイングテラス</p>
                   </div>
                 </div>
               </div>
-              <div class="solution-slid-item-title">
-                <div class="slid-item-order">
-                  1
-                </div>
-                <div class="solution-item-content-label" id="solution-item-content-label-3">
-                  <p>Medical Environment Specification</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="solution-slid-item solution-slid-item2">
-            <title class="solution-item-label">
-              SOLUTION
-            </title>
-            <div class="solution-slid-content">
-              <div class="solution-slid-main-content">
-                <div class="solution-item-container-img">
-                  <p class="solution-item-content-title is-sp-show" id="solution-item-content-title-2">Accessibility
-                  </p>
-                  <img src="./assets/img/solution/solution02.png" alt="">
-                  <div class="solution-item-number is-sp-show">
-                    2
+              <div class="swiper-slide slide">
+                <div class="slide-item">
+                  <div class="slide-item-img">
+                    <img src="./assets/img/study/study (2).png" alt="">
                   </div>
-                </div>
-                <div class="solution-item-content">
-                  <p class="solution-item-content-title is-pc-show" id="solution-item-content-title-2">Accessibility
-                  <p class="solution-item-content-subtitle">
-                    アクセシビリティ
-                  </p>
-                  <p class="solution-item-content-text">
-                    地域のニーズに基づき、将来を見据えた診察料を選定し、<br>
-                    利用者に必要な医療サービスを提供。
-                  </p>
-                  <div class="solution-item-number is-pc-show">
-                    2
+                  <div class="slide-item-content">
+                    <p class="slide-item-content-title">郊外型医療ビル</p>
+                    <p class="slide-item-content-text">芦屋呉川メディカルテラス</p>
                   </div>
                 </div>
               </div>
-              <div class="solution-slid-item-title">
-                <div class="slid-item-order">
-                  2
-                </div>
-                <div class="solution-item-content-label" id="solution-item-content-label-3">
-                  <p>Accessibility</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="solution-slid-item solution-slid-item3">
-            <title class="solution-item-label">
-              SOLUTION
-            </title>
-            <div class="solution-slid-content">
-              <div class="solution-slid-main-content">
-                <div class="solution-item-container-img">
-                  <p class="solution-item-content-title is-sp-show" id="solution-item-content-title-3">Enveloping<br>
-                    Hospitality</p>
-                  <img src="./assets/img/solution/solution03.png" alt="">
-                  <div class="solution-item-number is-sp-show">
-                    3
+              <div class="swiper-slide slide">
+                <div class="slide-item">
+                  <div class="slide-item-img">
+                    <img src="./assets/img/study/study (3).jpg" alt="">
                   </div>
-                </div>
-                <div class="solution-item-content">
-                  <p class="solution-item-content-title is-pc-show" id="solution-item-content-title-3">Enveloping<br>
-                    Hospitality
-                  <p class="solution-item-content-subtitle">
-                    つつみこむホスピタリティ
-                  </p>
-                  <p class="solution-item-content-text">
-                    利用者の気持ちに寄り添い、清潔でオーセンティックな空間を提供。<br>
-                    精神的なウェルビーイングにもつなげています。
-                  </p>
-                  <div class="solution-item-number is-pc-show">
-                    3
+                  <div class="slide-item-content">
+                    <p class="slide-item-content-title">都市型医療モール</p>
+                    <p class="slide-item-content-text">Osaka Metroなんばビル クリニックモール</p>
                   </div>
                 </div>
               </div>
-              <div class="solution-slid-item-title">
-                <div class="slid-item-order">
-                  3
+              <div class="swiper-slide slide">
+                <div class="slide-item">
+                  <div class="slide-item-img">
+                    <img src="./assets/img/study/study (4).png" alt="">
+                  </div>
+                  <div class="slide-item-content">
+                    <p class="slide-item-content-title">郊外型医療ビル</p>
+                    <p class="slide-item-content-text">瓜生堂クリニックビルNORTH/SOUTH</p>
+                  </div>
                 </div>
-                <div class="solution-item-content-label" id="solution-item-content-label-3">
-                  <p>Enveloping
-                    Hospitality</p>
+              </div>
+              <div class="swiper-slide slide">
+                <div class="slide-item">
+                  <div class="slide-item-img">
+                    <img src="./assets/img/study/study (5).png" alt="">
+                  </div>
+                  <div class="slide-item-content">
+                    <p class="slide-item-content-title">郊外型医療ビル</p>
+                    <p class="slide-item-content-text">阪急千里山ウェルビーイングテラス</p>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide slide">
+                <div class="slide-item">
+                  <div class="slide-item-img">
+                    <img src="./assets/img/study/study (6).png" alt="">
+                  </div>
+                  <div class="slide-item-content">
+                    <p class="slide-item-content-title">都市型医療モール</p>
+                    <p class="slide-item-content-text">JR兵庫駅前ウェルビーイングテラス</p>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide slide">
+                <div class="slide-item">
+                  <div class="slide-item-img">
+                    <img src="./assets/img/study/study (7).png" alt="">
+                  </div>
+                  <div class="slide-item-content">
+                    <p class="slide-item-content-title">郊外型医療モール</p>
+                    <p class="slide-item-content-text">高槻グリーンプレイス メディカルテラス</p>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide slide">
+                <div class="slide-item">
+                  <div class="slide-item-img">
+                    <img src="./assets/img/study/study (8).png" alt="">
+                  </div>
+                  <div class="slide-item-content">
+                    <p class="slide-item-content-title">郊外型医療ビル
+                    </p>
+                    <p class="slide-item-content-text">吉祥院ウェルビーイングテラス</p>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide slide">
+                <div class="slide-item">
+                  <div class="slide-item-img">
+                    <img src="./assets/img/study/study (9).png" alt="">
+                  </div>
+                  <div class="slide-item-content">
+                    <p class="slide-item-content-title">郊外型医療ビル</p>
+                    <p class="slide-item-content-text">阪急箕面駅前ウェルビーイングテラス(仮称)</p>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide slide">
+                <div class="slide-item">
+                  <div class="slide-item-img">
+                    <img src="./assets/img/study/study (10).png" alt="">
+                  </div>
+                  <div class="slide-item-content">
+                    <p class="slide-item-content-title">都市型医療モール</p>
+                    <p class="slide-item-content-text">西鎌倉ウェルビーイングテラス(仮称)</p>
+                  </div>
                 </div>
               </div>
             </div>
+            <div class="swiper-scrollbar"></div>
           </div>
-        </div>
-      </div>
-    </section>
-    <section class="study" id="case-study">
-      <div class="title-box">
-        <h1></h1>
-      </div>
-      <div class="swiper mySwiper marquee" id="swiper">
-        <div class="swiper-wrapper badges track" id="track">
-          <div class="swiper-slide slide">
-            <div class="slide-item">
-              <div class="slide-item-img">
-                <img src="./assets/img/study/study (1).png" alt="">
-              </div>
-              <div class="slide-item-content">
-                <p class="slide-item-content-title">都市型医療モール</p>
-                <p class="slide-item-content-text">あべのウェルビーイングテラス</p>
-              </div>
-            </div>
+          <div class="study-title-container">
+            <p class="study-title">実績・計画中案件の紹介</p>
+            <p class="en-study-title">CASE STUDIES</p>
           </div>
-          <div class="swiper-slide slide">
-            <div class="slide-item">
-              <div class="slide-item-img">
-                <img src="./assets/img/study/study (2).png" alt="">
-              </div>
-              <div class="slide-item-content">
-                <p class="slide-item-content-title">郊外型医療ビル</p>
-                <p class="slide-item-content-text">芦屋呉川メディカルテラス</p>
-              </div>
-            </div>
+        </section>
+        <section class="scroll-animation-slide flow" id="flow">
+          <div class="title-box">
+            <h1></h1>
           </div>
-          <div class="swiper-slide slide">
-            <div class="slide-item">
-              <div class="slide-item-img">
-                <img src="./assets/img/study/study (3).jpg" alt="">
-              </div>
-              <div class="slide-item-content">
-                <p class="slide-item-content-title">都市型医療モール</p>
-                <p class="slide-item-content-text">Osaka Metroなんばビル クリニックモール</p>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide slide">
-            <div class="slide-item">
-              <div class="slide-item-img">
-                <img src="./assets/img/study/study (4).png" alt="">
-              </div>
-              <div class="slide-item-content">
-                <p class="slide-item-content-title">郊外型医療ビル</p>
-                <p class="slide-item-content-text">瓜生堂クリニックビルNORTH/SOUTH</p>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide slide">
-            <div class="slide-item">
-              <div class="slide-item-img">
-                <img src="./assets/img/study/study (5).png" alt="">
-              </div>
-              <div class="slide-item-content">
-                <p class="slide-item-content-title">郊外型医療ビル</p>
-                <p class="slide-item-content-text">阪急千里山ウェルビーイングテラス</p>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide slide">
-            <div class="slide-item">
-              <div class="slide-item-img">
-                <img src="./assets/img/study/study (6).png" alt="">
-              </div>
-              <div class="slide-item-content">
-                <p class="slide-item-content-title">都市型医療モール</p>
-                <p class="slide-item-content-text">JR兵庫駅前ウェルビーイングテラス</p>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide slide">
-            <div class="slide-item">
-              <div class="slide-item-img">
-                <img src="./assets/img/study/study (7).png" alt="">
-              </div>
-              <div class="slide-item-content">
-                <p class="slide-item-content-title">郊外型医療モール</p>
-                <p class="slide-item-content-text">高槻グリーンプレイス メディカルテラス</p>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide slide">
-            <div class="slide-item">
-              <div class="slide-item-img">
-                <img src="./assets/img/study/study (8).png" alt="">
-              </div>
-              <div class="slide-item-content">
-                <p class="slide-item-content-title">郊外型医療ビル
-                </p>
-                <p class="slide-item-content-text">吉祥院ウェルビーイングテラス</p>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide slide">
-            <div class="slide-item">
-              <div class="slide-item-img">
-                <img src="./assets/img/study/study (9).png" alt="">
-              </div>
-              <div class="slide-item-content">
-                <p class="slide-item-content-title">郊外型医療ビル</p>
-                <p class="slide-item-content-text">阪急箕面駅前ウェルビーイングテラス(仮称)</p>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide slide">
-            <div class="slide-item">
-              <div class="slide-item-img">
-                <img src="./assets/img/study/study (10).png" alt="">
-              </div>
-              <div class="slide-item-content">
-                <p class="slide-item-content-title">都市型医療モール</p>
-                <p class="slide-item-content-text">西鎌倉ウェルビーイングテラス(仮称)</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-scrollbar"></div>
-      </div>
-      <div class="study-title-container">
-        <p class="study-title">実績・計画中案件の紹介</p>
-        <p class="en-study-title">CASE STUDIES</p>
-      </div>
-    </section>
-    <section class="flow" id="flow">
-      <div class="title-box">
-        <h1></h1>
-      </div>
-    </section>
-    <div class="page-wrapper">
-      <div class="bg-flow-text">FLOW</div>
-      <div class="left-panel">
-        <div class="rotating-circle-container">
-
-          <div class="gear-container opening-animation" id="centerGear">
-            <svg viewBox="0 0 100 100">
-              <path class="gear-path" d="
-                          M 97.5 43.3 L 97.5 56.7 L 83.0 58.2 L 79.1 67.5
-                          L 88.5 78.8 L 78.8 88.5 L 67.5 79.1 L 58.2 83.0
-                          L 56.7 97.5 L 43.3 97.5 L 41.8 83.0 L 32.5 79.1
-                          L 21.2 88.5 L 11.5 78.8 L 20.9 67.5 L 17.0 58.2
-                          L 2.5 56.7 L 2.5 43.3 L 17.0 41.8 L 20.9 32.5
-                          L 11.5 21.2 L 21.2 11.5 L 32.5 20.9 L 41.8 17.0
-                          L 43.3 2.5 L 56.7 2.5 L 58.2 17.0 L 67.5 20.9
-                          L 78.8 11.5 L 88.5 21.2 L 79.1 32.5 L 83.0 41.8 Z" />
-            </svg>
-          </div>
-
-          <div class="rotating-circle opening-animation" id="rotatingCircle">
-            <div class="step-marker marker-1">
-              <div class="marker-content">
-                <div class="diamond-shape"></div><span class="number">1</span>
-              </div>
-            </div>
-            <div class="step-marker marker-2">
-              <div class="marker-content">
-                <div class="diamond-shape"></div><span class="number">2</span>
-              </div>
-            </div>
-            <div class="step-marker marker-3">
-              <div class="marker-content">
-                <div class="diamond-shape"></div><span class="number">3</span>
-              </div>
-            </div>
-            <div class="step-marker marker-4">
-              <div class="marker-content">
-                <div class="diamond-shape"></div><span class="number">4</span>
-              </div>
-            </div>
-            <div class="step-marker marker-5">
-              <div class="marker-content">
-                <div class="diamond-shape"></div><span class="number">5</span>
-              </div>
-            </div>
-            <div class="step-marker marker-6">
-              <div class="marker-content">
-                <div class="diamond-shape"></div><span class="number">6</span>
-              </div>
-            </div>
-            <div class="small-circle"></div>
-          </div>
-          <div class="rotating-circle-small opening-animation" id="rotatingCircle-small"></div>
-        </div>
-      </div>
-
-
-      <div class="right-panel">
-        <h2 class="section-title">開発の流れ</h2>
-
-        <div class="content-section" id="section-1" data-title="初回相談">
-          <div class="text-content">
-            <div class="step-title-container">
-              <h3 class="step-title">相談</h3>
-            </div>
-            <p class="step-description">構想段階から相談可能。<br>用地条件や方針を整理し、開発可否と次の検討軸を明確にします。</p>
-          </div>
-        </div>
-
-        <div class="content-section" id="section-2" data-title="エリア診断・診療圏調査">
-          <div class="text-content">
-            <div class="step-title-container">
-              <h3 class="step-title">エリア診断・診療圏調査</h3>
-            </div>
-            <p class="step-description">商圏人口や競合状況を分析し、<br>エリアで求められる診療科と成立性をデータで可視化します。</p>
-          </div>
-        </div>
-
-        <div class="content-section" id="section-3" data-title="基本構想策定">
-          <div class="text-content">
-            <div class="step-title-container">
-              <h3 class="step-title">基本構想策定（動線・ゾーニング）</h3>
-            </div>
-            <p class="step-description">医療を核に、人の流れを設計。<br>回遊性と収益性を両立するゾーニングを構築します。</p>
-          </div>
-        </div>
-
-        <div class="content-section" id="section-4" data-title="事業収支策定">
-          <div class="text-content">
-            <div class="step-title-container">
-              <h3 class="step-title">事業収支策定</h3>
-            </div>
-            <p class="step-description">賃料・コスト・運用条件を踏まえ、<br>投資判断に耐える現実的な収支モデルを策定します。</p>
-          </div>
-        </div>
-
-        <div class="content-section" id="section-5" data-title="諸条件・スケジュール調整">
-          <div class="text-content">
-            <div class="step-title-container">
-              <h3 class="step-title">諸条件・スケジュール調整</h3>
-            </div>
-            <p class="step-description">双方での合意のため、契約条件やスケジュールの擦り合わせを行います。</p>
-          </div>
-        </div>
-
-        <div class="content-section" id="section-6" data-title="合意">
-          <div class="text-content">
-            <div class="step-title-container">
-              <h3 class="step-title">合意</h3>
-            </div>
-            <p class="step-description">合意後、建設開始に向けて設計作業を着手いたします。</p>
-          </div>
-        </div>
+        </section>
       </div>
     </div>
-    <section class="about" id="about">
-      <div class="title-box">
-        <h1></h1>
+    <div class="scroll-animation-container flow-scroll-container" id="flow">
+      <div class="scroll-animation-sticky">
+        <div class="page-wrapper scroll-animation-slide" data-scroll-weight="6">
+          <div class="bg-flow-text">FLOW</div>
+          <div class="left-panel">
+            <div class="rotating-circle-container">
+    
+              <div class="gear-container opening-animation" id="centerGear">
+                <svg viewBox="0 0 100 100">
+                  <path class="gear-path" d="
+                              M 97.5 43.3 L 97.5 56.7 L 83.0 58.2 L 79.1 67.5
+                              L 88.5 78.8 L 78.8 88.5 L 67.5 79.1 L 58.2 83.0
+                              L 56.7 97.5 L 43.3 97.5 L 41.8 83.0 L 32.5 79.1
+                              L 21.2 88.5 L 11.5 78.8 L 20.9 67.5 L 17.0 58.2
+                              L 2.5 56.7 L 2.5 43.3 L 17.0 41.8 L 20.9 32.5
+                              L 11.5 21.2 L 21.2 11.5 L 32.5 20.9 L 41.8 17.0
+                              L 43.3 2.5 L 56.7 2.5 L 58.2 17.0 L 67.5 20.9
+                              L 78.8 11.5 L 88.5 21.2 L 79.1 32.5 L 83.0 41.8 Z" />
+                </svg>
+              </div>
+    
+              <div class="rotating-circle opening-animation" id="rotatingCircle">
+                <div class="step-marker marker-1">
+                  <div class="marker-content">
+                    <div class="diamond-shape"></div><span class="number">1</span>
+                  </div>
+                </div>
+                <div class="step-marker marker-2">
+                  <div class="marker-content">
+                    <div class="diamond-shape"></div><span class="number">2</span>
+                  </div>
+                </div>
+                <div class="step-marker marker-3">
+                  <div class="marker-content">
+                    <div class="diamond-shape"></div><span class="number">3</span>
+                  </div>
+                </div>
+                <div class="step-marker marker-4">
+                  <div class="marker-content">
+                    <div class="diamond-shape"></div><span class="number">4</span>
+                  </div>
+                </div>
+                <div class="step-marker marker-5">
+                  <div class="marker-content">
+                    <div class="diamond-shape"></div><span class="number">5</span>
+                  </div>
+                </div>
+                <div class="step-marker marker-6">
+                  <div class="marker-content">
+                    <div class="diamond-shape"></div><span class="number">6</span>
+                  </div>
+                </div>
+                <div class="small-circle"></div>
+              </div>
+              <div class="rotating-circle-small opening-animation" id="rotatingCircle-small"></div>
+            </div>
+          </div>
+    
+    
+          <div class="right-panel">
+            <h2 class="section-title">開発の流れ</h2>
+    
+            <div class="content-section" id="section-1" data-title="初回相談">
+              <div class="text-content">
+                <div class="step-title-container">
+                  <h3 class="step-title">相談</h3>
+                </div>
+                <p class="step-description">構想段階から相談可能。<br>用地条件や方針を整理し、開発可否と次の検討軸を明確にします。</p>
+              </div>
+            </div>
+    
+            <div class="content-section" id="section-2" data-title="エリア診断・診療圏調査">
+              <div class="text-content">
+                <div class="step-title-container">
+                  <h3 class="step-title">エリア診断・診療圏調査</h3>
+                </div>
+                <p class="step-description">商圏人口や競合状況を分析し、<br>エリアで求められる診療科と成立性をデータで可視化します。</p>
+              </div>
+            </div>
+    
+            <div class="content-section" id="section-3" data-title="基本構想策定">
+              <div class="text-content">
+                <div class="step-title-container">
+                  <h3 class="step-title">基本構想策定（動線・ゾーニング）</h3>
+                </div>
+                <p class="step-description">医療を核に、人の流れを設計。<br>回遊性と収益性を両立するゾーニングを構築します。</p>
+              </div>
+            </div>
+    
+            <div class="content-section" id="section-4" data-title="事業収支策定">
+              <div class="text-content">
+                <div class="step-title-container">
+                  <h3 class="step-title">事業収支策定</h3>
+                </div>
+                <p class="step-description">賃料・コスト・運用条件を踏まえ、<br>投資判断に耐える現実的な収支モデルを策定します。</p>
+              </div>
+            </div>
+    
+            <div class="content-section" id="section-5" data-title="諸条件・スケジュール調整">
+              <div class="text-content">
+                <div class="step-title-container">
+                  <h3 class="step-title">諸条件・スケジュール調整</h3>
+                </div>
+                <p class="step-description">双方での合意のため、契約条件やスケジュールの擦り合わせを行います。</p>
+              </div>
+            </div>
+    
+            <div class="content-section" id="section-6" data-title="合意">
+              <div class="text-content">
+                <div class="step-title-container">
+                  <h3 class="step-title">合意</h3>
+                </div>
+                <p class="step-description">合意後、建設開始に向けて設計作業を着手いたします。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <section class="scroll-animation-slide about" id="about" data-scroll-weight="1">
+          <div class="title-box">
+            <h1></h1>
+          </div>
+        </section>
       </div>
+    </div>
+    <section class="about">
       <div class="content">
         <div class="about-content-txt-title-container about-is-sp-show">
           <p class="about-content-txt-title is-pc">私たちは、医療と商業を融合した</p>

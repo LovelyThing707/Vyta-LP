@@ -275,6 +275,29 @@ body {
     position: relative;
 }
 
+/* Flow: single 100vh viewport; all content-sections stacked in same area, one visible at a time */
+.flow-scroll-container .right-panel {
+    height: 100vh;
+    padding-bottom: 0;
+    position: relative;
+}
+
+.flow-scroll-container .content-section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.flow-scroll-container .content-section.animate-trigger {
+    opacity: 1;
+    pointer-events: auto;
+}
+
 
 .step-title-container {
     position: relative;

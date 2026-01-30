@@ -259,46 +259,102 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
 
   /**
-   * Runs scroll-based slide animation for one block.
-   * @param {HTMLElement} scrollContainer - Tall container (e.g. 400vh)
-   * @param {NodeListOf<Element>} slides - Slide elements inside the sticky area
+   * ORIGINAL – keep this for FV
    */
   function updateScrollBlock(scrollContainer, slides) {
-      if (!scrollContainer || !slides.length) return;
+    if (!scrollContainer || !slides.length) return;
 
-      const totalSlides = slides.length;
-      const rect = scrollContainer.getBoundingClientRect();
-      const scrollHeight = scrollContainer.offsetHeight - window.innerHeight;
+    const totalSlides = slides.length;
+    const rect = scrollContainer.getBoundingClientRect();
+    const scrollHeight = scrollContainer.offsetHeight - window.innerHeight;
 
-      if (scrollHeight <= 0) return;
+    if (scrollHeight <= 0) return;
 
-      let scrolled = -rect.top;
-      if (scrolled < 0) scrolled = 0;
-      if (scrolled > scrollHeight) scrolled = scrollHeight;
+    let scrolled = -rect.top;
+    scrolled = Math.max(0, Math.min(scrolled, scrollHeight));
 
-      const progress = scrolled / scrollHeight;
-      let activeIndex = Math.floor(progress * totalSlides);
-      if (activeIndex < 0) activeIndex = 0;
-      if (activeIndex >= totalSlides) activeIndex = totalSlides - 1;
+    const progress = scrolled / scrollHeight;
+    let activeIndex = Math.floor(progress * totalSlides);
+    activeIndex = Math.max(0, Math.min(activeIndex, totalSlides - 1));
 
-      slides.forEach((slide, index) => {
-          slide.classList.toggle('active', index === activeIndex);
-      });
+    slides.forEach((slide, index) => {
+      slide.classList.toggle('active', index === activeIndex);
+    });
+  }
+
+  /**
+   * NEW – variable scroll length + fade system
+   */
+  function updateScrollBlockVariable(scrollContainer, slides) {
+    if (!scrollContainer || !slides.length) return;
+
+    const rect = scrollContainer.getBoundingClientRect();
+    const scrollHeight = scrollContainer.offsetHeight - window.innerHeight;
+
+    if (scrollHeight <= 0) return;
+
+    // Clamp scroll
+    let scrolled = -rect.top;
+    scrolled = Math.max(0, Math.min(scrolled, scrollHeight));
+
+    // Build slide weights (height OR manual override)
+    const weights = Array.from(slides).map(slide => {
+      return parseFloat(slide.dataset.scrollWeight) || slide.offsetHeight || 1;
+    });
+
+    const totalWeight = weights.reduce((a, b) => a + b, 0);
+
+    let cumulative = 0;
+    let activeIndex = 0;
+    let localProgress = 0;
+
+    for (let i = 0; i < weights.length; i++) {
+      const segment = (weights[i] / totalWeight) * scrollHeight;
+
+      if (scrolled <= cumulative + segment) {
+        activeIndex = i;
+        localProgress = (scrolled - cumulative) / segment;
+        break;
+      }
+
+      cumulative += segment;
+    }
+
+    // Apply fade logic
+    slides.forEach((slide, index) => {
+      slide.classList.remove('active');
+      slide.style.opacity = 0;
+      slide.style.zIndex = 0;
+
+      // Current slide
+      if (index === activeIndex) {
+        slide.classList.add('active');
+        slide.style.opacity = 1;
+        slide.style.zIndex = 2;
+      }
+
+      // Next slide fades in
+      if (index === activeIndex + 2) {
+        slide.style.opacity = localProgress;
+        slide.style.zIndex = 1;
+      }
+    });
   }
 
   function onScroll() {
-      // FV section (existing)
-      const fvContainer = document.querySelector('.fv-scroll-container');
-      const fvSlides = document.querySelectorAll('.fv-slide');
-      updateScrollBlock(fvContainer, fvSlides);
+    // FV section (UNCHANGED)
+    const fvContainer = document.querySelector('.fv-scroll-container');
+    const fvSlides = document.querySelectorAll('.fv-slide');
+    updateScrollBlock(fvContainer, fvSlides);
 
-      // All generic scroll-animation sections (e.g. .concept)
-      document.querySelectorAll('.scroll-animation-container').forEach((container) => {
-          const slides = container.querySelectorAll('.scroll-animation-slide');
-          updateScrollBlock(container, slides);
-      });
+    // Scroll-animation sections (NEW SYSTEM)
+    document.querySelectorAll('.scroll-animation-container').forEach((container) => {
+      const slides = container.querySelectorAll('.scroll-animation-slide');
+      updateScrollBlockVariable(container, slides);
+    });
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 });
+

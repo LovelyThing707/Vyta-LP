@@ -321,3 +321,64 @@ document.addEventListener("DOMContentLoaded", () => {
   // );
 });
 
+function updateScrollBlock(scrollContainer, slides) {
+  if (!scrollContainer || !slides.length) return;
+
+  const rect = scrollContainer.getBoundingClientRect();
+  const scrollHeight = scrollContainer.offsetHeight - window.innerHeight;
+
+  if (scrollHeight <= 0) return;
+
+  // Clamp scroll position
+  let scrolled = -rect.top;
+  scrolled = Math.max(0, Math.min(scrolled, scrollHeight));
+
+  // 1. Build slide "weights"
+  const weights = Array.from(slides).map(slide => {
+    return parseFloat(slide.dataset.scrollWeight) || slide.offsetHeight || 1;
+  });
+
+  const totalWeight = weights.reduce((a, b) => a + b, 0);
+
+  // 2. Find active slide + local progress
+  let cumulative = 0;
+  let activeIndex = 0;
+  let localProgress = 0;
+
+  for (let i = 0; i < weights.length; i++) {
+    const segment = (weights[i] / totalWeight) * scrollHeight;
+
+    if (scrolled <= cumulative + segment) {
+      activeIndex = i;
+      localProgress = (scrolled - cumulative) / segment;
+      break;
+    }
+
+    cumulative += segment;
+  }
+
+  // 3. Apply fade logic
+  slides.forEach((slide, index) => {
+    slide.classList.remove('active');
+    slide.style.opacity = 0;
+    slide.style.zIndex = 0;
+
+    if (index === activeIndex) {
+      slide.classList.add('active');
+      slide.style.opacity = 1;
+      slide.style.zIndex = 2;
+    }
+
+    // Fade into next slide
+    if (index === activeIndex + 1) {
+      slide.style.opacity = localProgress;
+      slide.style.zIndex = 1;
+    }
+  });
+  
+  document.querySelectorAll('.scroll-container').forEach((container) => {
+    const slides = container.querySelectorAll('.scroll-slide');
+    updateScrollBlock(container, slides);
+  });
+}
+
