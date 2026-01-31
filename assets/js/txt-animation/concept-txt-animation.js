@@ -2,6 +2,7 @@
  * Copyright MIT © <2013> <Francesco Trillini>
  * Modified for responsive + mobile-friendly ambient animation
  * Unified version for all text animations: CONCEPT, VALUE, CASE STUDIES, SOLUTION, FLOW, ABOUT US
+ * (2024) Particle mesh density increased for smartphone readability
  */
 
 var Typo = {};
@@ -79,10 +80,13 @@ var Typo = {};
 		return Math.min(250, canvasWidth / 5);
 	}
 
+	// Increased mesh density: smaller spacing values for mobile
 	function getResponsiveParticleSpacing(canvasWidth) {
-		if (canvasWidth <= 768) return 8;
-		if (canvasWidth <= 950) return 10;
-		return 12;
+		if (canvasWidth <= 480) return 7;       // Super dense for very small screens
+		if (canvasWidth <= 650) return 5;       // Denser than before on small tablets/phones
+		if (canvasWidth <= 768) return 6;       // Still denser than old 8
+		if (canvasWidth <= 950) return 8;       // Slightly increased density
+		return 12;                              // Unchanged for desktop
 	}
 
 	// ==========================
@@ -287,7 +291,7 @@ var Typo = {};
 						context.beginPath();
 						context.globalAlpha = 1 - dist / (connectionDistance * 2);
 						context.lineWidth = canvas.width <= 768 ? 0.5 : 1;
-						context.strokeStyle = '#d1d5db';
+						context.strokeStyle = '#D2D5DA';
 						context.moveTo(node.x, node.y);
 						context.lineTo(other.x, other.y);
 						context.stroke();
@@ -301,7 +305,7 @@ var Typo = {};
 		function render() {
 			nodes.forEach(function (node, i) {
 				context.save();
-				context.fillStyle = '#d1d5db';
+				context.fillStyle = '#D2D5DA';
 				context.beginPath();
 				context.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
 				context.fill();
@@ -329,7 +333,7 @@ var Typo = {};
 				var displayText = getTextForScreen(section, canvas.width);
 
 				context.font = 'bold ' + fontSize + 'px Outfit';
-				context.fillStyle = '#d1d5db';
+				context.fillStyle = '#D2D5DA';
 				context.textAlign = 'center';
 
 				// Handle multi-line text
@@ -357,8 +361,18 @@ var Typo = {};
 					for (var h = 0; h < surface.height; h += particleSpacing) {
 						var color = surface.data[(h * surface.width * 4) + (w * 4) - 1];
 						if (color === 255) {
-							var baseRadius = canvas.width <= 768 ? 1.5 : 2;
-							var maxRadius = canvas.width <= 768 ? 3 : 5;
+							// Slightly smaller radii for dense meshes on mobile for visual clarity
+							var baseRadius, maxRadius;
+							if (canvas.width <= 480) {
+								baseRadius = 4;
+								maxRadius = 2;
+							} else if (canvas.width <= 768) {
+								baseRadius = 1.3;
+								maxRadius = 2;
+							} else {
+								baseRadius = 2;
+								maxRadius = 5;
+							}
 							var radius = baseRadius + Math.random() * (maxRadius - baseRadius);
 
 							nodes.push({
