@@ -75,6 +75,7 @@ section {
   z-index: 0;
 }
 
+
 @media (max-width: 768px) {
   .is-md-show {
     display: block !important;
@@ -123,4 +124,10 @@ body {
   to { opacity: 1; }
 }
 
+
+@media (max-width: 425px) {
+  .is-hidden-sp {
+    display: none;
+  }
+}
 
