@@ -1,36 +1,20 @@
-// Loading animation handler
-document.addEventListener('DOMContentLoaded', () => {
-  const loadingSection = document.querySelector('.loading');
-  const body = document.body;
+document.addEventListener("DOMContentLoaded", () => {
+  const loader = document.querySelector(".loading");
+  if (!loader) return;
 
-  if (!loadingSection) return;
-
-  // Prevent scrolling initially
-  body.classList.add('loading-active');
-
-  // Wait for the animation to complete
-  // The longest animation is the move animation (100s), but we can trigger earlier
-  // Adjust this duration based on when you want the fade-out to start
-  const animationDuration = 0; // 100 seconds (matching the move animation)
-  const transitionDelay = 1500; // 0.5 second buffer for smooth transition
-  const totalDuration = animationDuration + transitionDelay;
+  document.body.classList.add("loading-active");
 
   setTimeout(() => {
-    // Dispatch custom event to signal that loading fade-out is starting
-    // This allows other animations (like FV) to start synchronously
-    const fadeStartEvent = new CustomEvent('loadingFadeStart', {
-      detail: { timestamp: Date.now() }
-    });
-    window.dispatchEvent(fadeStartEvent);
+    // Notify other animations
+    window.dispatchEvent(new CustomEvent("loadingFadeStart"));
 
-    // Add hidden class to trigger fade-out
-    loadingSection.classList.add('hidden');
+    // Fade out loader
+    loader.classList.add("hidden");
 
-    // Remove scroll prevention after fade-out completes
+    // Re-enable scroll
     setTimeout(() => {
-      body.classList.remove('loading-active');
-      // Smooth scroll to top to ensure we're at the beginning
-      window.scrollTo({ top: 0, behavior: 'instant' });
-    }, 800); // Match the CSS transition duration (0.8s)
-  }, totalDuration);
+      document.body.classList.remove("loading-active");
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }, 800);
+  }, 1500);
 });

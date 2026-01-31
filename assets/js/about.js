@@ -1,151 +1,87 @@
 gsap.registerPlugin(ScrollTrigger);
 
-// Image slider animation
+// ==========================
+// IMAGE SLIDER
+// ==========================
+
 const images = gsap.utils.toArray(".about-content-img img");
+const SLIDE = 0.5;
+const HOLD = 2;
+const OFFSET = 120;
 
-const SLIDE_TIME = 0.5; // fast slide
-const HOLD_TIME = 2;   // pause time
-const OFFSET = 120;   // slide distance in %
+const sliderTl = gsap.timeline({ repeat: -1 });
 
-const tl = gsap.timeline({
-  repeat: -1
-});
+gsap.set(images, { xPercent: OFFSET, opacity: 0 });
 
-// Set initial positions
 images.forEach(img => {
-  gsap.set(img, {
-    xPercent: OFFSET,
-    opacity: 0
-  });
-});
-
-// Animation loop
-images.forEach((img, i) => {
-  tl.to(img, {
-    xPercent: 0,
-    opacity: 1,
-    duration: SLIDE_TIME,
-    ease: "power3.out"
-  })
-  .to(img, {
-    duration: HOLD_TIME
-  })
-  .to(img, {
-    xPercent: -OFFSET,
-    opacity: 0,
-    duration: SLIDE_TIME,
-    ease: "power3.in"
-  });
+  sliderTl
+    .to(img, { xPercent: 0, opacity: 1, duration: SLIDE, ease: "power3.out" })
+    .to(img, { duration: HOLD })
+    .to(img, { xPercent: -OFFSET, opacity: 0, duration: SLIDE, ease: "power3.in" });
 });
 
 // ==========================
-// ABOUT TEXT ANIMATIONS
+// TEXT ANIMATIONS
 // ==========================
 
-document.addEventListener("DOMContentLoaded", () => {
-  // Single trigger: title and description appear at the same time
-  initContentAnimations();
-});
+document.addEventListener("DOMContentLoaded", initAnimations);
 
-// Split text into individual characters and wrap them in spans
-function splitTextIntoLetters(element) {
-  const text = element.textContent;
-  const letters = text.split('');
-  element.innerHTML = '';
-  
-  letters.forEach((letter, index) => {
-    const span = document.createElement('span');
-    span.className = 'letter';
-    span.textContent = letter === ' ' ? '\u00A0' : letter; // Non-breaking space for regular spaces
-    span.style.opacity = '0';
-    element.appendChild(span);
-  });
-  
-  return element.querySelectorAll('.letter');
-}
-
-// Build title animation timeline (no ScrollTrigger; added to master timeline)
-function buildTitleTimeline(masterTl) {
-  const titleContainers = document.querySelectorAll('.about-content-txt-title-container');
-  
-  titleContainers.forEach(container => {
-    const titleParagraphs = container.querySelectorAll('.about-content-txt-title');
-    
-    titleParagraphs.forEach((paragraph) => {
-      const letters = splitTextIntoLetters(paragraph);
-      const bgElement = document.createElement('span');
-      bgElement.className = 'title-bg-animation';
-      
-      if (getComputedStyle(paragraph).position === 'static') {
-        paragraph.style.position = 'relative';
-      }
-      paragraph.insertBefore(bgElement, paragraph.firstChild);
-      gsap.set(bgElement, { width: '0%' });
-      
-      // Add to master at same start time (position 0)
-      masterTl.to(bgElement, {
-        width: '100%',
-        duration: 0.8,
-        ease: 'power2.out'
-      }, 0);
-      
-      letters.forEach((letter, lIndex) => {
-        masterTl.to(letter, {
-          opacity: 1,
-          duration: 0.1,
-          ease: 'none'
-        }, 0.8 + (lIndex * 0.03));
-      });
-    });
+function splitText(el) {
+  const text = el.textContent;
+  el.innerHTML = "";
+  return [...text].map(char => {
+    const span = document.createElement("span");
+    span.className = "letter";
+    span.textContent = char === " " ? "\u00A0" : char;
+    span.style.opacity = 0;
+    el.appendChild(span);
+    return span;
   });
 }
 
-// Build description + company info animation (same start time as title)
-function buildContentTimeline(masterTl) {
-  const descriptionSection = document.querySelector('.about-content-txt-description');
-  if (!descriptionSection) return;
-  
-  const descriptionText = descriptionSection.querySelector('.about-content-txt-description-text');
-  const companyInfo = descriptionSection.querySelector('.about-content-company-info');
-  
-  if (descriptionText) {
-    gsap.set(descriptionText, { opacity: 0, y: 30 });
-    masterTl.to(descriptionText, {
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      ease: 'power2.out'
-    }, 0);
-  }
-  
-  if (companyInfo) {
-    const tableRows = companyInfo.querySelectorAll('tr');
-    tableRows.forEach((row, index) => {
-      gsap.set(row, { opacity: 0, x: -20 });
-      masterTl.to(row, {
-        opacity: 1,
-        x: 0,
-        duration: 0.6,
-        delay: index * 0.1,
-        ease: 'power2.out'
-      }, 0);
-    });
-  }
-}
+function initAnimations() {
+  const section = document.querySelector(".about-content-txt");
+  if (!section) return;
 
-function initContentAnimations() {
-  const aboutTxt = document.querySelector('.about-content-txt');
-  if (!aboutTxt) return;
-  
-  const masterTl = gsap.timeline({
+  const tl = gsap.timeline({
     scrollTrigger: {
-      trigger: aboutTxt,
-      start: 'top 80%',
-      toggleActions: 'play none none none'
+      trigger: section,
+      start: "top 80%",
+      once: true
     }
   });
-  
-  // Title and description start at the same time (position 0)
-  buildTitleTimeline(masterTl);
-  buildContentTimeline(masterTl);
+
+  // TITLE
+  document.querySelectorAll(".about-content-txt-title").forEach(title => {
+    const letters = splitText(title);
+
+    const bg = document.createElement("span");
+    bg.className = "title-bg-animation";
+    title.style.position = "relative";
+    title.prepend(bg);
+
+    tl.to(bg, { width: "100%", duration: 0.8, ease: "power2.out" }, 0);
+    tl.to(letters, {
+      opacity: 1,
+      stagger: 0.03,
+      duration: 0.1
+    }, 0.8);
+  });
+
+  // DESCRIPTION
+  tl.from(".about-content-txt-description-text", {
+    opacity: 0,
+    y: 30,
+    duration: 0.8,
+    ease: "power2.out"
+  }, 0);
+
+  // TABLE ROWS
+  tl.from(".about-content-company-info tr", {
+    opacity: 0,
+    x: -20,
+    stagger: 0.1,
+    duration: 0.6,
+    ease: "power2.out"
+  }, 0);
 }

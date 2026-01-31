@@ -24,7 +24,7 @@ var Typo = {};
 		},
 		{
 			selector: '.study .title-box',
-			text: 'CASE STUDIES',
+			text: 'CASE\nSTUDIES',
 			name: 'CASE STUDIES',
 			hasLineBreak: true,
 			breakWidth: 425

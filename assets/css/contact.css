@@ -453,7 +453,7 @@ footer .footer-cta button {
     border-radius: 40px;
 }
 
-footer .footer-cta button a {
+footer .footer-cta a button{
     color: white;
     font-size: 14px;
     letter-spacing: 10px;

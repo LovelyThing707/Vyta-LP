@@ -249,6 +249,8 @@
   display: none;
 }
 
+
+
 @media (max-width: 1440px) {
   #solution-item-content-title-1 {
     line-height: 1 !important;
@@ -263,6 +265,9 @@
   }
   .solution-title {
     top: 80px;
+  }
+  .solution-item-number {
+    top: 120px
   }
 }
 

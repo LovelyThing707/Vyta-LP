@@ -265,4 +265,7 @@
     .concept-main .img .layerFour {
       bottom: 250px;
     }
+    .concept-main .img {
+      display: none;
+    }
 }
